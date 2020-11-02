@@ -1,8 +1,9 @@
 package com.itgaoshu.hospital.bean;
 
 public class Warehuose {
+    //药品id
     private Integer warehouseid;
-
+    //仓库
     private String suppliername;
 
     public Integer getWarehouseid() {

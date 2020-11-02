@@ -66,6 +66,12 @@
   <sql id="Base_Column_List" >
     warehouseId, supplierName
   </sql>
+  <select id="queryAllList" resultType="warehuose">
+    select * from warehuose
+  </select>
+  <select id="count">
+    select count(*) from warehuose
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.WarehuoseExample" >
     select
     <if test="distinct" >

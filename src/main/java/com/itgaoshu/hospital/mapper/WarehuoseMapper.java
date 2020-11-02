@@ -7,7 +7,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface WarehuoseMapper {
+    //查询所有库房
+    public List<Warehuose> queryAllList();
     int countByExample(WarehuoseExample example);
+    int count(Warehuose warehuose);
 
     int deleteByExample(WarehuoseExample example);
 
