@@ -68,6 +68,11 @@
   </sql>
   <select id="queryAllList" resultType="warehuose">
     select * from warehuose
+    <where>
+      <if test="supplierName!=null and supplierName!=''">
+        supplierName like concat('%',concat(#{supplierName},'%'))
+      </if>
+    </where>
   </select>
   <select id="count">
     select count(*) from warehuose

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface WareHuoseService {
     //查询仓库所有信息
-    public List<Warehuose> queryAllList();
+    public List<Warehuose> queryAllList(Warehuose warehuose);
     //添加仓库
     public int addWarehuose(Warehuose warehuose);
     //删除仓库

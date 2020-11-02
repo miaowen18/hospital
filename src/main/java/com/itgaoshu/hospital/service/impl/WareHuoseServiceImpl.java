@@ -21,8 +21,8 @@ public class WareHuoseServiceImpl implements WareHuoseService {
      * @return
      */
     @Override
-    public List<Warehuose> queryAllList() {
-        return warehuoseMapper.queryAllList();
+    public List<Warehuose> queryAllList(Warehuose warehuose) {
+        return warehuoseMapper.queryAllList(warehuose);
     }
 
     /**

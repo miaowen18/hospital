@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface WarehuoseMapper {
     //查询所有库房
-    public List<Warehuose> queryAllList();
+    public List<Warehuose> queryAllList(Warehuose warehuose);
     int countByExample(WarehuoseExample example);
     int count(Warehuose warehuose);
 
