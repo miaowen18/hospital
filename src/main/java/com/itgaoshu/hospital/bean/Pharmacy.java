@@ -3,6 +3,7 @@ package com.itgaoshu.hospital.bean;
 import java.util.Date;
 
 public class Pharmacy {
+    //药品
     private Integer pharmacyid;
 
     private String pharmacyname;

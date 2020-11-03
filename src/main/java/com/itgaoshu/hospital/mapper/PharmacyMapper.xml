@@ -78,6 +78,16 @@
     pharmacyId, pharmacyName, drugstoreId, skullId, warehouseId, unit, sellingPrice, 
     area, type, produceDate, validDate, drugstorenum, skullbatch
   </sql>
+  <select id="queryList" parameterType="com.itgaoshu.hospital.bean.PharmacyVo">
+    select distinct p.pharmacyId,p.pharmacyName,sk.skullName,un.unitName,p.sellingPrice,
+    ar.areaName,t.typeName,p.produceDate,p.validDate,p.skullbatch,p.drugstorenum from pharmacy p,drugstore dr,skull sk,warehuose wh,unit un,area ar,type t
+    where  p.skullId=sk.skullId and
+    p.warehouseId=wh.warehouseId and p.unit=un.unitId and p.area=ar.areaId and p.type=t.typeId
+      <if test="pharmacyName!=null and pharmacyName != ''">
+       and p.pharmacyName like concat('%',concat(#{pharmacyName},'%'))
+      </if>
+      ORDER BY p.pharmacyId asc
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.PharmacyExample" >
     select
     <if test="distinct" >
