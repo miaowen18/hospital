@@ -21,8 +21,8 @@ public class UserRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        String username = (String) authenticationToken.getPrincipal();
-
+        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+        String username = (String) token.getPrincipal();
         SysUser sysUser = null;
         try {
             SysUser user = new SysUser();
