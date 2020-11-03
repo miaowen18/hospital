@@ -3,6 +3,7 @@ package com.itgaoshu.hospital.mapper;
 import com.itgaoshu.hospital.bean.SysRole;
 import com.itgaoshu.hospital.bean.SysRoleExample;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -28,4 +29,7 @@ public interface SysRoleMapper {
     int updateByPrimaryKeySelective(SysRole record);
 
     int updateByPrimaryKey(SysRole record);
+
+    @Select("select * from sys_role")
+    List<SysRole> selectAllRole();
 }
