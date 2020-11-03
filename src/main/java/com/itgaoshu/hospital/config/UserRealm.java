@@ -31,11 +31,9 @@ public class UserRealm extends AuthorizingRealm {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //判断对象是否有值
         if (sysUser == null) {
             return null;
         }
-        //密码不需要我们比对，shiro会给我们比对                      //对象    //获取前台密码
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(sysUser, sysUser.getPwd(), ByteSource.Util.bytes(sysUser.getSalt()), getName());
         return info;
     }

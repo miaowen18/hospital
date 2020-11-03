@@ -33,35 +33,33 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
-        Map<String, String> filtermap = new LinkedHashMap<String, String>();
+        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         //toLogin/login界面可以未认证直接访问
 
 
-        filtermap.put("/sel/login", "anon");
-        filtermap.put("index.html", "anon");
+        filterChainDefinitionMap.put("/sel/login", "anon");
+        filterChainDefinitionMap.put("index.html", "anon");
 
 
-        filtermap.put("/css/**", "anon");
-        filtermap.put("/layui/**", "anon");
-        filtermap.put("/js/**", "anon");
-        filtermap.put("/images/**", "anon");
-        filtermap.put("*.png", "anon");
-        filtermap.put("*jpg", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/layui/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/images/**", "anon");
+        filterChainDefinitionMap.put("*.png", "anon");
+        filterChainDefinitionMap.put("*jpg", "anon");
 
 
 
         //未认证都不允许通过
-        filtermap.put("/**", "authc");
+        filterChainDefinitionMap.put("/**", "authc");
 
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(filtermap);
-        //如果访问的页面未认证   跳转到登陆页面
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         shiroFilterFactoryBean.setLoginUrl("/sel/toLogin");
 
         return shiroFilterFactoryBean;
     }
 
     //用来跟加密的密码进行比对的bean
-
     @Bean(name = "hashedCredentialsMatcher")
     public HashedCredentialsMatcher getHashedCredentialsMatcher() {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
@@ -72,7 +70,7 @@ public class ShiroConfig {
         return hashedCredentialsMatcher;
     }
 
-    //shiro 与thymeleaf的整合
+
     @Bean
     public ShiroDialect getShiroDialect() {
         return new ShiroDialect();
