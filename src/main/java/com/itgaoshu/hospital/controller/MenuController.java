@@ -1,18 +1,28 @@
 package com.itgaoshu.hospital.controller;
 
+import com.itgaoshu.hospital.bean.DataGridView;
+import com.itgaoshu.hospital.bean.SysMenu;
+import com.itgaoshu.hospital.bean.SysMenuVo;
 import com.itgaoshu.hospital.bean.SysUser;
+import com.itgaoshu.hospital.service.SysMenuService;
 import com.itgaoshu.hospital.service.SysUserService;
+import com.itgaoshu.hospital.util.TreeUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/sel")
@@ -20,6 +30,9 @@ public class MenuController {
 
     @Autowired
     public SysUserService sysUserService;
+
+    @Autowired
+    public SysMenuService sysMenuService;
 
     @RequestMapping("toLogin")
     public String toLogin() {
@@ -50,4 +63,33 @@ public class MenuController {
             return "view/login";
         }
     }
+
+    @RequestMapping("toTreeLoad")
+    @ResponseBody
+    public List<SysMenuVo> toTreeLoad(HttpSession session){
+        SysUser user = (SysUser) session.getAttribute("user");
+        System.out.println(user);
+        List<SysMenu> sysMenus = sysMenuService.selectByUserId(user.getUserid());
+        List<SysMenuVo> trees = new ArrayList<>();
+        for (SysMenu menu : sysMenus) {
+            SysMenuVo sysMenuVo = new SysMenuVo();
+            BeanUtils.copyProperties(menu,sysMenuVo);
+            trees.add(sysMenuVo);
+        }
+        TreeUtil treeUtil = new TreeUtil();
+        return treeUtil.toTree(trees);
+    }
+
+//    @RequestMapping("loadMenuMangerLeftTreeJson")
+//    @ResponseBody
+//    public DataGridView loadMenuMangerLeftTreeJson(SysMenu sysMenu){
+//        List<SysMenu> sysMenus = sysMenuService.selectAllMenu();
+//        List<SysMenuVo> trees = new ArrayList<>();
+//        for (SysMenu menu : sysMenus) {
+//            SysMenuVo sysMenuVo = new SysMenuVo();
+//            BeanUtils.copyProperties(menu,sysMenuVo);
+//            trees.add(sysMenuVo);
+//        }
+//        return new DataGridView(trees);
+//    }
 }

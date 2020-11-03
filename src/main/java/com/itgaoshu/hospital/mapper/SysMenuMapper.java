@@ -3,6 +3,7 @@ package com.itgaoshu.hospital.mapper;
 import com.itgaoshu.hospital.bean.SysMenu;
 import com.itgaoshu.hospital.bean.SysMenuExample;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -28,4 +29,13 @@ public interface SysMenuMapper {
     int updateByPrimaryKeySelective(SysMenu record);
 
     int updateByPrimaryKey(SysMenu record);
+
+    @Select("select * from sys_menu")
+    List<SysMenu> selectAllMenu();
+
+    @Select("select * from sys_menu where pid=#{pid}")
+    List<SysMenu> selectMenuByPid(Integer pid);
+
+    @Select("SELECT s1.* FROM sys_menu s1, sys_role_menu s2 , sys_role s3 , sys_role_user s4 , sys_user s5 WHERE s1.id=s2.mid AND s2.rid=s3.roleid AND s3.roleid=s4.rid AND s4.uid=s5.userid AND s5.userid=#{userid}")
+    List<SysMenu> selectByUserId(Integer userid);
 }

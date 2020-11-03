@@ -1,6 +1,8 @@
 package com.itgaoshu.hospital.bean;
 
-public class SysMenu {
+import java.util.List;
+
+public class SysMenuVo {
     private Integer id;
 
     private Integer pid;
@@ -16,6 +18,8 @@ public class SysMenu {
     private String icon;
 
     private Integer available;
+
+    private List<SysMenuVo> children;
 
     public Integer getId() {
         return id;
@@ -38,7 +42,7 @@ public class SysMenu {
     }
 
     public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+        this.title = title;
     }
 
     public String getHref() {
@@ -46,7 +50,7 @@ public class SysMenu {
     }
 
     public void setHref(String href) {
-        this.href = href == null ? null : href.trim();
+        this.href = href;
     }
 
     public Integer getSpread() {
@@ -62,7 +66,7 @@ public class SysMenu {
     }
 
     public void setTarget(String target) {
-        this.target = target == null ? null : target.trim();
+        this.target = target;
     }
 
     public String getIcon() {
@@ -70,7 +74,7 @@ public class SysMenu {
     }
 
     public void setIcon(String icon) {
-        this.icon = icon == null ? null : icon.trim();
+        this.icon = icon;
     }
 
     public Integer getAvailable() {
@@ -81,9 +85,17 @@ public class SysMenu {
         this.available = available;
     }
 
+    public List<SysMenuVo> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<SysMenuVo> children) {
+        this.children = children;
+    }
+
     @Override
     public String toString() {
-        return "SysMenu{" +
+        return "SysMenuVo{" +
                 "id=" + id +
                 ", pid=" + pid +
                 ", title='" + title + '\'' +
@@ -92,6 +104,7 @@ public class SysMenu {
                 ", target='" + target + '\'' +
                 ", icon='" + icon + '\'' +
                 ", available=" + available +
+                ", children=" + children +
                 '}';
     }
 }
