@@ -3,6 +3,7 @@ package com.itgaoshu.hospital.mapper;
 import com.itgaoshu.hospital.bean.SysUser;
 import com.itgaoshu.hospital.bean.SysUserExample;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -28,4 +29,7 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    @Select("SELECT * FROM sys_user WHERE loginname=#{loginname}")
+    SysUser selectByLoginname(SysUser user);
 }
