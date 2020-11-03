@@ -21,6 +21,8 @@ public interface RegisterMapper {
 
     Register selectByPrimaryKey(Integer registerid);
 
+    List<Register> select();
+
     int updateByExampleSelective(@Param("record") Register record, @Param("example") RegisterExample example);
 
     int updateByExample(@Param("record") Register record, @Param("example") RegisterExample example);
