@@ -429,4 +429,7 @@
       zhuan = #{zhuan,jdbcType=TIMESTAMP}
     where registerid = #{registerid,jdbcType=INTEGER}
   </update>
+  <select id="select" resultType="register">
+      select * from register
+  </select>
 </mapper>
