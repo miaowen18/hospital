@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface BaoqueMapper {
+    List<Baoque> queryList();
     int countByExample(BaoqueExample example);
 
     int deleteByExample(BaoqueExample example);

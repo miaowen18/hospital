@@ -71,6 +71,10 @@
   <sql id="Base_Column_List" >
     caigouid, caigouname, gonghuoshang, danwei, candi, leixing, shuliang
   </sql>
+  <select id="queryList" resultType="Caigou">
+
+    select * from Caigou
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.CaigouExample" >
     select
     <if test="distinct" >
