@@ -80,16 +80,16 @@ public class MenuController {
         return treeUtil.toTree(trees);
     }
 
-//    @RequestMapping("loadMenuMangerLeftTreeJson")
-//    @ResponseBody
-//    public DataGridView loadMenuMangerLeftTreeJson(SysMenu sysMenu){
-//        List<SysMenu> sysMenus = sysMenuService.selectAllMenu();
-//        List<SysMenuVo> trees = new ArrayList<>();
-//        for (SysMenu menu : sysMenus) {
-//            SysMenuVo sysMenuVo = new SysMenuVo();
-//            BeanUtils.copyProperties(menu,sysMenuVo);
-//            trees.add(sysMenuVo);
-//        }
-//        return new DataGridView(trees);
-//    }
+    @RequestMapping("loadMenuMangerLeftTreeJson")
+    @ResponseBody
+    public DataGridView loadMenuMangerLeftTreeJson(){
+        List<SysMenu> sysMenus = sysMenuService.selectAllMenu();
+        List<SysMenuVo> trees = new ArrayList<>();
+        for (SysMenu menu : sysMenus) {
+            SysMenuVo sysMenuVo = new SysMenuVo();
+            BeanUtils.copyProperties(menu,sysMenuVo);
+            trees.add(sysMenuVo);
+        }
+        return new DataGridView(trees);
+    }
 }
