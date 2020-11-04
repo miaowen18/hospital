@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface CaigouMapper {
+
+    List<Caigou> queryList();
     int countByExample(CaigouExample example);
 
     int deleteByExample(CaigouExample example);
