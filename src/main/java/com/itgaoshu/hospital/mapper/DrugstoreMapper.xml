@@ -79,6 +79,15 @@
     rugstoreId, drugstoreName, supplierId, skullId, warehouseId, unit, tradePrice, sellingPrice, 
     area, type, produceDate, validDate, drugstorenum, batch
   </sql>
+  <select id="seldrugDateguoqi" resultType="Drugstore">
+
+  </select>
+  <select id="queryQue" resultType="Drugstore">
+    SELECT d.rugstoreId,wh.supplierName warehouseName,d.drugstoreName,up.supplierName,sk.skullName,un.unitName,d.tradePrice,d.sellingPrice,ar.areaName,d.produceDate,d.validDate,d.batch,ty.typeName,d.drugstorenum
+    FROM drugstore d,warehuose wh,upplier up,skull sk,unit un,AREA ar,TYPE ty
+    WHERE wh.warehouseId=d.warehouseId AND up.supplierId=d.supplierId AND sk.skullId=d.skullId AND un.unitId=d.unit AND ar.areaId=d.area AND ty.typeId=d.type
+    GROUP BY d.drugstoreName HAVING sum(d.drugstorenum) &lt;30
+  </select>
   <select id="queryList" parameterType="DrugstoreVo" resultType="DrugstoreVo">
     select p.pharmacyId,p.pharmacyName,p.drugstoreId rugstoreId,p.skullId,p.warehouseId,p.unit unitId,p.sellingPrice,
     p.area areaId,p.type typeId,p.produceDate,p.validDate,p.drugstorenum,p.skullbatch,u.unitName,a.areaName,t.typeName

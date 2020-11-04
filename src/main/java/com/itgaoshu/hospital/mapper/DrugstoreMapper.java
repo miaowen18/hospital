@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DrugstoreMapper {
+    List<Drugstore> seldrugDateguoqi();
+    List<Drugstore> queryQue();
     List<DrugstoreVo> queryList(DrugstoreVo drugstoreVo);
     List<Drugstore> queryList1(Drugstore drugstore);
     int countByExample(DrugstoreExample example);
