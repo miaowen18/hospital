@@ -5,13 +5,13 @@ import java.util.Date;
 public class Register {
     private Integer registerid;
 
-    private String username;
+    private String userName;
 
     private Integer age;
 
     private String sex;
 
-    private Integer department;
+    private Integer departmentId;
 
     private Integer doctor;
 
@@ -23,7 +23,7 @@ public class Register {
 
     private String idcard;
 
-    private Date registerdate;
+    private Date registerDate;
 
     private Integer bednum;
 
@@ -41,6 +41,12 @@ public class Register {
 
     private Date zhuan;
 
+    private String department;
+
+    private String doctorName;
+
+    private String bedName;
+
     public Integer getRegisterid() {
         return registerid;
     }
@@ -49,12 +55,12 @@ public class Register {
         this.registerid = registerid;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Integer getAge() {
@@ -70,15 +76,15 @@ public class Register {
     }
 
     public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+        this.sex = sex;
     }
 
-    public Integer getDepartment() {
-        return department;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment(Integer department) {
-        this.department = department;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
     public Integer getDoctor() {
@@ -94,7 +100,7 @@ public class Register {
     }
 
     public void setDiagnose(String diagnose) {
-        this.diagnose = diagnose == null ? null : diagnose.trim();
+        this.diagnose = diagnose;
     }
 
     public String getAddress() {
@@ -102,7 +108,7 @@ public class Register {
     }
 
     public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+        this.address = address;
     }
 
     public String getPhone() {
@@ -110,7 +116,7 @@ public class Register {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
     }
 
     public String getIdcard() {
@@ -118,15 +124,15 @@ public class Register {
     }
 
     public void setIdcard(String idcard) {
-        this.idcard = idcard == null ? null : idcard.trim();
+        this.idcard = idcard;
     }
 
-    public Date getRegisterdate() {
-        return registerdate;
+    public Date getRegisterDate() {
+        return registerDate;
     }
 
-    public void setRegisterdate(Date registerdate) {
-        this.registerdate = registerdate;
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
     }
 
     public Integer getBednum() {
@@ -142,7 +148,7 @@ public class Register {
     }
 
     public void setOperator(String operator) {
-        this.operator = operator == null ? null : operator.trim();
+        this.operator = operator;
     }
 
     public Double getMoney() {
@@ -182,7 +188,7 @@ public class Register {
     }
 
     public void setDiscount(String discount) {
-        this.discount = discount == null ? null : discount.trim();
+        this.discount = discount;
     }
 
     public Date getZhuan() {
@@ -191,5 +197,57 @@ public class Register {
 
     public void setZhuan(Date zhuan) {
         this.zhuan = zhuan;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public String getBedName() {
+        return bedName;
+    }
+
+    public void setBedName(String bedName) {
+        this.bedName = bedName;
+    }
+
+    @Override
+    public String toString() {
+        return "Register{" +
+                "registerid=" + registerid +
+                ", userName='" + userName + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", departmentId=" + departmentId +
+                ", doctor=" + doctor +
+                ", diagnose='" + diagnose + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", idcard='" + idcard + '\'' +
+                ", registerDate=" + registerDate +
+                ", bednum=" + bednum +
+                ", operator='" + operator + '\'' +
+                ", money=" + money +
+                ", state=" + state +
+                ", enddate=" + enddate +
+                ", price=" + price +
+                ", discount='" + discount + '\'' +
+                ", zhuan=" + zhuan +
+                ", department='" + department + '\'' +
+                ", doctorName='" + doctorName + '\'' +
+                ", bedName='" + bedName + '\'' +
+                '}';
     }
 }
