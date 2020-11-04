@@ -33,4 +33,51 @@ public class RoleController {
         map.put("data",pageInfo.getList());
         return map;
     }
+
+    @RequestMapping("insertRole")
+    @ResponseBody
+    public String insertRole(SysRole sysRole){
+        int result = sysRoleService.addRole(sysRole);
+        if (result==0){
+            return "添加失败";
+        }else {
+            return "添加成功";
+        }
+    }
+
+    @RequestMapping("updateRole")
+    @ResponseBody
+    public String updateRole(SysRole sysRole){
+        int result = sysRoleService.updateRole(sysRole);
+        if (result==0){
+            return "修改失败";
+        }else {
+            return "修改成功";
+        }
+    }
+
+    @RequestMapping("deleteRole")
+    @ResponseBody
+    public String deleteRole(Integer roleid){
+        int result = sysRoleService.deleteRole(roleid);
+        if (result==0){
+            return "删除失败";
+        }else {
+            return "删除成功";
+        }
+    }
+
+    @RequestMapping("loadAllRole2")
+    @ResponseBody
+    public Map<String,Object> loadAllRole2(Integer page,Integer limit,SysRole role){
+        PageHelper.startPage(page,limit);
+        List<SysRole> roles = sysRoleService.selectAllRole2(role);
+        PageInfo pageInfo = new PageInfo(roles);
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
+        return map;
+    }
 }

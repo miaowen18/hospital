@@ -25,4 +25,14 @@ public class SysController {
     public String toLoadAllRole(){
         return "view/role/roleManager";
     }
+
+    @RequestMapping("/toLoadAllUser")
+    public String toLoadAllUser(){
+        return "view/user/userManager";
+    }
+
+    @RequestMapping("/icon")
+    public String icon(){
+        return "view/center/icon";
+    }
 }

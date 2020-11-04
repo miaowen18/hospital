@@ -32,4 +32,7 @@ public interface SysUserMapper {
 
     @Select("SELECT * FROM sys_user WHERE loginname=#{loginname}")
     SysUser selectByLoginname(SysUser user);
+
+    @Select("select * from sys_user")
+    List<SysUser> selectAllUser();
 }
