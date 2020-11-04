@@ -1,54 +1,46 @@
 package com.itgaoshu.hospital.bean;
 
 public class Doctor {
-    private Integer doctorid;
-
-    private String doctorname;
-
-    private Integer departmentid;
-
-    private Integer registeredid;
-
+    private Integer doctorId;
+    private String doctorName;
+    private Integer departmentId;
+    private Integer registeredId;
     private Integer dstate;
-
     private String amstarttime;
-
     private String amendtime;
-
     private String pmstarttime;
-
     private String pmendtime;
 
-    public Integer getDoctorid() {
-        return doctorid;
+    public Integer getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctorid(Integer doctorid) {
-        this.doctorid = doctorid;
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
     }
 
-    public String getDoctorname() {
-        return doctorname;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setDoctorname(String doctorname) {
-        this.doctorname = doctorname == null ? null : doctorname.trim();
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
-    public Integer getDepartmentid() {
-        return departmentid;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartmentid(Integer departmentid) {
-        this.departmentid = departmentid;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
-    public Integer getRegisteredid() {
-        return registeredid;
+    public Integer getRegisteredId() {
+        return registeredId;
     }
 
-    public void setRegisteredid(Integer registeredid) {
-        this.registeredid = registeredid;
+    public void setRegisteredId(Integer registeredId) {
+        this.registeredId = registeredId;
     }
 
     public Integer getDstate() {
@@ -64,7 +56,7 @@ public class Doctor {
     }
 
     public void setAmstarttime(String amstarttime) {
-        this.amstarttime = amstarttime == null ? null : amstarttime.trim();
+        this.amstarttime = amstarttime;
     }
 
     public String getAmendtime() {
@@ -72,7 +64,7 @@ public class Doctor {
     }
 
     public void setAmendtime(String amendtime) {
-        this.amendtime = amendtime == null ? null : amendtime.trim();
+        this.amendtime = amendtime;
     }
 
     public String getPmstarttime() {
@@ -80,7 +72,7 @@ public class Doctor {
     }
 
     public void setPmstarttime(String pmstarttime) {
-        this.pmstarttime = pmstarttime == null ? null : pmstarttime.trim();
+        this.pmstarttime = pmstarttime;
     }
 
     public String getPmendtime() {
@@ -88,6 +80,6 @@ public class Doctor {
     }
 
     public void setPmendtime(String pmendtime) {
-        this.pmendtime = pmendtime == null ? null : pmendtime.trim();
+        this.pmendtime = pmendtime;
     }
 }

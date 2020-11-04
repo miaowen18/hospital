@@ -78,7 +78,7 @@
     pharmacyId, pharmacyName, drugstoreId, skullId, warehouseId, unit, sellingPrice, 
     area, type, produceDate, validDate, drugstorenum, skullbatch
   </sql>
-  <select id="queryList" parameterType="com.itgaoshu.hospital.bean.PharmacyVo">
+  <select id="queryList" parameterType="PharmacyVo">
     select distinct p.pharmacyId,p.pharmacyName,sk.skullName,un.unitName,p.sellingPrice,
     ar.areaName,t.typeName,p.produceDate,p.validDate,p.skullbatch,p.drugstorenum from pharmacy p,drugstore dr,skull sk,warehuose wh,unit un,area ar,type t
     where  p.skullId=sk.skullId and

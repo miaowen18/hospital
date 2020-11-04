@@ -2,7 +2,6 @@ package com.itgaoshu.hospital.bean;
 
 public class Departments {
     private Integer departmentid;
-
     private String department;
 
     public Integer getDepartmentid() {

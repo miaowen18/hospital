@@ -79,6 +79,39 @@
     rugstoreId, drugstoreName, supplierId, skullId, warehouseId, unit, tradePrice, sellingPrice, 
     area, type, produceDate, validDate, drugstorenum, batch
   </sql>
+  <select id="seldrugDateguoqi" resultType="Drugstore">
+
+  </select>
+  <select id="queryQue" resultType="Drugstore">
+    SELECT d.rugstoreId,wh.supplierName warehouseName,d.drugstoreName,up.supplierName,sk.skullName,un.unitName,d.tradePrice,d.sellingPrice,ar.areaName,d.produceDate,d.validDate,d.batch,ty.typeName,d.drugstorenum
+    FROM drugstore d,warehuose wh,upplier up,skull sk,unit un,AREA ar,TYPE ty
+    WHERE wh.warehouseId=d.warehouseId AND up.supplierId=d.supplierId AND sk.skullId=d.skullId AND un.unitId=d.unit AND ar.areaId=d.area AND ty.typeId=d.type
+    GROUP BY d.drugstoreName HAVING sum(d.drugstorenum) &lt;30
+  </select>
+  <select id="queryList" parameterType="DrugstoreVo" resultType="DrugstoreVo">
+    select p.pharmacyId,p.pharmacyName,p.drugstoreId rugstoreId,p.skullId,p.warehouseId,p.unit unitId,p.sellingPrice,
+    p.area areaId,p.type typeId,p.produceDate,p.validDate,p.drugstorenum,p.skullbatch,u.unitName,a.areaName,t.typeName
+    from pharmacy p,unit u,area a,type t
+    <where>
+      p.unit=u.unitId and p.area=a.areaId and p.type=t.typeId
+      <if test="pharmacyName!=null and pharmacyName!=''">
+        and p.pharmacyName like concat('%',concat(#{pharmacyName},'%'))
+      </if>
+      <if test="pharmacyId!='' and pharmacyId!=null">
+        and p.pharmacyId=#{pharmacyId}
+      </if>
+    </where>
+  </select>
+  <select id="queryList1" parameterType="Drugstore" resultType="Drugstore">
+    SELECT d.rugstoreId,wh.supplierName warehouseName ,wh.warehouseId,d.type typeId,d.unit unitId,d.area areaId,d. skullId , d. supplierId ,d.drugstorename,su.supplierName ,sk.skullName,un.unitName,d.tradePrice,
+    d.sellingPrice,ar.areaName,d.produceDate,d.validDate,d.batch,d.drugstorenum,ty.typeName	from
+    drugstore d,upplier su,skull sk,warehuose wh,unit un,area ar,type ty  where d.supplierId=su.supplierId
+    and d.skullId=sk.skullId and d.warehouseId=wh.warehouseId and d.unit=un.unitId and d.type=ty.typeId and d.area=ar.areaId
+    <if test="drugstorename!=null and drugstorename!=''">
+      and d.drugstorename like concat('%' ,concat(#{drugstorename},'%'))
+    </if>
+    ORDER BY d.rugstoreId asc
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.DrugstoreExample" >
     select
     <if test="distinct" >

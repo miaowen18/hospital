@@ -8,22 +8,104 @@ public class Drugstore {
     private String drugstorename;
 
     private Integer supplierid;
+    private String supplierName;
 
     private Integer skullid;
+    private String skullName;
 
     private Integer warehouseid;
 
+    private String warehouseName;
+
     private Integer unit;
+
+    private String unitName;
+
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
+    }
+
+    public String getSkullName() {
+        return skullName;
+    }
+
+    public void setSkullName(String skullName) {
+        this.skullName = skullName;
+    }
+
+    public String getWarehouseName() {
+        return warehouseName;
+    }
+
+    public void setWarehouseName(String warehouseName) {
+        this.warehouseName = warehouseName;
+    }
+
+    public String getUnitName() {
+        return unitName;
+    }
+
+    public void setUnitName(String unitName) {
+        this.unitName = unitName;
+    }
+
+    public String getAreaName() {
+        return areaName;
+    }
+
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
 
     private Double tradeprice;
 
     private Double sellingprice;
 
     private Integer area;
+    private String areaName;
 
     private Integer type;
+    private String typeName;
 
     private Date producedate;
+
+    @Override
+    public String toString() {
+        return "Drugstore{" +
+                "rugstoreid=" + rugstoreid +
+                ", drugstorename='" + drugstorename + '\'' +
+                ", supplierid=" + supplierid +
+                ", supplierName='" + supplierName + '\'' +
+                ", skullid=" + skullid +
+                ", skullName='" + skullName + '\'' +
+                ", warehouseid=" + warehouseid +
+                ", warehouseName='" + warehouseName + '\'' +
+                ", unit=" + unit +
+                ", unitName='" + unitName + '\'' +
+                ", tradeprice=" + tradeprice +
+                ", sellingprice=" + sellingprice +
+                ", area=" + area +
+                ", areaName='" + areaName + '\'' +
+                ", type=" + type +
+                ", typeName='" + typeName + '\'' +
+                ", producedate=" + producedate +
+                ", validdate=" + validdate +
+                ", drugstorenum=" + drugstorenum +
+                ", batch='" + batch + '\'' +
+                '}';
+    }
 
     private Date validdate;
 
