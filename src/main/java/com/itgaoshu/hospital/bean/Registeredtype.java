@@ -2,9 +2,7 @@ package com.itgaoshu.hospital.bean;
 
 public class Registeredtype {
     private Integer registeredid;
-
     private String type;
-
     private Double price;
 
     public Integer getRegisteredid() {
