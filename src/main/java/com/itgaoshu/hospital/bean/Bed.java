@@ -50,4 +50,15 @@ public class Bed {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Bed{" +
+                "bedid=" + bedid +
+                ", bedname='" + bedname + '\'' +
+                ", departmentid=" + departmentid +
+                ", state=" + state +
+                ", price=" + price +
+                '}';
+    }
 }

@@ -25,7 +25,7 @@ public class Register {
 
     private Date registerDate;
 
-    private Integer bednum;
+    private Integer bedId;
 
     private String operator;
 
@@ -46,6 +46,8 @@ public class Register {
     private String doctorName;
 
     private String bedName;
+
+    private Integer doctorId;
 
     public Integer getRegisterid() {
         return registerid;
@@ -135,12 +137,12 @@ public class Register {
         this.registerDate = registerDate;
     }
 
-    public Integer getBednum() {
-        return bednum;
+    public Integer getBedId() {
+        return bedId;
     }
 
-    public void setBednum(Integer bednum) {
-        this.bednum = bednum;
+    public void setBedId(Integer bedId) {
+        this.bedId = bedId;
     }
 
     public String getOperator() {
@@ -223,6 +225,14 @@ public class Register {
         this.bedName = bedName;
     }
 
+    public Integer getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
+    }
+
     @Override
     public String toString() {
         return "Register{" +
@@ -237,7 +247,7 @@ public class Register {
                 ", phone='" + phone + '\'' +
                 ", idcard='" + idcard + '\'' +
                 ", registerDate=" + registerDate +
-                ", bednum=" + bednum +
+                ", bedId=" + bedId +
                 ", operator='" + operator + '\'' +
                 ", money=" + money +
                 ", state=" + state +
@@ -248,6 +258,7 @@ public class Register {
                 ", department='" + department + '\'' +
                 ", doctorName='" + doctorName + '\'' +
                 ", bedName='" + bedName + '\'' +
+                ", doctorId=" + doctorId +
                 '}';
     }
 }
