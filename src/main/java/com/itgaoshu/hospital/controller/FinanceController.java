@@ -1,5 +1,6 @@
 package com.itgaoshu.hospital.controller;
 
+import com.itgaoshu.hospital.bean.Finance;
 import com.itgaoshu.hospital.service.FinanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,5 +31,17 @@ public class FinanceController {
         List<Double> prices = financeService.selectAllZhuYuanFinanceByYear(year);
         Collections.replaceAll(prices,null,0.0);
         return prices;
+    }
+
+    @RequestMapping("reportYearBingFinance")
+    @ResponseBody
+    public List<Finance> reportYearBingFinance(){
+        return financeService.reportYearBingFinance();
+    }
+
+    @RequestMapping("zhuYuanYearBingFinance")
+    @ResponseBody
+    public List<Finance> zhuYuanYearBingFinance(){
+        return financeService.zhuYuanYearBingFinance();
     }
 }

@@ -45,4 +45,19 @@ public class SysController {
     public String toZhuYuanManage(){
         return "view/finance/zhuYuanManage";
     }
+
+    @RequestMapping("/toBingYear")
+    public String toBingYear(){
+        return "view/finance/reportBing";
+    }
+
+    @RequestMapping("/toBing2")
+    public String toBing2(){
+        return "view/finance/zhuYuanBing";
+    }
+
+    @RequestMapping("/toDoctorDuibi")
+    public String toDoctorDuiBi(){
+        return "view/finance/doctorDuibi";
+    }
 }
