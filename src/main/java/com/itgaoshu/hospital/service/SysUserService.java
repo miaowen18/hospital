@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface SysUserService {
     SysUser selectByLoginname(SysUser user);
-    List<SysUser> selectAllUser();
+    List<SysUser> selectAllUser(SysUser user);
     int insert(SysUser record);
+    int updateByPrimaryKey(SysUser record);
+    int deleteByPrimaryKey(Integer userid);
 }

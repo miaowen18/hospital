@@ -35,4 +35,9 @@ public class SysController {
     public String icon(){
         return "view/center/icon";
     }
+
+    @RequestMapping("/toReportFinance")
+    public String toReportFinance(){
+        return "view/finance/reportManage";
+    }
 }

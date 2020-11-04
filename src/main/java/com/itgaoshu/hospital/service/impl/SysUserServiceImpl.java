@@ -22,12 +22,22 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public List<SysUser> selectAllUser() {
-        return sysUserMapper.selectAllUser();
+    public List<SysUser> selectAllUser(SysUser user) {
+        return sysUserMapper.selectAllUser(user);
     }
 
     @Override
     public int insert(SysUser record) {
         return sysUserMapper.insert(record);
+    }
+
+    @Override
+    public int updateByPrimaryKey(SysUser record) {
+        return sysUserMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer userid) {
+        return sysUserMapper.deleteByPrimaryKey(userid);
     }
 }
