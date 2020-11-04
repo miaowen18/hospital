@@ -2,7 +2,6 @@ package com.itgaoshu.hospital.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.itgaoshu.hospital.bean.DataGridView;
 import com.itgaoshu.hospital.bean.SysMenu;
 import com.itgaoshu.hospital.bean.SysMenuVo;
 import com.itgaoshu.hospital.bean.SysUser;
@@ -84,18 +83,18 @@ public class MenuController {
         return treeUtil.toTree(trees);
     }
 
-    @RequestMapping("loadMenuMangerLeftTreeJson")
-    @ResponseBody
-    public DataGridView loadMenuMangerLeftTreeJson(){
-        List<SysMenu> sysMenus = sysMenuService.selectAllMenu();
-        List<SysMenuVo> trees = new ArrayList<>();
-        for (SysMenu menu : sysMenus) {
-            SysMenuVo sysMenuVo = new SysMenuVo();
-            BeanUtils.copyProperties(menu,sysMenuVo);
-            trees.add(sysMenuVo);
-        }
-        return new DataGridView(trees);
-    }
+//    @RequestMapping("loadMenuMangerLeftTreeJson")
+//    @ResponseBody
+//    public DataGridView loadMenuMangerLeftTreeJson(){
+//        List<SysMenu> sysMenus = sysMenuService.selectAllMenu();
+//        List<SysMenuVo> trees = new ArrayList<>();
+//        for (SysMenu menu : sysMenus) {
+//            SysMenuVo sysMenuVo = new SysMenuVo();
+//            BeanUtils.copyProperties(menu,sysMenuVo);
+//            trees.add(sysMenuVo);
+//        }
+//        return new DataGridView(trees);
+//    }
 
     @RequestMapping("queryMenuAllList")
     @ResponseBody

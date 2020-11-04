@@ -114,21 +114,9 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.hospital.bean.Register" >
-    insert into register (registerid, userName, age, 
-      sex, department, doctor, 
-      diagnose, address, Phone, 
-      Idcard, registerDate, bedNum, 
-      Operator, money, state, 
-      endDate, price, discount, 
-      zhuan)
-    values (#{registerid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
-      #{sex,jdbcType=VARCHAR}, #{department,jdbcType=INTEGER}, #{doctor,jdbcType=INTEGER}, 
-      #{diagnose,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{idcard,jdbcType=VARCHAR}, #{registerdate,jdbcType=TIMESTAMP}, #{bednum,jdbcType=INTEGER}, 
-      #{operator,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}, #{state,jdbcType=INTEGER}, 
-      #{enddate,jdbcType=TIMESTAMP}, #{price,jdbcType=DOUBLE}, #{discount,jdbcType=VARCHAR}, 
-      #{zhuan,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="Register" >
+    insert into register(userName,age,sex,department,doctor,diagnose,address,Phone,Idcard,registerDate,bedNum,Operator,money,state,discount)
+        values(#{userName},#{age},#{sex},#{departmentId},#{doctorId},#{diagnose},#{address},#{Phone},#{Idcard},NOW(),#{bedId},#{operator},#{money},0,#{discount})
   </insert>
   <insert id="insertSelective" parameterType="com.itgaoshu.hospital.bean.Register" >
     insert into register
@@ -429,7 +417,29 @@
       zhuan = #{zhuan,jdbcType=TIMESTAMP}
     where registerid = #{registerid,jdbcType=INTEGER}
   </update>
-  <select id="select" resultType="register">
-      select * from register
+  <select id="select"  resultType="Register">
+    SELECT r.registerid,r.userName,r.sex,r.age,r.address,r.phone,r.idcard,r.registerDate,
+    d.department ,d1.doctorName,b.bedName FROM register r,departments d,doctor d1,bed b
+    <where>
+      r.department=d.departmentId AND r.doctor=d1.doctorId  AND r.bedNum=bedId and r.state=0
+      <if test="userName!=null and userName!=''">
+        and r.userName like concat('%',concat(#{userName},'%'))
+      </if>
+    </where>
+  </select>
+  <select id="select2" resultType="Register">
+    select r.reportName userName,r.sex,r.age,r.phone,r.carid idcard,r.zhuan diagnose  from report r where state=4
+  </select>
+  <select id="select3" resultType="departments">
+    select * from departments
+  </select>
+  <select id="select4" parameterType="Doctor" resultType="Doctor">
+    select * from doctor where departmentId=#{departmentId} and dstate=1
+  </select>
+  <select id="select5" parameterType="bed" resultType="bed">
+    select * from bed b where departmentId=#{departmentId} and state=0
+  </select>
+  <select id="select6" resultType="moneytype">
+    select * from moneytype
   </select>
 </mapper>

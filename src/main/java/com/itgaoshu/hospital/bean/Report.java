@@ -3,48 +3,38 @@ package com.itgaoshu.hospital.bean;
 import java.util.Date;
 
 public class Report {
-    private Integer reportid;
-
-    private String reportname;
-
+    private Integer reportId;
+    private String reportName;
     private String sex;
-
     private Integer age;
-
-    private Integer department;
-
-    private Integer doctor;
-
-    private Integer reporttype;
-
+    private Integer rdepartmentid;//科室id
+    private Integer rdoctorid;//医生id
+    private Integer rregisteredid;//挂号类型id
+    private String department;//科室
+    private String doctorName;//医生姓名
+    private String type;//挂号类型
     private Double price;
-
     private Date time;
-
     private String users;
-
     private Integer state;
-
     private String phone;
-
     private String carid;
-
     private String zhuan;
 
-    public Integer getReportid() {
-        return reportid;
+    public Integer getReportId() {
+        return reportId;
     }
 
-    public void setReportid(Integer reportid) {
-        this.reportid = reportid;
+    public void setReportId(Integer reportId) {
+        this.reportId = reportId;
     }
 
-    public String getReportname() {
-        return reportname;
+    public String getReportName() {
+        return reportName;
     }
 
-    public void setReportname(String reportname) {
-        this.reportname = reportname == null ? null : reportname.trim();
+    public void setReportName(String reportName) {
+        this.reportName = reportName;
     }
 
     public String getSex() {
@@ -52,7 +42,7 @@ public class Report {
     }
 
     public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+        this.sex = sex;
     }
 
     public Integer getAge() {
@@ -63,28 +53,52 @@ public class Report {
         this.age = age;
     }
 
-    public Integer getDepartment() {
+    public Integer getRdepartmentid() {
+        return rdepartmentid;
+    }
+
+    public void setRdepartmentid(Integer rdepartmentid) {
+        this.rdepartmentid = rdepartmentid;
+    }
+
+    public Integer getRdoctorid() {
+        return rdoctorid;
+    }
+
+    public void setRdoctorid(Integer rdoctorid) {
+        this.rdoctorid = rdoctorid;
+    }
+
+    public Integer getRregisteredid() {
+        return rregisteredid;
+    }
+
+    public void setRregisteredid(Integer rregisteredid) {
+        this.rregisteredid = rregisteredid;
+    }
+
+    public String getDepartment() {
         return department;
     }
 
-    public void setDepartment(Integer department) {
+    public void setDepartment(String department) {
         this.department = department;
     }
 
-    public Integer getDoctor() {
-        return doctor;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setDoctor(Integer doctor) {
-        this.doctor = doctor;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
-    public Integer getReporttype() {
-        return reporttype;
+    public String getType() {
+        return type;
     }
 
-    public void setReporttype(Integer reporttype) {
-        this.reporttype = reporttype;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Double getPrice() {
@@ -108,7 +122,7 @@ public class Report {
     }
 
     public void setUsers(String users) {
-        this.users = users == null ? null : users.trim();
+        this.users = users;
     }
 
     public Integer getState() {
@@ -124,7 +138,7 @@ public class Report {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
     }
 
     public String getCarid() {
@@ -132,7 +146,7 @@ public class Report {
     }
 
     public void setCarid(String carid) {
-        this.carid = carid == null ? null : carid.trim();
+        this.carid = carid;
     }
 
     public String getZhuan() {
@@ -140,6 +154,6 @@ public class Report {
     }
 
     public void setZhuan(String zhuan) {
-        this.zhuan = zhuan == null ? null : zhuan.trim();
+        this.zhuan = zhuan;
     }
 }

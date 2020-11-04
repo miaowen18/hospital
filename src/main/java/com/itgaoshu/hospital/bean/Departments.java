@@ -1,16 +1,15 @@
 package com.itgaoshu.hospital.bean;
 
 public class Departments {
-    private Integer departmentid;
-
+    private Integer departmentId;
     private String department;
 
-    public Integer getDepartmentid() {
-        return departmentid;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartmentid(Integer departmentid) {
-        this.departmentid = departmentid;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getDepartment() {
@@ -18,6 +17,14 @@ public class Departments {
     }
 
     public void setDepartment(String department) {
-        this.department = department == null ? null : department.trim();
+        this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "Departments{" +
+                "departmentId=" + departmentId +
+                ", department='" + department + '\'' +
+                '}';
     }
 }
