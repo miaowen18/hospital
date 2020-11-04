@@ -194,7 +194,7 @@
     where roleid = #{roleid,jdbcType=INTEGER}
   </update>
 
-  <select id="selectAllRole2" resultType="SysUser" parameterType="SysUser">
+  <select id="selectAllRole2" resultMap="BaseResultMap" parameterType="SysUser">
         select * from sys_role
         <where>
             <if test="rolename!=null and rolename!=''">
