@@ -3,6 +3,7 @@ package com.itgaoshu.hospital.bean;
 public class Finance {
     private String name;
     private Double value;
+    private String year;
 
     public String getName() {
         return name;
@@ -20,11 +21,20 @@ public class Finance {
         this.value = value;
     }
 
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
     @Override
     public String toString() {
         return "Finance{" +
                 "name='" + name + '\'' +
                 ", value=" + value +
+                ", year='" + year + '\'' +
                 '}';
     }
 }
