@@ -279,9 +279,9 @@
         })
         //模糊查询
         $("#doSearch").click(function(){
-            var params=$("#searchFrm").serialize();
+            var userName=$("#searchFrm").serialize();
             tableIns.reload({
-                url:"../liao/selRegister?"+params
+                url:"../liao/selRegister?"+userName
             })
         });
 
