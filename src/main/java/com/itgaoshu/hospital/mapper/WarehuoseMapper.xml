@@ -66,7 +66,7 @@
   <sql id="Base_Column_List" >
     warehouseId, supplierName
   </sql>
-  <select id="queryAllList" resultType="warehuose">
+  <select id="queryAllList" resultType="com.itgaoshu.hospital.bean.Warehuose">
     select * from warehuose
     <where>
       <if test="supplierName!=null and supplierName!=''">

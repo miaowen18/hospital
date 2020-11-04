@@ -14,7 +14,7 @@ public class PathDrugstoreController {
     //跳转到库存查询页面
     @RequestMapping("selectdurg")
     public Object selectdurg(){
-        return "liao/selNum";
+        return "drugstore/c_selectDrug";
     }
     //跳转到出库单页面
     @RequestMapping("selectchuku")

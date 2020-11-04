@@ -2,11 +2,15 @@ package com.itgaoshu.hospital.mapper;
 
 import com.itgaoshu.hospital.bean.Drugstore;
 import com.itgaoshu.hospital.bean.DrugstoreExample;
+import com.itgaoshu.hospital.bean.DrugstoreVo;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface DrugstoreMapper {
+    List<DrugstoreVo> queryList(DrugstoreVo drugstoreVo);
+    List<Drugstore> queryList1(Drugstore drugstore);
     int countByExample(DrugstoreExample example);
 
     int deleteByExample(DrugstoreExample example);

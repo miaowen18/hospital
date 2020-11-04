@@ -223,18 +223,18 @@
             ,limits: [10, 20, 30]
             ,limit: 10//默认采用3
             ,cols: [[   //列表数据
-                {field:'rugstoreId', title:'ID',align:'center',width:"100",sort:true}
+                {field:'rugstoreid', title:'ID',align:'center',width:"100",sort:true}
                 ,{field:'warehouseName', title:'库房',align:'center',width:"100"}
-                ,{field:'drugstoreName', title:'名称',align:'center',width:"100"}
+                ,{field:'drugstorename', title:'名称',align:'center',width:"100"}
                 ,{field:'drugstorenum', title:'仓库数量',align:'center',width:"100"}
                 ,{field:'supplierName', title:'供货商',align:'center',width:"100"}
                 ,{field:'skullName', title:'经办人',align:'center',width:"100"}
                 ,{field:'unitName', title:'单位',align:'center',width:"100"}
-                ,{field:'tradePrice', title:'批发价',align:'center',width:"100"}
-                ,{field:'sellingPrice', title:'售价',align:'center',width:"100"}
+                ,{field:'tradeprice', title:'批发价',align:'center',width:"100"}
+                ,{field:'sellingprice', title:'售价',align:'center',width:"100"}
                 ,{field:'areaName', title:'产地',align:'center',width:"100"}
-                ,{field:'produceDate', title:'生产日期',align:'center',width:"100"}
-                ,{field:'validDate', title:'有效日期',align:'center',width:"100"}
+                ,{field:'producedate', title:'生产日期',align:'center',width:"100"}
+                ,{field:'validdate', title:'有效日期',align:'center',width:"100"}
                 ,{field:'batch', title:'批号',align:'center',width:"100"}
                 ,{field:'typeName', title:'类型',align:'center',width:"100"}
                 ,{fixed: 'right', title:'操作', toolbar: '#userBar1',align:'center',width:'120'}
@@ -250,12 +250,6 @@
              var sheng=data.produceDate;
              var you=data.validDate;
                 var date = new Date();
-
-
-
-
-
-
                 var durnum=data.drugstorenum;
                 layer.confirm('确定添加【' + data.drugstoreName + '】这个药品吗', function (index) {
                     layer.prompt({
@@ -272,7 +266,7 @@
                             $.post("../chuku/addpharmacy", {
                                 rugstoreId: data.rugstoreId,
                                 warehouseId: data.warehouseId,
-                                pharmacyName: data.drugstoreName,
+                                pharmacyname: data.drugstorename,
                                 drugstorenum: value,
                                 skullId: data.skullId,
                                 unit: data.unitId,
