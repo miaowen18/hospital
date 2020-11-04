@@ -20,4 +20,25 @@ public class SysRoleServiceImpl implements SysRoleService {
     public List<SysRole> selectAllRole() {
         return sysRoleMapper.selectAllRole();
     }
+
+    @Override
+    public int addRole(SysRole record) {
+        return sysRoleMapper.addRole(record);
+    }
+
+    @Override
+    public int updateRole(SysRole sysRole) {
+        return sysRoleMapper.updateRole(sysRole);
+    }
+
+    @Override
+    public int deleteRole(Integer roleid) {
+        return sysRoleMapper.deleteRole(roleid);
+    }
+
+    @Override
+    public List<SysRole> selectAllRole2(SysRole role) {
+        return sysRoleMapper.selectAllRole2(role);
+    }
+
 }

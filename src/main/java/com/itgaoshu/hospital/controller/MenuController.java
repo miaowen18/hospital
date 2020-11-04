@@ -1,5 +1,7 @@
 package com.itgaoshu.hospital.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.itgaoshu.hospital.bean.DataGridView;
 import com.itgaoshu.hospital.bean.SysMenu;
 import com.itgaoshu.hospital.bean.SysMenuVo;
@@ -22,7 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/sel")
@@ -91,5 +95,19 @@ public class MenuController {
             trees.add(sysMenuVo);
         }
         return new DataGridView(trees);
+    }
+
+    @RequestMapping("queryMenuAllList")
+    @ResponseBody
+    public Map<String,Object> queryMenuAllList(Integer page,Integer limit){
+        PageHelper.startPage(page,limit);
+        List<SysMenu> sysMenus = sysMenuService.selectAllMenu();
+        PageInfo pageInfo = new PageInfo(sysMenus);
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
+        return map;
     }
 }

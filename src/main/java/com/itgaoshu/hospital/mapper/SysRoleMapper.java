@@ -2,8 +2,7 @@ package com.itgaoshu.hospital.mapper;
 
 import com.itgaoshu.hospital.bean.SysRole;
 import com.itgaoshu.hospital.bean.SysRoleExample;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -32,4 +31,15 @@ public interface SysRoleMapper {
 
     @Select("select * from sys_role")
     List<SysRole> selectAllRole();
+
+    @Insert("insert into sys_role values(null,#{rolename},#{roledesc},#{available})")
+    int addRole(SysRole record);
+
+    @Update("update sys_role set rolename=#{rolename},roledesc=#{roledesc},available=#{available} where roleid=#{roleid}")
+    int updateRole(SysRole sysRole);
+
+    @Delete("delete from sys_role where roleid=#{roleid}")
+    int deleteRole(Integer roleid);
+
+    List<SysRole> selectAllRole2(SysRole role);
 }
