@@ -80,7 +80,14 @@
     area, type, produceDate, validDate, drugstorenum, batch
   </sql>
   <select id="seldrugDateguoqi" resultType="Drugstore">
-
+    SELECT d.rugstoreId,d.drugstoreName,up.supplierName,sk.skullName,wh.supplierName warehouseName,un.unitName
+    ,d.tradePrice,d.sellingPrice,d.produceDate,d.validDate,d.drugstorenum,d.batch,ar.areaName,ty.typeName
+    FROM drugstore d,upplier up,skull sk
+    ,warehuose wh,unit un,AREA ar,TYPE ty
+    WHERE d.supplierId=up.supplierId AND d.skullId=sk.skullId
+    AND d.warehouseId=wh.warehouseId AND d.unit=un.unitId
+    AND d.area=ar.areaId AND d.type=ty.typeId
+    AND d.validDate &lt; now()
   </select>
   <select id="queryQue" resultType="Drugstore">
     SELECT d.rugstoreId,wh.supplierName warehouseName,d.drugstoreName,up.supplierName,sk.skullName,un.unitName,d.tradePrice,d.sellingPrice,ar.areaName,d.produceDate,d.validDate,d.batch,ty.typeName,d.drugstorenum

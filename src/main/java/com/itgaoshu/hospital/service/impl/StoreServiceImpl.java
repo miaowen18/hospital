@@ -19,6 +19,11 @@ public class StoreServiceImpl implements StoreService {
     private CaigouMapper caigouMapper;
 
     @Override
+    public List<Drugstore> seldrugDateguoqi() {
+        return drugstoreMapper.seldrugDateguoqi();
+    }
+
+    @Override
     public List<Drugstore> queryList(Drugstore drugstore) {
         List<Drugstore> list=drugstoreMapper.queryList1(drugstore);
         for (Drugstore drugstore1 : list) {

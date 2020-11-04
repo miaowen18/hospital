@@ -1,5 +1,6 @@
 package com.itgaoshu.hospital.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -7,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/liao")
 public class DrugstoreController {
-   // @Autowired
-    //private DrugstoreServiceImpl drugstoreService;
+
 
 
     /*@RequestMapping("/selNum")
