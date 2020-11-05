@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itgaoshu.hospital.mapper.GuaHaoMapper">
+    <select id="select" resultType="Report" parameterType="Report">
+      select r.reportId,r.reportName,DATE_FORMAT(r.time,'%Y-%m-%d') datime,substr(r.carid,1,6) carido, substr(r.carid,16,18) caridt,r.phone,r.sex,r.age,p.department,d.doctorName,r.price,e.type,r.time,r.users,r.state,e.registeredid dregisteredid,d.doctorid ddoctorid,p.departmentId ddepartmentid
+      from  report r,doctor d,registeredtype e,departments p
+      where r.doctor=d.doctorId
+      and d.registeredid=e.registeredId
+      and  r.department=p.departmentId and r.state=1
+    </select>
+    <update id="updateState">
+      update report set state = 0 where DATE_FORMAT(time,'%Y-%m-%d') &lt; DATE_FORMAT(now(),"%Y-%m-%d") and state=1
+    </update>
+</mapper>
