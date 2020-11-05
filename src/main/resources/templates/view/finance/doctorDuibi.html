@@ -105,7 +105,7 @@
         $("#doSearch").click(function(){
             var params=$("#searchFrm").serialize();
             tableIns.reload({
-                url:"finance/doctorDuibi?"+params
+                url:"finance/selectDoctorDuiBi?"+params
             })
         });
 
@@ -140,7 +140,7 @@
         $("#doSearch1").click(function(){
             var params=$("#searchFrm1").serialize();
             tableIns1.reload({
-                url:"finance/zDoctorDuibi?"+params
+                url:"finance/selectZDoctorDuiBi?"+params
             })
         });
 
