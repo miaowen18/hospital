@@ -48,4 +48,16 @@ public class ZhuYuanServiceImpl implements ZhuYuanService {
     public List<Moneytype> select6() {
         return registerMapper.select6();
     }
+
+    @Override
+    public int deleteByPrimaryKey(Integer registerid) {
+        return registerMapper.deleteByPrimaryKey(registerid);
+    }
+
+    @Override
+    public Register selectByPrimaryKey(Integer registerid) {
+        return registerMapper.selectByPrimaryKey(registerid);
+    }
+
+
 }
