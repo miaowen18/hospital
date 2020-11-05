@@ -3,7 +3,6 @@ package com.itgaoshu.hospital.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.itgaoshu.hospital.bean.Register;
-import com.itgaoshu.hospital.bean.Report;
 import com.itgaoshu.hospital.service.ZhuYuanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

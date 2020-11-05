@@ -1,7 +1,7 @@
 package com.itgaoshu.hospital.bean;
 
 public class Paiban {
-    private Integer paiid;
+    private Integer paiId;
 
     private String one;
 
@@ -17,15 +17,9 @@ public class Paiban {
 
     private String seven;
 
-    private Integer doctorid;
+    private Integer doctorId;
 
-    public Integer getPaiid() {
-        return paiid;
-    }
 
-    public void setPaiid(Integer paiid) {
-        this.paiid = paiid;
-    }
 
     public String getOne() {
         return one;
@@ -83,11 +77,19 @@ public class Paiban {
         this.seven = seven == null ? null : seven.trim();
     }
 
-    public Integer getDoctorid() {
-        return doctorid;
+    public Integer getPaiId() {
+        return paiId;
     }
 
-    public void setDoctorid(Integer doctorid) {
-        this.doctorid = doctorid;
+    public void setPaiId(Integer paiId) {
+        this.paiId = paiId;
+    }
+
+    public Integer getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
     }
 }

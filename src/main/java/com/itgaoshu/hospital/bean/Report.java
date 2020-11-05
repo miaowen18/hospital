@@ -25,6 +25,7 @@ public class Report {
     private  Integer carido;//身份证前
     private Integer caridt;//身份证后
 
+
     public Integer getCarido() {
         return carido;
     }

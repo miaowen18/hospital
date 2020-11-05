@@ -4,12 +4,30 @@ public class Doctor {
     private Integer doctorId;
     private String doctorName;
     private Integer departmentId;
+    private String department;
     private Integer registeredId;
+    private String type;
     private Integer dstate;
     private String amstarttime;
     private String amendtime;
     private String pmstarttime;
     private String pmendtime;
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Integer getDoctorId() {
         return doctorId;
