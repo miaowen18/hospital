@@ -19,21 +19,23 @@ public class Register {
 
     private String address;
 
-    private String phone;
+    private String Phone;
 
-    private String idcard;
+    private String Idcard;
 
     private Date registerDate;
 
-    private Integer bedId;
 
-    private String operator;
+
+    Integer bedId;
+
+    private String Operator;
 
     private Double money;
 
     private Integer state;
 
-    private Date enddate;
+    private Date endDate;
 
     private Double price;
 
@@ -45,7 +47,7 @@ public class Register {
 
     private String doctorName;
 
-    private String bedName;
+    String bedName;
 
     private Integer doctorId;
 
@@ -114,19 +116,19 @@ public class Register {
     }
 
     public String getPhone() {
-        return phone;
+        return Phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        Phone = phone;
     }
 
     public String getIdcard() {
-        return idcard;
+        return Idcard;
     }
 
     public void setIdcard(String idcard) {
-        this.idcard = idcard;
+        Idcard = idcard;
     }
 
     public Date getRegisterDate() {
@@ -137,20 +139,14 @@ public class Register {
         this.registerDate = registerDate;
     }
 
-    public Integer getBedId() {
-        return bedId;
-    }
 
-    public void setBedId(Integer bedId) {
-        this.bedId = bedId;
-    }
 
     public String getOperator() {
-        return operator;
+        return Operator;
     }
 
     public void setOperator(String operator) {
-        this.operator = operator;
+        Operator = operator;
     }
 
     public Double getMoney() {
@@ -169,12 +165,12 @@ public class Register {
         this.state = state;
     }
 
-    public Date getEnddate() {
-        return enddate;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEnddate(Date enddate) {
-        this.enddate = enddate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public Double getPrice() {
@@ -233,6 +229,14 @@ public class Register {
         this.doctorId = doctorId;
     }
 
+    public Integer getBedId() {
+        return bedId;
+    }
+
+    public void setBedId(Integer bedId) {
+        this.bedId = bedId;
+    }
+
     @Override
     public String toString() {
         return "Register{" +
@@ -244,14 +248,15 @@ public class Register {
                 ", doctor=" + doctor +
                 ", diagnose='" + diagnose + '\'' +
                 ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", idcard='" + idcard + '\'' +
+                ", Phone='" + Phone + '\'' +
+                ", Idcard='" + Idcard + '\'' +
                 ", registerDate=" + registerDate +
+
                 ", bedId=" + bedId +
-                ", operator='" + operator + '\'' +
+                ", Operator='" + Operator + '\'' +
                 ", money=" + money +
                 ", state=" + state +
-                ", enddate=" + enddate +
+                ", endDate=" + endDate +
                 ", price=" + price +
                 ", discount='" + discount + '\'' +
                 ", zhuan=" + zhuan +

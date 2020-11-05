@@ -12,7 +12,7 @@ public interface RegisterMapper {
 
     int deleteByPrimaryKey(Integer registerid);
 
-    int insert(Register record);
+    int insert(Register register);
 
     int insertSelective(Register record);
 
