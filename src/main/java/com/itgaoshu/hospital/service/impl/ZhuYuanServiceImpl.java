@@ -25,8 +25,8 @@ public class ZhuYuanServiceImpl implements ZhuYuanService {
     }
 
     @Override
-    public int insert(Register record) {
-        return registerMapper.insert(record);
+    public int insert(Register register) {
+        return registerMapper.insert(register);
     }
 
     @Override
