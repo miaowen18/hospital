@@ -20,6 +20,42 @@ public class Report {
     private String phone;
     private String carid;
     private String zhuan;
+    private Integer cc;
+    private String datime;
+    private  Integer carido;//身份证前
+    private Integer caridt;//身份证后
+
+    public Integer getCarido() {
+        return carido;
+    }
+
+    public void setCarido(Integer carido) {
+        this.carido = carido;
+    }
+
+    public Integer getCaridt() {
+        return caridt;
+    }
+
+    public void setCaridt(Integer caridt) {
+        this.caridt = caridt;
+    }
+
+    public Integer getCc() {
+        return cc;
+    }
+
+    public void setCc(Integer cc) {
+        this.cc = cc;
+    }
+
+    public String getDatime() {
+        return datime;
+    }
+
+    public void setDatime(String datime) {
+        this.datime = datime;
+    }
 
     public Integer getReportId() {
         return reportId;

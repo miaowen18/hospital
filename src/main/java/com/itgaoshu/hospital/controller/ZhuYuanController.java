@@ -87,9 +87,15 @@ public class ZhuYuanController {
     }
     //增加患者
     @RequestMapping("liao/addRegister")
-    public String insert(Register register){
+    @ResponseBody
+    public Object insert(Register register){
+        System.out.println(register);
         int result=zhuYuanService.insert(register);
-        return "liao/selRegister";
+        if(result>0){
+            return "添加成功";
+        }else{
+            return "添加失败";
+        }
     }
 
     //科室下拉框
