@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface JiluMapper {
+    List<Jilu> queryList(Jilu jilu);
     int countByExample(JiluExample example);
 
     int deleteByExample(JiluExample example);

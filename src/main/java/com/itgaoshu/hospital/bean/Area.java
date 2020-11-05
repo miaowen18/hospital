@@ -5,6 +5,14 @@ public class Area {
 
     private String areaname;
 
+    @Override
+    public String toString() {
+        return "Area{" +
+                "areaid=" + areaid +
+                ", areaname='" + areaname + '\'' +
+                '}';
+    }
+
     public Integer getAreaid() {
         return areaid;
     }

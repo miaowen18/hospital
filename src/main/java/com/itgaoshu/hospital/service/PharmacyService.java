@@ -1,5 +1,6 @@
 package com.itgaoshu.hospital.service;
 
+import com.itgaoshu.hospital.bean.Huishou;
 import com.itgaoshu.hospital.bean.Pharmacy;
 import com.itgaoshu.hospital.bean.PharmacyVo;
 
@@ -11,4 +12,5 @@ public interface PharmacyService {
     //查询所有从库房调来的药品
 
     //根据药品的数量报缺
+    public List<Huishou> queryList();
 }

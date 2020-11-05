@@ -66,6 +66,9 @@
   <sql id="Base_Column_List" >
     areaId, areaName
   </sql>
+  <select id="queryList" resultType="Area">
+    select * from area
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.AreaExample" >
     select
     <if test="distinct" >

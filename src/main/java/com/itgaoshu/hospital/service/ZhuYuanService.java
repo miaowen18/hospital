@@ -12,4 +12,6 @@ public interface ZhuYuanService {
     List<Doctor> select4(Integer departmentId);
     List<Bed> select5(Integer departmentId);
     List<Moneytype> select6();
+    int deleteByPrimaryKey(Integer registerid);
+    Register selectByPrimaryKey(Integer registerid);
 }

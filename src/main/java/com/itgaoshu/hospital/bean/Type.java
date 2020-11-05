@@ -5,6 +5,14 @@ public class Type {
 
     private String typename;
 
+    @Override
+    public String toString() {
+        return "Type{" +
+                "typeid=" + typeid +
+                ", typename='" + typename + '\'' +
+                '}';
+    }
+
     public Integer getTypeid() {
         return typeid;
     }

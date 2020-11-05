@@ -5,6 +5,14 @@ public class Skull {
 
     private String skullname;
 
+    @Override
+    public String toString() {
+        return "Skull{" +
+                "skullid=" + skullid +
+                ", skullname='" + skullname + '\'' +
+                '}';
+    }
+
     public Integer getSkullid() {
         return skullid;
     }

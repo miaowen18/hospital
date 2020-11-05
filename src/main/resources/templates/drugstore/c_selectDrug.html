@@ -40,7 +40,7 @@
             <div class="layui-inline">
 
                 <div class="layui-input-inline">
-                    <input type="hidden" name="rugstoreId" lay-verify="required"  placeholder="名称" autocomplete="off"
+                    <input type="hidden" name="rugstoreid" lay-verify="required"  placeholder="名称" autocomplete="off"
                            class="layui-input" readonly >
                 </div>
             </div>
@@ -48,7 +48,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">名称:</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="drugstoreName" lay-verify="required"  placeholder="名称" autocomplete="off"
+                    <input type="text" name="drugstorename" lay-verify="required"  placeholder="名称" autocomplete="off"
                            class="layui-input" readonly >
                 </div>
             </div>
@@ -88,14 +88,14 @@
         <div class="layui-inline">
             <label class="layui-form-label">批发价:</label>
             <div class="layui-input-inline">
-                <input type="text" name="tradePrice" lay-verify="required"  placeholder="批发价" autocomplete="off"
+                <input type="text" name="tradeprice" lay-verify="required"  placeholder="批发价" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
         <div class="layui-inline" style="margin-left: 110px;">
             <label class="layui-form-label">售价:</label>
             <div class="layui-input-inline">
-                <input type="text" name="sellingPrice" lay-verify="required"  placeholder="售价" autocomplete="off"
+                <input type="text" name="sellingprice" lay-verify="required"  placeholder="售价" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
@@ -103,22 +103,22 @@
         <div class="layui-inline" >
             <label class="layui-form-label">产地:</label>
             <div class="layui-input-inline">
-                <select name="areaId" id="areaId" lay-verify="required" lay-filter="xmFilter" >
+                <select name="areaName" id="areaId" lay-verify="required" lay-filter="xmFilter" >
                     <option value="" ></option>
                 </select>
             </div>
         </div>
- <div class="layui-inline">
+        <div class="layui-inline">
             <label class="layui-form-label" style="margin-left: 80px;">生产日期:</label>
             <div class="layui-input-inline">
-                <input type="text" name="produceDate" lay-verify="required"  placeholder="生产日期" autocomplete="off"
+                <input type="text" name="producedate" lay-verify="required"  placeholder="生产日期" autocomplete="off"
                        class="layui-input " disabled="disabled">
             </div>
         </div>
       <div class="layui-inline">
             <label class="layui-form-label">有效日期:</label>
             <div class="layui-input-inline">
-                <input type="text" name="validDate" lay-verify="required"  placeholder="有效日期" autocomplete="off"
+                <input type="text" name="validdate" lay-verify="required"  placeholder="有效日期" autocomplete="off"
                        class="layui-input "  disabled="disabled">
             </div>
         </div>
@@ -139,7 +139,7 @@
         <div class="layui-inline" style="margin-left: 110px;">
             <label class="layui-form-label">单位:</label>
             <div class="layui-input-inline">
-                <select name="unitId" id="unitId" lay-verify="required" lay-filter="xmFilter" style="width: 300px">
+                <select name="unitName" id="unitId" lay-verify="required" lay-filter="xmFilter" style="width: 300px">
                     <option value="" ></option>
                 </select>
             </div>
@@ -147,7 +147,7 @@
             <div class="layui-inline" >
                 <label class="layui-form-label">类型:</label>
                 <div class="layui-input-inline">
-                        <select name="typeId" id="typeId" lay-verify="required" lay-filter="xmFilter" style="width: 300px">
+                        <select name="typeName" id="typeId" lay-verify="required" lay-filter="xmFilter" style="width: 300px">
                         <option value="" ></option>
 
                         </select>
@@ -221,8 +221,6 @@
                 url:"../seldrugstore/selectdrugstore?"+params
             })
         });
-
-
         var url;
         var mainIndex;
 
@@ -251,14 +249,14 @@
                 tableIns.reload();
             })
         });
-//初始化添加or修改到下拉框中的值  type药品类型
+        //初始化添加or修改到下拉框中的值  type药品类型
         $.ajax({
             url: '../seldrugstore/seltype',
             dataType: 'json',
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#typeId').append(new Option(item.typeName, item.typeId));// 下拉菜单里添加元素
+                    $('#typeId').append(new Option(item.typename, item.typeid));// 下拉菜单里添加元素
 
                 });
 
@@ -273,13 +271,12 @@
             success: function (data) {
                 $.each(data, function (index, item) {
                    // 下拉菜单里添加元素
-                    $('#unitId').append(new Option( item.unitName,item.unitId));
+                    $('#unitId').append(new Option( item.unitname,item.unitid));
                 });
 
                 layui.form.render("select");//重新渲染 固定写法
             }
         });
-
         $.ajax({
             url: '../seldrugstore/selarea',
             dataType: 'json',
@@ -287,7 +284,7 @@
             success: function (data) {
                 $.each(data, function (index, item) {
                     // 下拉菜单里添加元素
-                    $('#areaId').append(new Option( item.areaName,item.areaId));
+                    $('#areaId').append(new Option( item.areaname,item.areaid));
                 });
 
                 layui.form.render("select");//重新渲染 固定写法
@@ -300,7 +297,7 @@
             success: function (data) {
                 $.each(data, function (index, item) {
                     // 下拉菜单里添加元素
-                    $('#skullId').append(new Option( item.skullName,item.skullIdid));
+                    $('#skullId').append(new Option( item.skullname,item.skullid));
                 });
 
                 layui.form.render("select");//重新渲染 固定写法
@@ -313,7 +310,7 @@
             success: function (data) {
                 $.each(data, function (index, item) {
                     // 下拉菜单里添加元素
-                    $('#supplierId').append(new Option( item.supplierName,item.supplierIdid));
+                    $('#supplierId').append(new Option( item.suppliername,item.supplierid));
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -325,7 +322,7 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'edit') { //编辑
-                layer.confirm('确定编辑【' + data.drugstoreName + '】这个药品吗', function (index) {
+                layer.confirm('确定编辑【' + data.drugstorename + '】这个药品吗', function (index) {
                     //向服务端发送删除指令
                     openUpdate(data);
                     //关闭警告框
