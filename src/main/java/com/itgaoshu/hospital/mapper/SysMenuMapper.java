@@ -55,4 +55,10 @@ public interface SysMenuMapper {
 
     @Select("select * from sys_menu where title like #{title}")
     List<SysMenu> selectChooseMenu(String title);
+
+    @Select("select * from sys_menu where available=1")
+    List<SysMenu> selectAvailableMenu();
+
+    @Select("SELECT m.* FROM sys_menu m,sys_role_menu rm WHERE m.id=rm.mid AND available=1 AND rm.rid=#{rid}")
+    List<SysMenu> selectRoleMenu(Integer rid);
 }

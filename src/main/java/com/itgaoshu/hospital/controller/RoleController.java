@@ -3,6 +3,7 @@ package com.itgaoshu.hospital.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.itgaoshu.hospital.bean.SysRole;
+import com.itgaoshu.hospital.bean.SysRoleMenuKey;
 import com.itgaoshu.hospital.service.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,5 +80,18 @@ public class RoleController {
         map.put("count",pageInfo.getTotal());
         map.put("data",pageInfo.getList());
         return map;
+    }
+
+    @RequestMapping("initRoleMenuTreeJson")
+    @ResponseBody
+    public Map<String, Object> initRoleMenuTreeJson(Integer roleid){
+        return sysRoleService.initRoleMenuTreeJson(roleid);
+    }
+
+    @RequestMapping("saveRoleMenu")
+    @ResponseBody
+    public String saveRoleMenu(Integer roleid,Integer[] ids){
+        sysRoleService.saveRoleMenu(roleid, ids);
+        return "加入成功";
     }
 }

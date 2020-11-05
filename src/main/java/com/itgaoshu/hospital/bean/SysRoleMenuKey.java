@@ -1,9 +1,20 @@
 package com.itgaoshu.hospital.bean;
 
+import java.util.Arrays;
+
 public class SysRoleMenuKey {
+    private Integer id;
     private Integer rid;
 
-    private Integer mid;
+    private Integer[] ids;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getRid() {
         return rid;
@@ -13,11 +24,20 @@ public class SysRoleMenuKey {
         this.rid = rid;
     }
 
-    public Integer getMid() {
-        return mid;
+    public Integer[] getMids() {
+        return ids;
     }
 
-    public void setMid(Integer mid) {
-        this.mid = mid;
+    public void setMids(Integer[] ids) {
+        this.ids = ids;
+    }
+
+    @Override
+    public String toString() {
+        return "SysRoleMenuKey{" +
+                "id=" + id +
+                ", rid=" + rid +
+                ", ids=" + Arrays.toString(ids) +
+                '}';
     }
 }

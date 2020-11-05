@@ -180,4 +180,5 @@ public class MenuController {
         map.put("data",pageInfo.getList());
         return map;
     }
+
 }
