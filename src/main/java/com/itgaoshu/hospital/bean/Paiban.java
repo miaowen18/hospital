@@ -18,8 +18,31 @@ public class Paiban {
     private String seven;
 
     private Integer doctorId;
+    private String doctorName;
 
+    @Override
+    public String toString() {
+        return "Paiban{" +
+                "paiId=" + paiId +
+                ", one='" + one + '\'' +
+                ", two='" + two + '\'' +
+                ", three='" + three + '\'' +
+                ", four='" + four + '\'' +
+                ", five='" + five + '\'' +
+                ", six='" + six + '\'' +
+                ", seven='" + seven + '\'' +
+                ", doctorId=" + doctorId +
+                ", doctorName='" + doctorName + '\'' +
+                '}';
+    }
 
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
 
     public String getOne() {
         return one;
