@@ -60,4 +60,9 @@ public class SysController {
     public String toDoctorDuiBi(){
         return "view/finance/doctorDuibi";
     }
+
+    @RequestMapping("/toCurrent")
+    public String toCurrent(){
+        return "view/finance/current";
+    }
 }

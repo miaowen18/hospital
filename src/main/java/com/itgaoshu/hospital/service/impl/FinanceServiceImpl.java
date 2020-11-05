@@ -36,4 +36,29 @@ public class FinanceServiceImpl implements FinanceService {
     public List<Finance> zhuYuanYearBingFinance() {
         return financeMapper.zhuYuanYearBingFinance();
     }
+
+    @Override
+    public List<Finance> doctorDuibi() {
+        return financeMapper.doctorDuibi();
+    }
+
+    @Override
+    public List<Finance> selectDoctorDuiBi(String doctorName) {
+        return financeMapper.selectDoctorDuiBi(doctorName);
+    }
+
+    @Override
+    public List<Finance> zDoctorDuibi() {
+        return financeMapper.zDoctorDuibi();
+    }
+
+    @Override
+    public List<Finance> selectZDoctorDuiBi(String doctorName) {
+        return financeMapper.selectZDoctorDuiBi(doctorName);
+    }
+
+    @Override
+    public List<Finance> currentFinance(String ctime) {
+        return financeMapper.currentFinance(ctime);
+    }
 }

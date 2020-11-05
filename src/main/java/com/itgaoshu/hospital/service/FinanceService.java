@@ -9,4 +9,9 @@ public interface FinanceService {
     List<Double> selectAllZhuYuanFinanceByYear(String year);
     List<Finance> reportYearBingFinance();
     List<Finance> zhuYuanYearBingFinance();
+    List<Finance> doctorDuibi();
+    List<Finance> selectDoctorDuiBi(String doctorName);
+    List<Finance> zDoctorDuibi();
+    List<Finance> selectZDoctorDuiBi(String doctorName);
+    List<Finance> currentFinance(String ctime);
 }
