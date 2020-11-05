@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface SkullMapper {
+    List<Skull> queryList();
     int countByExample(SkullExample example);
 
     int deleteByExample(SkullExample example);

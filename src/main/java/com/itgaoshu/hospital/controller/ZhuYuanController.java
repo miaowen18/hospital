@@ -39,7 +39,10 @@ public class ZhuYuanController {
     public String inleave(){
         return "liao/leave";
     }
-
+    @RequestMapping("liao/pharmacy")
+    public String pharmacy(){
+        return "liao/pharmacy";
+    }
     //查询患者信息
     @RequestMapping("liao/selRegister")
     @ResponseBody
@@ -113,4 +116,6 @@ public class ZhuYuanController {
     public Object select5(){
         return zhuYuanService.select6();
     }
+
+
 }

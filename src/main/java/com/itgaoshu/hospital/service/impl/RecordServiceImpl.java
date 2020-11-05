@@ -16,6 +16,11 @@ public class RecordServiceImpl implements RecordService {
     private JiluMapper jiluMapper;
 
     @Override
+    public int insert(Jilu record) {
+        return jiluMapper.insert(record);
+    }
+
+    @Override
     public List<Jilu> queryList(Jilu jilu) {
         return jiluMapper.queryList(jilu);
     }

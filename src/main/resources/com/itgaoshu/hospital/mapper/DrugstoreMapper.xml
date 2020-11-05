@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itgaoshu.hospital.mapper.DrugstoreMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.hospital.bean.Drugstore" >
+    <id column="rugstoreId" property="rugstoreid" jdbcType="INTEGER" />
+    <result column="drugstoreName" property="drugstorename" jdbcType="VARCHAR" />
+    <result column="supplierId" property="supplierid" jdbcType="INTEGER" />
+    <result column="skullId" property="skullid" jdbcType="INTEGER" />
+    <result column="warehouseId" property="warehouseid" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="INTEGER" />
+    <result column="tradePrice" property="tradeprice" jdbcType="DOUBLE" />
+    <result column="sellingPrice" property="sellingprice" jdbcType="DOUBLE" />
+    <result column="area" property="area" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="produceDate" property="producedate" jdbcType="DATE" />
+    <result column="validDate" property="validdate" jdbcType="DATE" />
+    <result column="drugstorenum" property="drugstorenum" jdbcType="INTEGER" />
+    <result column="batch" property="batch" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    rugstoreId, drugstoreName, supplierId, skullId, warehouseId, unit, tradePrice, sellingPrice, 
+    area, type, produceDate, validDate, drugstorenum, batch
+  </sql>
+  <select id="seldrugDateguoqi" resultType="Drugstore">
+    SELECT d.rugstoreId,d.drugstoreName,up.supplierName,sk.skullName,wh.supplierName warehouseName,un.unitName
+    ,d.tradePrice,d.sellingPrice,d.produceDate,d.validDate,d.drugstorenum,d.batch,ar.areaName,ty.typeName
+    FROM drugstore d,upplier up,skull sk
+    ,warehuose wh,unit un,AREA ar,TYPE ty
+    WHERE d.supplierId=up.supplierId AND d.skullId=sk.skullId
+    AND d.warehouseId=wh.warehouseId AND d.unit=un.unitId
+    AND d.area=ar.areaId AND d.type=ty.typeId
+    AND d.validDate &lt; now()
+  </select>
+  <select id="queryQue" resultType="Drugstore">
+    SELECT d.rugstoreId,wh.supplierName warehouseName,d.drugstoreName,up.supplierName,sk.skullName,un.unitName,d.tradePrice,d.sellingPrice,ar.areaName,d.produceDate,d.validDate,d.batch,ty.typeName,d.drugstorenum
+    FROM drugstore d,warehuose wh,upplier up,skull sk,unit un,AREA ar,TYPE ty
+    WHERE wh.warehouseId=d.warehouseId AND up.supplierId=d.supplierId AND sk.skullId=d.skullId AND un.unitId=d.unit AND ar.areaId=d.area AND ty.typeId=d.type
+    GROUP BY d.drugstoreName HAVING sum(d.drugstorenum) &lt;30
+  </select>
+  <select id="queryList" parameterType="DrugstoreVo" resultType="DrugstoreVo">
+    select p.pharmacyId,p.pharmacyName,p.drugstoreId rugstoreId,p.skullId,p.warehouseId,p.unit unitId,p.sellingPrice,
+    p.area areaId,p.type typeId,p.produceDate,p.validDate,p.drugstorenum,p.skullbatch,u.unitName,a.areaName,t.typeName
+    from pharmacy p,unit u,area a,type t
+    <where>
+      p.unit=u.unitId and p.area=a.areaId and p.type=t.typeId
+      <if test="pharmacyName!=null and pharmacyName!=''">
+        and p.pharmacyName like concat('%',concat(#{pharmacyName},'%'))
+      </if>
+      <if test="pharmacyId!='' and pharmacyId!=null">
+        and p.pharmacyId=#{pharmacyId}
+      </if>
+    </where>
+  </select>
+  <select id="queryList1" parameterType="Drugstore" resultType="Drugstore">
+    SELECT d.rugstoreId,wh.supplierName warehouseName ,wh.warehouseId,d.type typeId,d.unit unitId,d.area areaId,d. skullId , d. supplierId ,d.drugstorename,su.supplierName ,sk.skullName,un.unitName,d.tradePrice,
+    d.sellingPrice,ar.areaName,d.produceDate,d.validDate,d.batch,d.drugstorenum,ty.typeName	from
+    drugstore d,upplier su,skull sk,warehuose wh,unit un,area ar,type ty  where d.supplierId=su.supplierId
+    and d.skullId=sk.skullId and d.warehouseId=wh.warehouseId and d.unit=un.unitId and d.type=ty.typeId and d.area=ar.areaId
+    <if test="drugstorename!=null and drugstorename!=''">
+      and d.drugstorename like concat('%' ,concat(#{drugstorename},'%'))
+    </if>
+    ORDER BY d.rugstoreId asc
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.DrugstoreExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from drugstore
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from drugstore
+    where rugstoreId = #{rugstoreid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from drugstore
+    where rugstoreId = #{rugstoreid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itgaoshu.hospital.bean.DrugstoreExample" >
+    delete from drugstore
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itgaoshu.hospital.bean.Drugstore" >
+    insert into drugstore (rugstoreId, drugstoreName, supplierId, 
+      skullId, warehouseId, unit, 
+      tradePrice, sellingPrice, area, 
+      type, produceDate, validDate, 
+      drugstorenum, batch)
+    values (#{rugstoreid,jdbcType=INTEGER}, #{drugstorename,jdbcType=VARCHAR}, #{supplierid,jdbcType=INTEGER}, 
+      #{skullid,jdbcType=INTEGER}, #{warehouseid,jdbcType=INTEGER}, #{unit,jdbcType=INTEGER}, 
+      #{tradeprice,jdbcType=DOUBLE}, #{sellingprice,jdbcType=DOUBLE}, #{area,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{producedate,jdbcType=DATE}, #{validdate,jdbcType=DATE}, 
+      #{drugstorenum,jdbcType=INTEGER}, #{batch,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itgaoshu.hospital.bean.Drugstore" >
+    insert into drugstore
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rugstoreid != null" >
+        rugstoreId,
+      </if>
+      <if test="drugstorename != null" >
+        drugstoreName,
+      </if>
+      <if test="supplierid != null" >
+        supplierId,
+      </if>
+      <if test="skullid != null" >
+        skullId,
+      </if>
+      <if test="warehouseid != null" >
+        warehouseId,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="tradeprice != null" >
+        tradePrice,
+      </if>
+      <if test="sellingprice != null" >
+        sellingPrice,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="producedate != null" >
+        produceDate,
+      </if>
+      <if test="validdate != null" >
+        validDate,
+      </if>
+      <if test="drugstorenum != null" >
+        drugstorenum,
+      </if>
+      <if test="batch != null" >
+        batch,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rugstoreid != null" >
+        #{rugstoreid,jdbcType=INTEGER},
+      </if>
+      <if test="drugstorename != null" >
+        #{drugstorename,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierid != null" >
+        #{supplierid,jdbcType=INTEGER},
+      </if>
+      <if test="skullid != null" >
+        #{skullid,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseid != null" >
+        #{warehouseid,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=INTEGER},
+      </if>
+      <if test="tradeprice != null" >
+        #{tradeprice,jdbcType=DOUBLE},
+      </if>
+      <if test="sellingprice != null" >
+        #{sellingprice,jdbcType=DOUBLE},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="producedate != null" >
+        #{producedate,jdbcType=DATE},
+      </if>
+      <if test="validdate != null" >
+        #{validdate,jdbcType=DATE},
+      </if>
+      <if test="drugstorenum != null" >
+        #{drugstorenum,jdbcType=INTEGER},
+      </if>
+      <if test="batch != null" >
+        #{batch,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itgaoshu.hospital.bean.DrugstoreExample" resultType="java.lang.Integer" >
+    select count(*) from drugstore
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update drugstore
+    <set >
+      <if test="record.rugstoreid != null" >
+        rugstoreId = #{record.rugstoreid,jdbcType=INTEGER},
+      </if>
+      <if test="record.drugstorename != null" >
+        drugstoreName = #{record.drugstorename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplierid != null" >
+        supplierId = #{record.supplierid,jdbcType=INTEGER},
+      </if>
+      <if test="record.skullid != null" >
+        skullId = #{record.skullid,jdbcType=INTEGER},
+      </if>
+      <if test="record.warehouseid != null" >
+        warehouseId = #{record.warehouseid,jdbcType=INTEGER},
+      </if>
+      <if test="record.unit != null" >
+        unit = #{record.unit,jdbcType=INTEGER},
+      </if>
+      <if test="record.tradeprice != null" >
+        tradePrice = #{record.tradeprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sellingprice != null" >
+        sellingPrice = #{record.sellingprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.area != null" >
+        area = #{record.area,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.producedate != null" >
+        produceDate = #{record.producedate,jdbcType=DATE},
+      </if>
+      <if test="record.validdate != null" >
+        validDate = #{record.validdate,jdbcType=DATE},
+      </if>
+      <if test="record.drugstorenum != null" >
+        drugstorenum = #{record.drugstorenum,jdbcType=INTEGER},
+      </if>
+      <if test="record.batch != null" >
+        batch = #{record.batch,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update drugstore
+    set rugstoreId = #{record.rugstoreid,jdbcType=INTEGER},
+      drugstoreName = #{record.drugstorename,jdbcType=VARCHAR},
+      supplierId = #{record.supplierid,jdbcType=INTEGER},
+      skullId = #{record.skullid,jdbcType=INTEGER},
+      warehouseId = #{record.warehouseid,jdbcType=INTEGER},
+      unit = #{record.unit,jdbcType=INTEGER},
+      tradePrice = #{record.tradeprice,jdbcType=DOUBLE},
+      sellingPrice = #{record.sellingprice,jdbcType=DOUBLE},
+      area = #{record.area,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=INTEGER},
+      produceDate = #{record.producedate,jdbcType=DATE},
+      validDate = #{record.validdate,jdbcType=DATE},
+      drugstorenum = #{record.drugstorenum,jdbcType=INTEGER},
+      batch = #{record.batch,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.hospital.bean.Drugstore" >
+    update drugstore
+    <set >
+      <if test="drugstorename != null" >
+        drugstoreName = #{drugstorename,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierid != null" >
+        supplierId = #{supplierid,jdbcType=INTEGER},
+      </if>
+      <if test="skullid != null" >
+        skullId = #{skullid,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseid != null" >
+        warehouseId = #{warehouseid,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=INTEGER},
+      </if>
+      <if test="tradeprice != null" >
+        tradePrice = #{tradeprice,jdbcType=DOUBLE},
+      </if>
+      <if test="sellingprice != null" >
+        sellingPrice = #{sellingprice,jdbcType=DOUBLE},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="producedate != null" >
+        produceDate = #{producedate,jdbcType=DATE},
+      </if>
+      <if test="validdate != null" >
+        validDate = #{validdate,jdbcType=DATE},
+      </if>
+      <if test="drugstorenum != null" >
+        drugstorenum = #{drugstorenum,jdbcType=INTEGER},
+      </if>
+      <if test="batch != null" >
+        batch = #{batch,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rugstoreId = #{rugstoreid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.hospital.bean.Drugstore" >
+    update drugstore
+    set drugstoreName = #{drugstorename,jdbcType=VARCHAR},
+      supplierId = #{supplierid,jdbcType=INTEGER},
+      skullId = #{skullid,jdbcType=INTEGER},
+      warehouseId = #{warehouseid,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=INTEGER},
+      tradePrice = #{tradeprice,jdbcType=DOUBLE},
+      sellingPrice = #{sellingprice,jdbcType=DOUBLE},
+      area = #{area,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      produceDate = #{producedate,jdbcType=DATE},
+      validDate = #{validdate,jdbcType=DATE},
+      drugstorenum = #{drugstorenum,jdbcType=INTEGER},
+      batch = #{batch,jdbcType=VARCHAR}
+    where rugstoreId = #{rugstoreid,jdbcType=INTEGER}
+  </update>
+</mapper>

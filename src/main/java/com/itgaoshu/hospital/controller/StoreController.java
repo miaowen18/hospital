@@ -2,15 +2,14 @@ package com.itgaoshu.hospital.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.itgaoshu.hospital.bean.Caigou;
-import com.itgaoshu.hospital.bean.Drugdictionary;
-import com.itgaoshu.hospital.bean.Drugstore;
-import com.itgaoshu.hospital.bean.DrugstoreVo;
+import com.itgaoshu.hospital.bean.*;
+import com.itgaoshu.hospital.service.impl.RecordServiceImpl;
 import com.itgaoshu.hospital.service.impl.StoreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,17 +20,27 @@ import java.util.Map;
 public class StoreController {//查询药品仓库
     @Autowired
     private StoreServiceImpl storeService;
+    @Autowired
+    private RecordServiceImpl recordService;
     //入库单
     @RequestMapping("adddrugs")
     @ResponseBody
-    public Object adddrugs(){
+    public Object adddrugs(Jilu jilu){
+        System.out.println(jilu);
         return "";
     }
     @RequestMapping("selectdgty")
-    @ResponseBody
-    public Object selectdgty(Integer page,Integer limit){
-        List<Drugdictionary> list=null;
-        return "";
+    @ResponseBody//查询药品
+    public Object selectdgty(Drugdictionary drugdictionary,Integer page,Integer limit){
+        PageHelper.startPage(page,limit);
+        List<Drugdictionary> list=storeService.selectdgty(drugdictionary);
+        PageInfo pageInfo=new PageInfo(list);
+        Map<String,Object> map=new HashMap<>();
+        map.put("msg","");
+        map.put("code",0);
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
+        return map;
     }
 
     //库存查询
@@ -50,38 +59,48 @@ public class StoreController {//查询药品仓库
     }
     //修改页面
     @RequestMapping("updrug")
-    @ResponseBody
+    @ResponseBody//编辑
     public Object updrug(){
+
         return "";
     }
     //type药品类型
     @RequestMapping("seltype")
     @ResponseBody
     public Object seltype(){
-       return "";
+       List<Type> list=storeService.queryList3();
+        return list;
     }
     //unit单位
     @RequestMapping("selunit")
     @ResponseBody
     public Object selunit(){
-        return "";
+        List<Unit> list=storeService.queryList4();
+        return list;
     }
     //area类
     @RequestMapping("selarea")
-    @ResponseBody
+    @ResponseBody//产地
     public Object selarea(){
-        return "";
+        List<Area> list=storeService.queryList1();
+        return list;
     }
+
     @RequestMapping("selskull")
-    @ResponseBody
+    @ResponseBody//经办人
     public Object selskull(){
-        return "";
+        List<Skull> list=storeService.queryList2();
+        System.out.println(list);
+        return list;
     }
+
     @RequestMapping("selupplier")
-    @ResponseBody
+    @ResponseBody//查询供货单位
     public Object selupplier(){
-        return "";
+        List<Upplier> list=storeService.queryList5();
+        return list;
     }
+
     @RequestMapping("selectlackdrug")
     @ResponseBody//查询仓库不足的药品
     public Object selectlackdrug(Integer page,Integer limit){
@@ -97,7 +116,7 @@ public class StoreController {//查询药品仓库
         return map;
     }
     @RequestMapping("addcaigou")
-    @ResponseBody
+    @ResponseBody//添加采购
     public Object addcaigou(){
 
         return "";

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface AreaMapper {
+    List<Area> queryList();
     int countByExample(AreaExample example);
 
     int deleteByExample(AreaExample example);

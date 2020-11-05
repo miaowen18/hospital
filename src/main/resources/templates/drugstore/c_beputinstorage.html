@@ -148,7 +148,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">药名:</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="drugName"   class="layui-input" >
+                    <input type="text" name="drugname"   class="layui-input" >
                     <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch">查询</button>
                     <button type="reset" class="layui-btn layui-btn-warm  layui-icon layui-icon-refresh">重置</button>
                 </div>
@@ -320,10 +320,10 @@
             ,cols: [[   //列表数据
                 /*  SELECT dr.drugId,dr.drugName,un.unitName,dr.sellingPrice,ar.areaName,ty.typeName from drugdictionary dr,unit un,type ty,area ar where
                   dr.unitId=un.unitId and dr.areaId=ar.areaId and dr.typeId=ty.typeId;*/
-                {field:'drugId', title:'序号',align:'center',width:"13%"}
-                ,{field:'drugName', title:'名称',align:'center',width:"13%"}
+                {field:'drugid', title:'序号',align:'center',width:"13%"}
+                ,{field:'drugname', title:'名称',align:'center',width:"13%"}
                 ,{field:'unitName', title:'单位',align:'center',width:"13%"}
-                ,{field:'sellingPrice', title:'售价',align:'center',width:"13%"}
+                ,{field:'sellingprice', title:'售价',align:'center',width:"13%"}
                 ,{field:'typeName', title:'类型',align:'center',width:"13%"}
                 ,{field:'areaName', title:'产地',align:'center',width:"13%"}
                 ,{fixed: 'right', title:'操作', toolbar: '#userBar',align:'center',width:'17%'}
