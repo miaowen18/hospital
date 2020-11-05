@@ -1,7 +1,7 @@
 package com.itgaoshu.hospital.bean;
 
 public class Paiban {
-    private Integer paiid;
+    private Integer paiId;
 
     private String one;
 
@@ -17,14 +17,16 @@ public class Paiban {
 
     private String seven;
 
-    private Integer doctorid;
+    private Integer doctorId;
 
-    public Integer getPaiid() {
-        return paiid;
+    private String doctorName;
+
+    public Integer getPaiId() {
+        return paiId;
     }
 
-    public void setPaiid(Integer paiid) {
-        this.paiid = paiid;
+    public void setPaiId(Integer paiId) {
+        this.paiId = paiId;
     }
 
     public String getOne() {
@@ -32,7 +34,7 @@ public class Paiban {
     }
 
     public void setOne(String one) {
-        this.one = one == null ? null : one.trim();
+        this.one = one;
     }
 
     public String getTwo() {
@@ -40,7 +42,7 @@ public class Paiban {
     }
 
     public void setTwo(String two) {
-        this.two = two == null ? null : two.trim();
+        this.two = two;
     }
 
     public String getThree() {
@@ -48,7 +50,7 @@ public class Paiban {
     }
 
     public void setThree(String three) {
-        this.three = three == null ? null : three.trim();
+        this.three = three;
     }
 
     public String getFour() {
@@ -56,7 +58,7 @@ public class Paiban {
     }
 
     public void setFour(String four) {
-        this.four = four == null ? null : four.trim();
+        this.four = four;
     }
 
     public String getFive() {
@@ -64,7 +66,7 @@ public class Paiban {
     }
 
     public void setFive(String five) {
-        this.five = five == null ? null : five.trim();
+        this.five = five;
     }
 
     public String getSix() {
@@ -72,7 +74,7 @@ public class Paiban {
     }
 
     public void setSix(String six) {
-        this.six = six == null ? null : six.trim();
+        this.six = six;
     }
 
     public String getSeven() {
@@ -80,14 +82,38 @@ public class Paiban {
     }
 
     public void setSeven(String seven) {
-        this.seven = seven == null ? null : seven.trim();
+        this.seven = seven;
     }
 
-    public Integer getDoctorid() {
-        return doctorid;
+    public Integer getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctorid(Integer doctorid) {
-        this.doctorid = doctorid;
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    @Override
+    public String toString() {
+        return "Paiban{" +
+                "paiId=" + paiId +
+                ", one='" + one + '\'' +
+                ", two='" + two + '\'' +
+                ", three='" + three + '\'' +
+                ", four='" + four + '\'' +
+                ", five='" + five + '\'' +
+                ", six='" + six + '\'' +
+                ", seven='" + seven + '\'' +
+                ", doctorId=" + doctorId +
+                ", doctorName='" + doctorName + '\'' +
+                '}';
     }
 }

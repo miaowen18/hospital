@@ -43,6 +43,7 @@ public class ZhuYuanController {
     public String pharmacy(){
         return "liao/pharmacy";
     }
+
     //查询患者信息
     @RequestMapping("liao/selRegister")
     @ResponseBody
@@ -127,9 +128,7 @@ public class ZhuYuanController {
     public Object select6(){
         return zhuYuanService.select6();
     }
-<<<<<<< Updated upstream
 
-=======
     //换科室
     @RequestMapping("")
     @ResponseBody
@@ -166,9 +165,9 @@ public class ZhuYuanController {
         Register register=new Register();
         register.setRegisterid(registerid);
         register.setState(0);
-        System.out.println(zhuYuanService.select(register));
+
         return zhuYuanService.select(register);
     }
->>>>>>> Stashed changes
+
 
 }
