@@ -96,7 +96,7 @@
                     <div class="layui-form-item"style="margin-top:-10px;">
                         <label class="layui-form-label" style="text-align: right">挂号时间:</label>
                         <div class="layui-input-block"  style="text-align: left">
-                            <span th:text="${map.time}"></span>
+                            <span th:text="${map.datime}"></span>
                         </div>
                     </div>
                 <div class="layui-form-item"style="margin-top:-10px;">
@@ -127,7 +127,7 @@
                 <label class="layui-form-label">姓名:</label>
                 <div class="layui-input-inline">
                     <input type="hidden" name="id">
-                    <input type="text" name="reportname"  lay-verify="required"   placeholder="请输入用户姓名" autocomplete="off"
+                    <input type="text" name="reportName"  lay-verify="required"   placeholder="请输入用户姓名" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -163,7 +163,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">科室：</label>
                 <div class="layui-input-inline">
-                    <select name="department" id="departmentId"  lay-verify="required" lay-filter="departmentId">
+                    <select name="rdepartmentid" id="departmentId"  lay-verify="required" lay-filter="departmentId">
                         <option value=""></option>
                     </select>
                 </div>
@@ -171,7 +171,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">挂号类型:</label>
                 <div class="layui-input-inline">
-                    <select name="reporttype" id="registeredId" lay-verify="required" lay-filter="registeredId">
+                    <select name="rregisteredid" id="registeredId" lay-verify="required" lay-filter="registeredId">
                         <option value=""></option>
                     </select>
                 </div>
@@ -179,7 +179,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">医生:</label>
                 <div class="layui-input-inline">
-                    <select name="doctor" id="doctorId" lay-verify="required" lay-filter="doctorId">
+                    <select name="rdoctorId" id="doctorId" lay-verify="required" lay-filter="doctorId">
                         <option value="" class="doct"></option>
                     </select>
                 </div>

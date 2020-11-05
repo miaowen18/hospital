@@ -73,19 +73,8 @@
   <sql id="Base_Column_List" >
     paiId, one, two, three, four, five, six, seven, doctorId
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.PaibanExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from paiban
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
+  <select id="selectByExample" parameterType="paiban" resultType="paiban" >
+    select p.*,d.doctorName from paiban p,doctor d where p.doctorId=d.doctorId
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

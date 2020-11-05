@@ -66,6 +66,9 @@
   <sql id="Base_Column_List" >
     unitId, unitName
   </sql>
+  <select id="queryList" resultType="Unit">
+    select * from unit
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.UnitExample" >
     select
     <if test="distinct" >

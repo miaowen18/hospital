@@ -1,16 +1,16 @@
 package com.itgaoshu.hospital.bean;
 
 public class Registeredtype {
-    private Integer registeredid;
+    private Integer registeredId;
     private String type;
     private Double price;
 
-    public Integer getRegisteredid() {
-        return registeredid;
+    public Integer getRegisteredId() {
+        return registeredId;
     }
 
-    public void setRegisteredid(Integer registeredid) {
-        this.registeredid = registeredid;
+    public void setRegisteredId(Integer registeredId) {
+        this.registeredId = registeredId;
     }
 
     public String getType() {

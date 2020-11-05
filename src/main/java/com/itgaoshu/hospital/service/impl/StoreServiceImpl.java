@@ -1,10 +1,7 @@
 package com.itgaoshu.hospital.service.impl;
 
-import com.itgaoshu.hospital.bean.Caigou;
-import com.itgaoshu.hospital.bean.Drugstore;
-import com.itgaoshu.hospital.bean.DrugstoreVo;
-import com.itgaoshu.hospital.mapper.CaigouMapper;
-import com.itgaoshu.hospital.mapper.DrugstoreMapper;
+import com.itgaoshu.hospital.bean.*;
+import com.itgaoshu.hospital.mapper.*;
 import com.itgaoshu.hospital.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +14,42 @@ public class StoreServiceImpl implements StoreService {
     private DrugstoreMapper drugstoreMapper;
     @Autowired
     private CaigouMapper caigouMapper;
+    @Autowired
+    private DrugdictionaryMapper drugdictionaryMapper;
+    @Autowired
+    private AreaMapper areaMapper;
+    @Autowired
+    private SkullMapper skullMapper;
+    @Autowired
+    private TypeMapper typeMapper;
+    @Autowired
+    private UnitMapper unitMapper;
+    @Autowired
+    private UpplierMapper upplierMapper;
+    @Override
+    public List<Area> queryList1() {return areaMapper.queryList();}
+    @Override
+    public List<Skull> queryList2() {return skullMapper.queryList();}
+    @Override
+    public List<Type> queryList3() {return typeMapper.queryList();}
+
+    @Override
+    public List<Unit> queryList4() { return unitMapper.queryList();}
+
+    @Override
+    public List<Upplier> queryList5() {
+        return upplierMapper.queryList();
+    }
+
+    @Override
+    public List<Drugdictionary> selectdgty(Drugdictionary drugdictionary) {
+        return drugdictionaryMapper.queryList(drugdictionary);
+    }
+
+    @Override
+    public List<Drugstore> seldrugDateguoqi() {
+        return drugstoreMapper.seldrugDateguoqi();
+    }
 
     @Override
     public List<Drugstore> queryList(Drugstore drugstore) {

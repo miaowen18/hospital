@@ -98,11 +98,8 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from register
-    where registerid = #{registerid,jdbcType=INTEGER}
+  <select id="selectByPrimaryKey"  parameterType="java.lang.Integer" resultType="register" >
+    select * from register where registerid = #{registerid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from register
@@ -417,13 +414,15 @@
       zhuan = #{zhuan,jdbcType=TIMESTAMP}
     where registerid = #{registerid,jdbcType=INTEGER}
   </update>
-  <select id="select"  resultType="Register">
-    SELECT r.registerid,r.userName,r.sex,r.age,r.address,r.phone,r.idcard,r.registerDate,
-    d.department ,d1.doctorName,b.bedName FROM register r,departments d,doctor d1,bed b
+  <select id="select" parameterType="register" resultType="Register">
+    SELECT r.*,d.department ,d1.doctorName,b.bedName FROM register r,departments d,doctor d1,bed b
     <where>
-      r.department=d.departmentId AND r.doctor=d1.doctorId  AND r.bedNum=bedId and r.state=0
+      r.department=d.departmentId AND r.doctor=d1.doctorId  AND r.bedNum=bedId  and r.state=#{state}
       <if test="userName!=null and userName!=''">
         and r.userName like concat('%',concat(#{userName},'%'))
+      </if>
+      <if test="registerid!=null">
+        and r.registerid=#{registerid}
       </if>
     </where>
   </select>
@@ -441,5 +440,11 @@
   </select>
   <select id="select6" resultType="moneytype">
     select * from moneytype
+  </select>
+  <select id="select7" parameterType="Integer" resultType="register">
+    select * from register where state=#{state}
+  </select>
+  <select id="select8" parameterType="String" resultType="register">
+    select * from register where userName like concat('%',concat(#{userName},'%'))
   </select>
 </mapper>

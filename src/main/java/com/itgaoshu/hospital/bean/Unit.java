@@ -5,6 +5,14 @@ public class Unit {
 
     private String unitname;
 
+    @Override
+    public String toString() {
+        return "Unit{" +
+                "unitid=" + unitid +
+                ", unitname='" + unitname + '\'' +
+                '}';
+    }
+
     public Integer getUnitid() {
         return unitid;
     }

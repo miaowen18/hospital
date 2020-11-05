@@ -17,7 +17,7 @@ public interface PaibanMapper {
 
     int insertSelective(Paiban record);
 
-    List<Paiban> selectByExample(PaibanExample example);
+    List<Paiban> selectByExample(Paiban paiban);
 
     Paiban selectByPrimaryKey(Integer paiid);
 

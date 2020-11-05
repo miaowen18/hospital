@@ -1,7 +1,7 @@
 package com.itgaoshu.hospital.bean;
 
 public class Paiban {
-    private Integer paiid;
+    private Integer paiId;
 
     private String one;
 
@@ -17,14 +17,31 @@ public class Paiban {
 
     private String seven;
 
-    private Integer doctorid;
+    private Integer doctorId;
+    private String doctorName;
 
-    public Integer getPaiid() {
-        return paiid;
+    @Override
+    public String toString() {
+        return "Paiban{" +
+                "paiId=" + paiId +
+                ", one='" + one + '\'' +
+                ", two='" + two + '\'' +
+                ", three='" + three + '\'' +
+                ", four='" + four + '\'' +
+                ", five='" + five + '\'' +
+                ", six='" + six + '\'' +
+                ", seven='" + seven + '\'' +
+                ", doctorId=" + doctorId +
+                ", doctorName='" + doctorName + '\'' +
+                '}';
     }
 
-    public void setPaiid(Integer paiid) {
-        this.paiid = paiid;
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
     public String getOne() {
@@ -83,11 +100,19 @@ public class Paiban {
         this.seven = seven == null ? null : seven.trim();
     }
 
-    public Integer getDoctorid() {
-        return doctorid;
+    public Integer getPaiId() {
+        return paiId;
     }
 
-    public void setDoctorid(Integer doctorid) {
-        this.doctorid = doctorid;
+    public void setPaiId(Integer paiId) {
+        this.paiId = paiId;
+    }
+
+    public Integer getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
     }
 }

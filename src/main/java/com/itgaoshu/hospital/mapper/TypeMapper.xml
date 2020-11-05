@@ -66,6 +66,9 @@
   <sql id="Base_Column_List" >
     typeId, typeName
   </sql>
+  <select id="queryList" resultType="Type">
+    select * from Type
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.TypeExample" >
     select
     <if test="distinct" >

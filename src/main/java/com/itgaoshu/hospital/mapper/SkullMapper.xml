@@ -66,6 +66,9 @@
   <sql id="Base_Column_List" >
     skullId, skullName
   </sql>
+  <select id="queryList" resultType="skull">
+    select * from skull
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.SkullExample" >
     select
     <if test="distinct" >

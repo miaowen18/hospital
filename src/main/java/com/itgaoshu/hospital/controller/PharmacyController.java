@@ -7,6 +7,7 @@ import com.itgaoshu.hospital.bean.Huishou;
 import com.itgaoshu.hospital.bean.Pharmacy;
 import com.itgaoshu.hospital.bean.PharmacyVo;
 import com.itgaoshu.hospital.mapper.PharmacyMapper;
+import com.itgaoshu.hospital.service.impl.PharmacyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,14 +21,14 @@ import java.util.Map;
 @RequestMapping("pharmacy")
 public class PharmacyController {
     @Autowired
-    private PharmacyMapper pharmacyMapper;
+    private PharmacyServiceImpl pharmacyService;
     //查询库房药品表
-    //模糊查询selecthuishou
+    //模糊查询selectpharmacy
     @RequestMapping("selectpharmacy")
     @ResponseBody
     public Object selectpharmacy(Pharmacy pharmacy,Integer page,Integer limit){
         PageHelper.startPage(page,limit);
-        List<PharmacyVo> lists=pharmacyMapper.queryList(pharmacy);
+        List<PharmacyVo> lists=pharmacyService.queryList(pharmacy);
         PageInfo pageInfo=new PageInfo(lists);
         Map<String,Object> map=new HashMap<>();
         //UI
@@ -57,9 +58,19 @@ public class PharmacyController {
 
     //查询药品仓库
     @RequestMapping("selecthuishou")
+    @ResponseBody
     public Object selecthuishou(Integer page,Integer limit){
+        PageHelper.startPage(page,limit);
+        List<Huishou> list=pharmacyService.queryList();
+        PageInfo pageInfo=new PageInfo(list);
+        Map<String,Object> map=new HashMap<>();
+        //UI JSON数组
+        map.put("msg","");
+        map.put("code",0);
 
-        return "";
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
+        return map;
     }
     //回收表删除
     @RequestMapping("delpharymary")

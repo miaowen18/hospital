@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface HuishouMapper {
+    List<Huishou> queryList();
     int countByExample(HuishouExample example);
 
     int deleteByExample(HuishouExample example);

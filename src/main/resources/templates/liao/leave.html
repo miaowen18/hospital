@@ -252,12 +252,12 @@
             $("#doSub").hide();
         });
         function sel(){
-            var params=$("#dataFrm").serialize();
+            var registerid=$("#dataFrm").serialize();
             $.ajax({
                 url: '../liao/selPay',
                 dataType: 'json',
                 type: 'post',
-                data:params,
+                data:registerid,
                 success: function (data) {
                     if(data==""){
                         layer.msg("请输入正确的住院号！");
@@ -283,9 +283,9 @@
                 });
             }
             if(obj.event=='add') {
-                var params=$("#dataFrm").serialize();
+                var userName=$("#dataFrm").serialize();
                 tableIns.reload({
-                    url:"../liao/selRegisters?"+params
+                    url:"../liao/selRegisters?"+userName
                 })
                 $("#hid").val("");
             }

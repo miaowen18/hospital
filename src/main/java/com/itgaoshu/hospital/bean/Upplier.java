@@ -11,6 +11,17 @@ public class Upplier {
 
     private Integer state;
 
+    @Override
+    public String toString() {
+        return "Upplier{" +
+                "supplierid=" + supplierid +
+                ", suppliername='" + suppliername + '\'' +
+                ", supplierphone='" + supplierphone + '\'' +
+                ", supplieraddress='" + supplieraddress + '\'' +
+                ", state=" + state +
+                '}';
+    }
+
     public Integer getSupplierid() {
         return supplierid;
     }

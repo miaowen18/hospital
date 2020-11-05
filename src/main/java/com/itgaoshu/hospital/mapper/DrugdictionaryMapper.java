@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DrugdictionaryMapper {
+    List<Drugdictionary> queryList(Drugdictionary drugdictionary);
     int countByExample(DrugdictionaryExample example);
 
     int deleteByExample(DrugdictionaryExample example);
