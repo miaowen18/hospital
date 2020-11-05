@@ -69,6 +69,7 @@ public class StoreController {//查询药品仓库
     @ResponseBody
     public Object seltype(){
        List<Type> list=storeService.queryList3();
+        System.out.println(list);
         return list;
     }
     //unit单位
@@ -83,6 +84,7 @@ public class StoreController {//查询药品仓库
     @ResponseBody//产地
     public Object selarea(){
         List<Area> list=storeService.queryList1();
+        System.out.println(list);
         return list;
     }
 
@@ -98,6 +100,7 @@ public class StoreController {//查询药品仓库
     @ResponseBody//查询供货单位
     public Object selupplier(){
         List<Upplier> list=storeService.queryList5();
+        System.out.println(list);
         return list;
     }
 

@@ -256,7 +256,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#typeId').append(new Option(item.typeName, item.typeId));// 下拉菜单里添加元素
+                    $('#typeId').append(new Option(item.typename, item.typeid));// 下拉菜单里添加元素
 
                 });
 
@@ -271,7 +271,7 @@
             success: function (data) {
                 $.each(data, function (index, item) {
                    // 下拉菜单里添加元素
-                    $('#unitId').append(new Option( item.unitName,item.unitId));
+                    $('#unitId').append(new Option( item.unitname,item.unitid));
                 });
 
                 layui.form.render("select");//重新渲染 固定写法
@@ -284,7 +284,7 @@
             success: function (data) {
                 $.each(data, function (index, item) {
                     // 下拉菜单里添加元素
-                    $('#areaId').append(new Option( item.areaName,item.areaId));
+                    $('#areaId').append(new Option( item.areaname,item.areaid));
                 });
 
                 layui.form.render("select");//重新渲染 固定写法
@@ -297,7 +297,7 @@
             success: function (data) {
                 $.each(data, function (index, item) {
                     // 下拉菜单里添加元素
-                    $('#skullId').append(new Option( item.skullName,item.skullIdid));
+                    $('#skullId').append(new Option( item.skullname,item.skullid));
                 });
 
                 layui.form.render("select");//重新渲染 固定写法
@@ -310,7 +310,7 @@
             success: function (data) {
                 $.each(data, function (index, item) {
                     // 下拉菜单里添加元素
-                    $('#supplierId').append(new Option( item.supplierName,item.supplierIdid));
+                    $('#supplierId').append(new Option( item.suppliername,item.supplierid));
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
