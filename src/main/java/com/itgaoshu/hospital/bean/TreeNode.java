@@ -1,28 +1,57 @@
 package com.itgaoshu.hospital.bean;
 
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class SysMenuVo {
+public class TreeNode {
     private Integer id;
-
+    @JsonProperty("parentId")
     private Integer pid;
 
     private String title;
-
-    private String href;
-
-    private Integer spread;
-
-    private String target;
-
     private String icon;
+    private String href;
+    private Boolean spread;
+    private String target;
+    private List<TreeNode> children = new ArrayList<>();
 
-    private Integer available;
 
-    private List<SysMenuVo> children;
 
     //复选树的属性
     private String checkArr="0";//默认0//选中1
+
+    public TreeNode() {
+
+    }
+
+    public String getCheckArr() {
+        return checkArr;
+    }
+
+    public void setCheckArr(String checkArr) {
+        this.checkArr = checkArr;
+    }
+
+    public TreeNode(Integer id, Integer pid, String title, String icon, String href, Boolean spread, String target) {
+        this.id = id;
+        this.pid = pid;
+        this.title = title;
+        this.icon = icon;
+        this.href = href;
+        this.spread = spread;
+        this.target = target;
+    }
+///////
+    public TreeNode(Integer id, Integer pid, String title, Boolean spread, String checkArr) {
+        this.id = id;
+        this.pid = pid;
+        this.title = title;
+        this.spread = spread;
+        this.checkArr = checkArr;
+    }
 
     public Integer getId() {
         return id;
@@ -48,6 +77,14 @@ public class SysMenuVo {
         this.title = title;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
     public String getHref() {
         return href;
     }
@@ -56,11 +93,11 @@ public class SysMenuVo {
         this.href = href;
     }
 
-    public Integer getSpread() {
+    public Boolean getSpread() {
         return spread;
     }
 
-    public void setSpread(Integer spread) {
+    public void setSpread(Boolean spread) {
         this.spread = spread;
     }
 
@@ -72,49 +109,24 @@ public class SysMenuVo {
         this.target = target;
     }
 
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public Integer getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Integer available) {
-        this.available = available;
-    }
-
-    public List<SysMenuVo> getChildren() {
+    public List<TreeNode> getChildren() {
         return children;
     }
 
-    public void setChildren(List<SysMenuVo> children) {
+    public void setChildren(List<TreeNode> children) {
         this.children = children;
-    }
-
-    public String getCheckArr() {
-        return checkArr;
-    }
-
-    public void setCheckArr(String checkArr) {
-        this.checkArr = checkArr;
     }
 
     @Override
     public String toString() {
-        return "SysMenuVo{" +
+        return "TreeNode{" +
                 "id=" + id +
                 ", pid=" + pid +
                 ", title='" + title + '\'' +
+                ", icon='" + icon + '\'' +
                 ", href='" + href + '\'' +
                 ", spread=" + spread +
                 ", target='" + target + '\'' +
-                ", icon='" + icon + '\'' +
-                ", available=" + available +
                 ", children=" + children +
                 ", checkArr='" + checkArr + '\'' +
                 '}';

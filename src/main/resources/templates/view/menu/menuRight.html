@@ -196,7 +196,7 @@
                 $("#doSearch").click(function () {
                     var params = $("#searchFrm").serialize();
                     tableIns.reload({
-                        url: "sel/queryMenuAllList?" + params
+                        url: "sel/selectChooseMenu?" + params
                     })
                 });
                 //监听行工具事件
@@ -320,7 +320,7 @@
 
             function reloadTable(id) {
                 tableIns.reload({
-                    url: "sel/queryMenuAllList?id=" + id
+                    url: "sel/selectMenuById?id=" + id
                 })
             }
 
