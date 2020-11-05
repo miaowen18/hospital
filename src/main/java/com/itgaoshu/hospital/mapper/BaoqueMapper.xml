@@ -67,6 +67,12 @@
   <sql id="Base_Column_List" >
     baoqueid, baoqueName, baoqueNum
   </sql>
+  <select id="selectCount" parameterType="Baoque" resultType="int">
+        select count(*)from  baoque where baoquename=#{baoquename}
+  </select>
+  <update id="updateNum" parameterType="Baoque">
+    update baoque set baoquenum =(baoquenum+#{baoquenum}) where baoquename=#{baoquename}
+  </update>
   <select id="queryList" resultType="Baoque">
     select * from baoque order by baoqueid asc
   </select>

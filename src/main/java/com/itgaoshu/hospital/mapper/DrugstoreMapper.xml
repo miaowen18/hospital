@@ -133,12 +133,21 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selnumer" parameterType="Drugstore" resultType="java.lang.Integer">
+    SELECT sum(drugstorenum) FROM drugstore WHERE drugstoreName=#{drugstorename} and batch=#{batch}
+  </select>
+  <select id="queryList2" parameterType="Drugstore" resultType="java.lang.Integer">
+    SELECT count(*) FROM drugstore WHERE drugstoreName=#{drugstorename} and batch=#{batch}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from drugstore
     where rugstoreId = #{rugstoreid,jdbcType=INTEGER}
   </select>
+  <update id="update" parameterType="Drugstore">
+    UPDATE drugstore set drugstorenum=(drugstorenum+#{drugstorenum}) where batch=#{batch}
+  </update>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from drugstore
     where rugstoreId = #{rugstoreid,jdbcType=INTEGER}
