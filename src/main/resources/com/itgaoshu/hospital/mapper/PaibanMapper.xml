@@ -74,9 +74,17 @@
     paiId, one, two, three, four, five, six, seven, doctorId
   </sql>
   <select id="selectByExample" parameterType="paiban" resultType="paiban" >
-    select p.*,d.doctorName from paiban p,doctor d where p.doctorId=d.doctorId
+    select p.*,d.doctorName from paiban p,doctor d
+    <where> p.doctorId=d.doctorId
+    <if test="paiId!=null">
+      and p.paiId=#{paiId}
+    </if>
+    <if test="doctorName!=null and doctorName!=''">
+      and d.doctorName like concat('%',concat(#{doctorName},'%'))
+    </if>
+    </where>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="paiban">
     select 
     <include refid="Base_Column_List" />
     from paiban
@@ -219,46 +227,22 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.hospital.bean.Paiban" >
-    update paiban
-    <set >
-      <if test="one != null" >
-        one = #{one,jdbcType=VARCHAR},
-      </if>
-      <if test="two != null" >
-        two = #{two,jdbcType=VARCHAR},
-      </if>
-      <if test="three != null" >
-        three = #{three,jdbcType=VARCHAR},
-      </if>
-      <if test="four != null" >
-        four = #{four,jdbcType=VARCHAR},
-      </if>
-      <if test="five != null" >
-        five = #{five,jdbcType=VARCHAR},
-      </if>
-      <if test="six != null" >
-        six = #{six,jdbcType=VARCHAR},
-      </if>
-      <if test="seven != null" >
-        seven = #{seven,jdbcType=VARCHAR},
-      </if>
-      <if test="doctorid != null" >
-        doctorId = #{doctorid,jdbcType=INTEGER},
-      </if>
-    </set>
-    where paiId = #{paiid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKeySelective" parameterType="paiban" >
+    update paiban set one=#{one},two=#{two},three=#{three},four=#{four},
+    five=#{five},six=#{six},seven=#{seven} where doctorId=#{doctorId}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.hospital.bean.Paiban" >
+  <update id="updateByPrimaryKey" parameterType="paiban" >
     update paiban
-    set one = #{one,jdbcType=VARCHAR},
-      two = #{two,jdbcType=VARCHAR},
-      three = #{three,jdbcType=VARCHAR},
-      four = #{four,jdbcType=VARCHAR},
-      five = #{five,jdbcType=VARCHAR},
-      six = #{six,jdbcType=VARCHAR},
-      seven = #{seven,jdbcType=VARCHAR},
-      doctorId = #{doctorid,jdbcType=INTEGER}
-    where paiId = #{paiid,jdbcType=INTEGER}
+    set one = #{one},
+      two = #{two},
+      three = #{three},
+      four = #{four},
+      five = #{five},
+      six = #{six},
+      seven = #{seven},
+    where doctorId = #{doctorId}
   </update>
+  <select id="select2" resultType="ban">
+    select * from ban
+  </select>
 </mapper>

@@ -204,9 +204,9 @@
 
         //模糊查询
         $("#doSearch").click(function(){
-            var params=$("#searchFrm").serialize();
+            var doctorName=$("#searchFrm").serialize();
             tableIns.reload({
-                url:"paiban/findAllPaiban?"+params
+                url:"paiban/findAllPaiban?"+doctorName,
             })
         });
         $.ajax({

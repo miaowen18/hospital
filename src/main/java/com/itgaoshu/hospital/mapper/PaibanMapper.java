@@ -1,5 +1,6 @@
 package com.itgaoshu.hospital.mapper;
 
+import com.itgaoshu.hospital.bean.Ban;
 import com.itgaoshu.hospital.bean.Paiban;
 import com.itgaoshu.hospital.bean.PaibanExample;
 import org.apache.ibatis.annotations.Param;
@@ -19,13 +20,15 @@ public interface PaibanMapper {
 
     List<Paiban> selectByExample(Paiban paiban);
 
+    List<Ban> select2();
+
     Paiban selectByPrimaryKey(Integer paiid);
 
     int updateByExampleSelective(@Param("record") Paiban record, @Param("example") PaibanExample example);
 
     int updateByExample(@Param("record") Paiban record, @Param("example") PaibanExample example);
 
-    int updateByPrimaryKeySelective(Paiban record);
+    int updateByPrimaryKeySelective(Paiban paiban);
 
     int updateByPrimaryKey(Paiban record);
 }
