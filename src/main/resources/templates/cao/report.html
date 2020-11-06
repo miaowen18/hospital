@@ -179,7 +179,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">医生:</label>
                 <div class="layui-input-inline">
-                    <select name="rdoctorId" id="doctorId" lay-verify="required" lay-filter="doctorId">
+                    <select name="rdoctorid" id="doctorId" lay-verify="required" lay-filter="doctorId">
                         <option value="" class="doct"></option>
                     </select>
                 </div>
@@ -311,7 +311,7 @@
                 $.ajax({
                     //要跳转的地址
                     url: '../cao/seldoctor',
-                    data:{"registeredid":registeredId,"departmentId":departmentId},
+                    data:{"registeredId":registeredId,"departmentId":departmentId},
                     //数据类型
                     dataType: 'json',
                     //提交类型
