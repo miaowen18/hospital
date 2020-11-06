@@ -45,10 +45,17 @@ public class PharmacyController {
     @RequestMapping("addbaoque")
     @ResponseBody
     public int addbaoque(Baoque baoque){
-        //查询是否补足
-        //补足:添加药品
-        //没补足:修改药品数量
-        return 0;
+        //查询报缺单是否已经有此条药品
+        Integer num = pharmacyService.selbaoqueName(baoque);
+        if(num==0){
+            //添加药品
+            int addbaoque =pharmacyService.addbaoque(baoque);
+            return addbaoque;
+        }else {
+            //修改药品数量
+            int upnum= pharmacyService.upbaoquenum(baoque);
+            return upnum;
+        }
     }
     //删除药,回收到仓库
     @RequestMapping("delhuishou")
@@ -74,7 +81,11 @@ public class PharmacyController {
     }
     //回收表删除
     @RequestMapping("delpharymary")
-    public int delpharymary(){
-        return 0;
+    public int delpharymary(Pharmacy pharmacy,Huishou huishou){
+        int delpharymacy = pharmacyService.delpharymacy(pharmacy);
+        if(delpharymacy==1){
+            pharmacyService.addhuishou(huishou);
+        }
+        return delpharymacy;
     }
 }

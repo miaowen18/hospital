@@ -42,6 +42,34 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
+    public int selnumer(Drugstore drugstore) {
+
+        Integer num=drugstoreMapper.selnumer(drugstore);
+        if(num==null){
+            return 0;
+        }else{
+            return num;
+        }
+    }
+
+    @Override
+    public int update(Drugstore drugstore) {
+        return drugstoreMapper.update(drugstore);
+    }
+
+    @Override
+    public int queryList1(Drugstore drugstore) {
+        return drugstoreMapper.queryList2(drugstore);
+    }
+
+    @Override
+    public int addStore(Drugstore drugstore) {
+
+        return drugstoreMapper.insert(drugstore);
+    }
+
+
+    @Override
     public List<Drugdictionary> selectdgty(Drugdictionary drugdictionary) {
         return drugdictionaryMapper.queryList(drugdictionary);
     }
@@ -59,15 +87,14 @@ public class StoreServiceImpl implements StoreService {
         }
         return list;
     }
-
-    @Override
+    /*@Override
     public List<DrugstoreVo> queryList(DrugstoreVo drugstoreVo) {
         List<DrugstoreVo> list1=drugstoreMapper.queryList(drugstoreVo);
         for (DrugstoreVo drugstore1 : list1) {
             System.out.println(drugstore1);
         }
         return list1;
-    }
+    }*/
 
     @Override
     public List<Drugstore> queryQue() {

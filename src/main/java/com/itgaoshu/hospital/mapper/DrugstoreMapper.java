@@ -18,11 +18,11 @@ public interface DrugstoreMapper {
     int deleteByExample(DrugstoreExample example);
 
     int deleteByPrimaryKey(Integer rugstoreid);
-
+    int update(Drugstore drugstore);
     int insert(Drugstore record);
-
+    Integer queryList2(Drugstore drugstore);
     int insertSelective(Drugstore record);
-
+    Integer selnumer(Drugstore drugstore);
     List<Drugstore> selectByExample(DrugstoreExample example);
 
     Drugstore selectByPrimaryKey(Integer rugstoreid);

@@ -10,25 +10,25 @@
     </select>
 
     <select id="one" parameterType="Doctor" resultType="Doctor">
-      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredid} and d.doctorId=p.doctorId and p.one  != '无班' and  d.dstate!=3 and d.dstate=0
+      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredId} and d.doctorId=p.doctorId and p.one  != '无班' and  d.dstate!=3 and d.dstate=0
     </select>
     <select id="two" parameterType="Doctor" resultType="Doctor">
-      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredid} and d.doctorId=p.doctorId and p.two  != '无班' and  d.dstate!=3 and d.dstate=0
+      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredId} and d.doctorId=p.doctorId and p.two  != '无班' and  d.dstate!=3 and d.dstate=0
     </select>
     <select id="three" parameterType="Doctor" resultType="Doctor">
-      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredid} and d.doctorId=p.doctorId and p.three  != '无班' and  d.dstate!=3 and d.dstate=0
+      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredId} and d.doctorId=p.doctorId and p.three  != '无班' and  d.dstate!=3 and d.dstate=0
     </select>
     <select id="four" parameterType="Doctor" resultType="Doctor">
-      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredid} and d.doctorId=p.doctorId and p.four  != '无班' and  d.dstate!=3 and d.dstate=0
+      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredId} and d.doctorId=p.doctorId and p.four  != '无班' and  d.dstate!=3 and d.dstate=0
     </select>
     <select id="five" parameterType="Doctor" resultType="Doctor">
-      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredid} and d.doctorId=p.doctorId and p.five  != '无班' and  d.dstate!=3 and d.dstate=0
+      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredId} and d.doctorId=p.doctorId and p.five  != '无班' and  d.dstate!=3 and d.dstate=0
     </select>
     <select id="six" parameterType="Doctor" resultType="Doctor">
-      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredid} and d.doctorId=p.doctorId and p.six  != '无班' and  d.dstate!=3 and d.dstate=0
+      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredId} and d.doctorId=p.doctorId and p.six  != '无班' and  d.dstate!=3 and d.dstate=0
     </select>
     <select id="seven" parameterType="Doctor" resultType="Doctor">
-      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredid} and d.doctorId=p.doctorId and p.seven  != '无班' and  d.dstate!=3 and d.dstate=0
+      select d.doctorName doctorName,d.doctorId from doctor d, paiban p where departmentId=#{departmentId} and registeredid=#{registeredId} and d.doctorId=p.doctorId and p.seven  != '无班' and  d.dstate!=3 and d.dstate=0
     </select>
 
     <update id="updateState">

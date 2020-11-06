@@ -69,8 +69,8 @@
   <select id="queryAllList" resultType="com.itgaoshu.hospital.bean.Warehuose">
     select * from warehuose
     <where>
-      <if test="supplierName!=null and supplierName!=''">
-        supplierName like concat('%',concat(#{supplierName},'%'))
+      <if test="suppliername!=null and suppliername!=''">
+        suppliername like concat('%',concat(#{suppliername},'%'))
       </if>
     </where>
   </select>

@@ -17,6 +17,19 @@ public class Jilu {
 
     private String jilupihao;
 
+    @Override
+    public String toString() {
+        return "Jilu{" +
+                "jiluid=" + jiluid +
+                ", jiluname='" + jiluname + '\'' +
+                ", jilutime=" + jilutime +
+                ", jilutype='" + jilutype + '\'' +
+                ", jilupeople='" + jilupeople + '\'' +
+                ", jilunumber=" + jilunumber +
+                ", jilupihao='" + jilupihao + '\'' +
+                '}';
+    }
+
     public Integer getJiluid() {
         return jiluid;
     }
