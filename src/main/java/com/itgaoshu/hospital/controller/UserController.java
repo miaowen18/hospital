@@ -85,4 +85,17 @@ public class UserController {
             return "修改成功";
         }
     }
+
+    @RequestMapping("initUserRole")
+    @ResponseBody
+    public Map<String,Object> initUserRole(Integer userid){
+        return sysUserService.initUserRole(userid);
+    }
+
+    @RequestMapping("saveUserRole")
+    @ResponseBody
+    public String saveUserRole(Integer userid,Integer[] ids){
+        sysUserService.saveUserRole(userid, ids);
+        return "加入成功";
+    }
 }

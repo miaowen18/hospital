@@ -40,4 +40,14 @@ public class SysRole {
     public void setAvailable(Integer available) {
         this.available = available;
     }
+
+    @Override
+    public String toString() {
+        return "SysRole{" +
+                "roleid=" + roleid +
+                ", rolename='" + rolename + '\'' +
+                ", roledesc='" + roledesc + '\'' +
+                ", available=" + available +
+                '}';
+    }
 }

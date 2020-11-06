@@ -4,6 +4,7 @@ public class SysRoleUserKey {
     private Integer uid;
 
     private Integer rid;
+    private Integer[] ids;
 
     public Integer getUid() {
         return uid;
@@ -19,5 +20,13 @@ public class SysRoleUserKey {
 
     public void setRid(Integer rid) {
         this.rid = rid;
+    }
+
+    public Integer[] getIds() {
+        return ids;
+    }
+
+    public void setIds(Integer[] ids) {
+        this.ids = ids;
     }
 }
