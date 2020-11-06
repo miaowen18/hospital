@@ -101,9 +101,9 @@
   <select id="selectByPrimaryKey"  parameterType="java.lang.Integer" resultType="register" >
     select * from register where registerid = #{registerid}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from register
-    where registerid = #{registerid,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="String" >
+    delete from report
+    where Phone=#{Phone}
   </delete>
   <delete id="deleteByExample" parameterType="com.itgaoshu.hospital.bean.RegisterExample" >
     delete from register
@@ -112,8 +112,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="Register" >
-    insert into register(userName,age,sex,department,doctor,diagnose,address,Phone,Idcard,registerDate,bedNum,Operator,money,state,discount)
-        values(#{userName},#{age},#{sex},#{departmentId},#{doctorId},#{diagnose},#{address},#{phone},#{idcard},NOW(),#{bedId},#{operator},#{money},0,#{discount})
+    insert into register(userName,age,sex,department,doctor,diagnose,address,Phone,Idcard,registerDate,bedNum,Operator,money,state,price,discount)
+        values(#{userName},#{age},#{sex},#{departmentId},#{doctorId},#{diagnose},#{address},#{Phone},#{Idcard},NOW(),#{bedId},#{Operator},#{money},0,#{price},#{discount})
   </insert>
   <insert id="insertSelective" parameterType="Register" >
     insert into register
@@ -415,7 +415,7 @@
     where registerid = #{registerid,jdbcType=INTEGER}
   </update>
   <select id="select" parameterType="register" resultType="Register">
-    SELECT r.*,d.department ,d1.doctorName,b.bedName FROM register r,departments d,doctor d1,bed b
+    SELECT r.*,d.department ,d1.doctorName,b.bedname  FROM register r,departments d,doctor d1,bed b
     <where>
       r.department=d.departmentId AND r.doctor=d1.doctorId  AND r.bedNum=bedId  and r.state=#{state}
       <if test="userName!=null and userName!=''">
@@ -446,5 +446,17 @@
   </select>
   <select id="select8" parameterType="String" resultType="register">
     select * from register where userName like concat('%',concat(#{userName},'%'))
+  </select>
+  <select id="selectPay" resultType="pay">
+    select p.*,r.userName from pay p,register r where p.registerid=r.registerid and r.state=0
+  </select>
+  <update id="updatePay" parameterType="register">
+    update register set money=money+#{money} where registerid=#{registerid}
+  </update>
+  <insert id="insertPay" parameterType="register">
+   insert into pay(registerid,money,payDate) values(#{registerid},#{money},NOW())
+  </insert>
+  <select id="selectPrice" parameterType="Integer" resultType="Double">
+    select b.price from bed b where b.bedId=#{bedId}
   </select>
 </mapper>

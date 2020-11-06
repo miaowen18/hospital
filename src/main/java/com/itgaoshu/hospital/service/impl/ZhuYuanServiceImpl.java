@@ -50,13 +50,40 @@ public class ZhuYuanServiceImpl implements ZhuYuanService {
     }
 
     @Override
-    public int deleteByPrimaryKey(Integer registerid) {
-        return registerMapper.deleteByPrimaryKey(registerid);
+    public int deleteByPrimaryKey(String phone) {
+        return registerMapper.deleteByPrimaryKey(phone);
     }
 
     @Override
     public Register selectByPrimaryKey(Integer registerid) {
         return registerMapper.selectByPrimaryKey(registerid);
+    }
+
+    @Override
+    public List<Pay> selectPay() {
+        return registerMapper.selectPay();
+    }
+
+    @Override
+    public int updatePay(Register register) {
+        return registerMapper.updatePay(register);
+    }
+
+    @Override
+    public int insertPay(Register register) {
+        return registerMapper.insertPay(register);
+    }
+
+
+
+    @Override
+    public Double selectPrice(Integer bedNum) {
+        return registerMapper.selectPrice(bedNum);
+    }
+
+    @Override
+    public Register select8(String userName) {
+        return registerMapper.select8(userName);
     }
 
 

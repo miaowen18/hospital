@@ -65,4 +65,9 @@ public class SysController {
     public String toCurrent(){
         return "view/finance/current";
     }
+
+    @RequestMapping("/toMain")
+    public String toMain(){
+        return "view/main/main";
+    }
 }
