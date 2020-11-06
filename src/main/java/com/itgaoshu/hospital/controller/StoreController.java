@@ -25,9 +25,28 @@ public class StoreController {//查询药品仓库
     //入库单
     @RequestMapping("adddrugs")
     @ResponseBody
-    public Object adddrugs(Jilu jilu){
+    public Object adddrugs(Drugstore drugstore,Jilu jilu){
+        Integer store=0;
+        Integer upstore=0;
+        System.out.println(drugstore);
         System.out.println(jilu);
-        return "";
+        int count=storeService.queryList1(drugstore);
+        System.out.println(count);
+       /* if(count==1){
+            //修改 添加
+            upstore=storeService.update(drugstore);
+            System.out.println("up"+upstore);
+            int cord=recordService.insert(jilu);
+            System.out.println(cord);
+        }else{
+            //添加记录
+          int cord=recordService.insert(jilu);
+            System.out.println(cord);
+            //添加方法
+            store=storeService.addStore(drugstore);
+            System.out.println("st"+store);
+        }*/
+        return store+upstore;
     }
     @RequestMapping("selectdgty")
     @ResponseBody//查询药品
@@ -69,7 +88,6 @@ public class StoreController {//查询药品仓库
     @ResponseBody
     public Object seltype(){
        List<Type> list=storeService.queryList3();
-        System.out.println(list);
         return list;
     }
     //unit单位
@@ -92,7 +110,6 @@ public class StoreController {//查询药品仓库
     @ResponseBody//经办人
     public Object selskull(){
         List<Skull> list=storeService.queryList2();
-        System.out.println(list);
         return list;
     }
 
@@ -100,7 +117,6 @@ public class StoreController {//查询药品仓库
     @ResponseBody//查询供货单位
     public Object selupplier(){
         List<Upplier> list=storeService.queryList5();
-        System.out.println(list);
         return list;
     }
 
@@ -149,6 +165,13 @@ public class StoreController {//查询药品仓库
         map.put("data",pageInfo.getList());
         map.put("count",pageInfo.getTotal());
         return map;
+    }
+    @RequestMapping("selnumber")
+    @ResponseBody
+    public Object selnumber(Drugstore drugstore){
+        int drugstorenum=storeService.selnumer(drugstore);
+
+        return drugstorenum;
     }
     @RequestMapping("delguoqidurg")
     @ResponseBody//删除过期药品

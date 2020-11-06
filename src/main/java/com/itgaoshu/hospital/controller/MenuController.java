@@ -2,9 +2,7 @@ package com.itgaoshu.hospital.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.itgaoshu.hospital.bean.SysMenu;
-import com.itgaoshu.hospital.bean.SysMenuVo;
-import com.itgaoshu.hospital.bean.SysUser;
+import com.itgaoshu.hospital.bean.*;
 import com.itgaoshu.hospital.service.SysMenuService;
 import com.itgaoshu.hospital.service.SysUserService;
 import com.itgaoshu.hospital.util.TreeUtil;
@@ -83,18 +81,24 @@ public class MenuController {
         return treeUtil.toTree(trees);
     }
 
-//    @RequestMapping("loadMenuMangerLeftTreeJson")
-//    @ResponseBody
-//    public DataGridView loadMenuMangerLeftTreeJson(){
-//        List<SysMenu> sysMenus = sysMenuService.selectAllMenu();
-//        List<SysMenuVo> trees = new ArrayList<>();
-//        for (SysMenu menu : sysMenus) {
-//            SysMenuVo sysMenuVo = new SysMenuVo();
-//            BeanUtils.copyProperties(menu,sysMenuVo);
-//            trees.add(sysMenuVo);
-//        }
-//        return new DataGridView(trees);
-//    }
+    @RequestMapping("loadMenuMangerLeftTreeJson")
+    @ResponseBody
+    public Map<String,Object> loadMenuMangerLeftTreeJson(){
+        List<SysMenu> sysMenus = sysMenuService.selectAllMenu();
+        List<TreeNode> trees = new ArrayList<>();
+        for (SysMenu menu : sysMenus) {
+            TreeNode treeNode = new TreeNode();
+            treeNode.setSpread(true);
+            BeanUtils.copyProperties(menu,treeNode);
+            trees.add(treeNode);
+        }
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",null);
+        map.put("data",trees);
+        return map;
+    }
 
     @RequestMapping("queryMenuAllList")
     @ResponseBody
@@ -109,4 +113,72 @@ public class MenuController {
         map.put("data",pageInfo.getList());
         return map;
     }
+
+    @RequestMapping("selectMenuById")
+    @ResponseBody
+    public Map<String,Object> selectMenuById(Integer id){
+        SysMenu menu = sysMenuService.selectMenuById(id);
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",null);
+        map.put("data",menu);
+        return map;
+    }
+
+    @RequestMapping("addMenu")
+    @ResponseBody
+    public String addMenu(SysMenu menu){
+        int result = sysMenuService.addMenu(menu);
+        if (result==0){
+            return "添加失败";
+        }else {
+            return "添加成功";
+        }
+    }
+
+    @RequestMapping("updateMenu")
+    @ResponseBody
+    public String updateMenu(SysMenu menu){
+        System.out.println(menu.getId());
+        int result = sysMenuService.updateMenu(menu);
+        if (result==0){
+            return "修改失败";
+        }else {
+            return "修改成功";
+        }
+    }
+
+    @RequestMapping("checkMenuHasChildren")
+    @ResponseBody
+    public Integer checkMenuHasChildren(Integer id){
+        return sysMenuService.selectPid(id);
+    }
+
+    @RequestMapping("deleteMenu")
+    @ResponseBody
+    public String deleteMenu(Integer id){
+        int result = sysMenuService.deleteByPrimaryKey(id);
+        if (result==0){
+            return "删除失败";
+        }else {
+            return "删除成功";
+        }
+    }
+
+    @RequestMapping("selectChooseMenu")
+    @ResponseBody
+    public Map<String,Object> selectChooseMenu(Integer page,Integer limit,String title){
+        PageHelper.startPage(page,limit);
+        String newTitle="%"+title+"%";
+        List<SysMenu> menus = sysMenuService.selectChooseMenu(newTitle);
+        PageInfo pageInfo = new PageInfo(menus);
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
+        return map;
+    }
+
 }

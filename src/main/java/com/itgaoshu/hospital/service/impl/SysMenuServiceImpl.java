@@ -30,4 +30,34 @@ public class SysMenuServiceImpl implements SysMenuService {
     public List<SysMenu> selectByUserId(Integer userid) {
         return sysMenuMapper.selectByUserId(userid);
     }
+
+    @Override
+    public SysMenu selectMenuById(Integer id) {
+        return sysMenuMapper.selectMenuById(id);
+    }
+
+    @Override
+    public int addMenu(SysMenu sysMenu) {
+        return sysMenuMapper.addMenu(sysMenu);
+    }
+
+    @Override
+    public int updateMenu(SysMenu sysMenu) {
+        return sysMenuMapper.updateMenu(sysMenu);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return sysMenuMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public Integer selectPid(Integer id) {
+        return sysMenuMapper.selectPid(id);
+    }
+
+    @Override
+    public List<SysMenu> selectChooseMenu(String title) {
+        return sysMenuMapper.selectChooseMenu(title);
+    }
 }

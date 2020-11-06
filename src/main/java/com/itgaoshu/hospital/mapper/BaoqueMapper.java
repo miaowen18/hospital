@@ -9,7 +9,8 @@ import java.util.List;
 public interface BaoqueMapper {
     List<Baoque> queryList();
     int countByExample(BaoqueExample example);
-
+    int selectCount(Baoque baoque);
+    int updateNum(Baoque baoque);
     int deleteByExample(BaoqueExample example);
 
     int deleteByPrimaryKey(Integer baoqueid);

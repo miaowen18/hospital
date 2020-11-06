@@ -24,7 +24,7 @@ public class PaiBanController {
         return "view/center/paiban";
     }
 
-    //查询门诊传过来的信息
+    //查询排班信息
     @RequestMapping("paiban/findAllPaiban")
     @ResponseBody
     public Object select2(int page, int limit, Paiban paiban){
@@ -43,5 +43,23 @@ public class PaiBanController {
         tableData.put("data", pageInfo.getList());
         //把数据返回到layui中
         return tableData;
+    }
+    //为下拉框添加排班信息
+    @RequestMapping("paiban/findAllBan")
+    @ResponseBody
+    public Object select2(){
+        return paiBanService.select2();
+    }
+    //修改排班信息
+    @RequestMapping("paiban/editPaiban")
+    @ResponseBody
+    public Object update2(Paiban paiban){
+        System.out.println(paiban);
+        int result=paiBanService.updateByPrimaryKeySelective(paiban);
+        if(result>0) {
+            return "修改成功";
+        }else{
+            return "修改失败";
+        }
     }
 }
