@@ -25,9 +25,7 @@ public class Register {
 
     private Date registerDate;
 
-
-
-    Integer bedId;
+    private Integer bedId;
 
     private String Operator;
 
@@ -47,7 +45,7 @@ public class Register {
 
     private String doctorName;
 
-    String bedName;
+    private String bedname;
 
     private Integer doctorId;
 
@@ -139,7 +137,13 @@ public class Register {
         this.registerDate = registerDate;
     }
 
+    public Integer getBedId() {
+        return bedId;
+    }
 
+    public void setBedId(Integer bedId) {
+        this.bedId = bedId;
+    }
 
     public String getOperator() {
         return Operator;
@@ -213,12 +217,12 @@ public class Register {
         this.doctorName = doctorName;
     }
 
-    public String getBedName() {
-        return bedName;
+    public String getBedname() {
+        return bedname;
     }
 
-    public void setBedName(String bedName) {
-        this.bedName = bedName;
+    public void setBedname(String bedname) {
+        this.bedname = bedname;
     }
 
     public Integer getDoctorId() {
@@ -227,14 +231,6 @@ public class Register {
 
     public void setDoctorId(Integer doctorId) {
         this.doctorId = doctorId;
-    }
-
-    public Integer getBedId() {
-        return bedId;
-    }
-
-    public void setBedId(Integer bedId) {
-        this.bedId = bedId;
     }
 
     @Override
@@ -251,7 +247,6 @@ public class Register {
                 ", Phone='" + Phone + '\'' +
                 ", Idcard='" + Idcard + '\'' +
                 ", registerDate=" + registerDate +
-
                 ", bedId=" + bedId +
                 ", Operator='" + Operator + '\'' +
                 ", money=" + money +
@@ -262,7 +257,7 @@ public class Register {
                 ", zhuan=" + zhuan +
                 ", department='" + department + '\'' +
                 ", doctorName='" + doctorName + '\'' +
-                ", bedName='" + bedName + '\'' +
+                ", bedname='" + bedname + '\'' +
                 ", doctorId=" + doctorId +
                 '}';
     }
