@@ -76,6 +76,9 @@
     cashier, reportId, durgname, durgnum, repiceprice, repicetotal, state, ctime, ostate, 
     jie, mstate
   </sql>
+  <select id="queryList" parameterType="java.lang.Integer" resultType="Cashier">
+    select * from cashier where reportId=#{reportid} and state =0
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.CashierExample" >
     select
     <if test="distinct" >

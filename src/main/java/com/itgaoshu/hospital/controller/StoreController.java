@@ -32,7 +32,7 @@ public class StoreController {//查询药品仓库
         System.out.println(jilu);
         int count=storeService.queryList1(drugstore);
         System.out.println(count);
-       /* if(count==1){
+       /*if(count==1){
             //修改 添加
             upstore=storeService.update(drugstore);
             System.out.println("up"+upstore);
@@ -53,6 +53,9 @@ public class StoreController {//查询药品仓库
     public Object selectdgty(Drugdictionary drugdictionary,Integer page,Integer limit){
         PageHelper.startPage(page,limit);
         List<Drugdictionary> list=storeService.selectdgty(drugdictionary);
+        for (Drugdictionary dru:list) {
+            System.out.println(dru);
+        }
         PageInfo pageInfo=new PageInfo(list);
         Map<String,Object> map=new HashMap<>();
         map.put("msg","");
