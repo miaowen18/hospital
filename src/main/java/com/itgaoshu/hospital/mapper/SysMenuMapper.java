@@ -42,7 +42,7 @@ public interface SysMenuMapper {
     List<SysMenu> selectByUserId(Integer userid);
 
     @Select("select * from sys_menu where id=#{id}")
-    SysMenu selectMenuById(Integer id);
+    List<SysMenu> selectMenuById(Integer id);
     
     @Insert("insert into sys_menu values(null,#{pid},#{title},#{href},#{spread},null,#{icon},#{available})")
     int addMenu(SysMenu sysMenu);
