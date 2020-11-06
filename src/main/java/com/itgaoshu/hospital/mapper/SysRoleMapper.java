@@ -1,9 +1,6 @@
 package com.itgaoshu.hospital.mapper;
 
-import com.itgaoshu.hospital.bean.SysMenu;
-import com.itgaoshu.hospital.bean.SysRole;
-import com.itgaoshu.hospital.bean.SysRoleExample;
-import com.itgaoshu.hospital.bean.SysRoleMenuKey;
+import com.itgaoshu.hospital.bean.*;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -55,4 +52,7 @@ public interface SysRoleMapper {
     int insertRoleByRid(@Param("rid") Integer rid,@Param("mid") Integer mid);
 
     void saveRoleMenu(Integer roleid,Integer[] ids);
+
+    @Select("SELECT r.*,ru.uid FROM sys_role_user ru RIGHT JOIN sys_role r ON ru.rid=r.roleid WHERE ru.uid=#{uid}")
+    List<SysRole> selectRoleUser(@Param("uid") Integer uid);
 }

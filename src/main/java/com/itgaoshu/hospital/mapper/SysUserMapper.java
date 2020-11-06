@@ -2,8 +2,7 @@ package com.itgaoshu.hospital.mapper;
 
 import com.itgaoshu.hospital.bean.SysUser;
 import com.itgaoshu.hospital.bean.SysUserExample;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -35,4 +34,10 @@ public interface SysUserMapper {
 
 //    @Select("select * from sys_user")
     List<SysUser> selectAllUser(SysUser user);
+
+    @Delete("delete FROM sys_role_user where uid=#{uid}")
+    int deleteRoleUser(Integer uid);
+
+    @Insert("insert into sys_role_user(uid,rid) values(#{uid},#{rid})")
+    int insertRoleUser(Integer uid,Integer rid);
 }
