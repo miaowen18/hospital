@@ -3,6 +3,7 @@ package com.itgaoshu.hospital.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.itgaoshu.hospital.bean.*;
+import com.itgaoshu.hospital.service.impl.CaiGouServiceImpl;
 import com.itgaoshu.hospital.service.impl.RecordServiceImpl;
 import com.itgaoshu.hospital.service.impl.StoreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,15 @@ public class StoreController {//查询药品仓库
     private StoreServiceImpl storeService;
     @Autowired
     private RecordServiceImpl recordService;
+    @Autowired
+    private CaiGouServiceImpl caiGouService;
     //入库单
     @RequestMapping("adddrugs")
     @ResponseBody
     public Object adddrugs(Drugstore drugstore,Jilu jilu){
         Integer store=0;
         Integer upstore=0;
-        System.out.println(drugstore);
-        System.out.println(jilu);
         int count=storeService.queryList1(drugstore);
-        System.out.println(count);
        /*if(count==1){
             //修改 添加
             upstore=storeService.update(drugstore);
@@ -53,9 +53,6 @@ public class StoreController {//查询药品仓库
     public Object selectdgty(Drugdictionary drugdictionary,Integer page,Integer limit){
         PageHelper.startPage(page,limit);
         List<Drugdictionary> list=storeService.selectdgty(drugdictionary);
-        for (Drugdictionary dru:list) {
-            System.out.println(dru);
-        }
         PageInfo pageInfo=new PageInfo(list);
         Map<String,Object> map=new HashMap<>();
         map.put("msg","");
@@ -64,8 +61,14 @@ public class StoreController {//查询药品仓库
         map.put("data",pageInfo.getList());
         return map;
     }
+    @RequestMapping("selnumber")
+    @ResponseBody//查询当前库存
+    public Object selnumber(Drugstore drugstore){
+        int drugstorenum=storeService.selnumer(drugstore);
+        return drugstorenum;
+    }
 
-    //库存查询
+    //出库单页面
     @RequestMapping("selectdrugstore")
     @ResponseBody
     public Object selectdrugstore(Drugstore drugstore,Integer page,Integer limit){
@@ -79,13 +82,20 @@ public class StoreController {//查询药品仓库
         map.put("data",pageInfo.getList());
         return map;
     }
-    //修改页面
+
+    //库存查询页面
     @RequestMapping("updrug")
     @ResponseBody//编辑
-    public Object updrug(){
-
-        return "";
+    public Object updrug(Drugstore drugstore){
+        int num=storeService.update(drugstore);
+        if(num==1){
+            return "修改成功";
+        }else {
+            return "修改失败";
+        }
     }
+
+
     //type药品类型
     @RequestMapping("seltype")
     @ResponseBody
@@ -105,17 +115,14 @@ public class StoreController {//查询药品仓库
     @ResponseBody//产地
     public Object selarea(){
         List<Area> list=storeService.queryList1();
-        System.out.println(list);
         return list;
     }
-
     @RequestMapping("selskull")
     @ResponseBody//经办人
     public Object selskull(){
         List<Skull> list=storeService.queryList2();
         return list;
     }
-
     @RequestMapping("selupplier")
     @ResponseBody//查询供货单位
     public Object selupplier(){
@@ -123,6 +130,8 @@ public class StoreController {//查询药品仓库
         return list;
     }
 
+
+    //库存不足页面
     @RequestMapping("selectlackdrug")
     @ResponseBody//查询仓库不足的药品
     public Object selectlackdrug(Integer page,Integer limit){
@@ -137,17 +146,19 @@ public class StoreController {//查询药品仓库
      map.put("data",pageInfo.getList());
         return map;
     }
+    //库存不足页面
     @RequestMapping("addcaigou")
     @ResponseBody//添加采购
-    public Object addcaigou(){
-
-        return "";
+    public Object addcaigou(Caigou caigou){
+        int num=caiGouService.addCaiGou(caigou);
+        return num;
     }
+    //库存不足页面
     @RequestMapping("selcaigou")
     @ResponseBody//查询采购
     public Object selcaigou(Integer page,Integer limit){
         PageHelper.startPage(page,limit);
-        List<Caigou> list=storeService.queryList();
+        List<Caigou> list=caiGouService.queryList();
         PageInfo pageInfo=new PageInfo(list);
         Map<String,Object> map=new HashMap<>();
         map.put("msg","");
@@ -156,6 +167,15 @@ public class StoreController {//查询药品仓库
         map.put("data",pageInfo.getList());
         return map;
     }
+    //库存不足页面
+    @RequestMapping("delcaigou")
+    @ResponseBody//删除
+    public Object delcaigou(Integer caigouid){
+        int num=caiGouService.delcaigou(caigouid);
+        return num;
+    }
+
+    //过期提醒
     @RequestMapping("seldrugDateguoqi")
     @ResponseBody//查询过期药品
     public Object seldrugDateguoqi(Integer page,Integer limit){
@@ -169,17 +189,14 @@ public class StoreController {//查询药品仓库
         map.put("count",pageInfo.getTotal());
         return map;
     }
-    @RequestMapping("selnumber")
-    @ResponseBody
-    public Object selnumber(Drugstore drugstore){
-        int drugstorenum=storeService.selnumer(drugstore);
-
-        return drugstorenum;
-    }
     @RequestMapping("delguoqidurg")
     @ResponseBody//删除过期药品
-    public int delguoqidurg(){
-        return 0;
+    public int delguoqidurg(Integer rugstoreid,Jilu jilu){
+        int num=storeService.delguoqidurg(rugstoreid);
+        if(num==1){
+            recordService.insert(jilu);
+        }
+        return num;
     }
 
 }

@@ -16,6 +16,7 @@ public interface PharmacyService {
     List<Huishou> queryList();
     int  delpharymacy(Pharmacy pharmacy);
     int addhuishou(Huishou huishou);
+    int delhuishou(Integer huishouid);
     int selbaoqueName(Baoque baoque);
     int addbaoque(Baoque baoque);
     int upbaoquenum(Baoque baoque);

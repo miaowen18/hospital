@@ -45,6 +45,11 @@ public class PharmacyServiceImpl implements PharmacyService {
     }
 
     @Override
+    public int delhuishou(Integer huishouid) {
+        return huishouMapper.deleteByPrimaryKey(huishouid);
+    }
+
+    @Override
     public int selbaoqueName(Baoque baoque) {
         return baoqueMapper.selectCount(baoque);
     }

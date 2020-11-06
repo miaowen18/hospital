@@ -82,7 +82,7 @@
                         layer.msg("请输入数量")
                     } else {
                         $.post("../seldrugstore/addcaigou", {
-                            caigouname: data.drugstoreName,
+                            caigouname: data.drugstorename,
                             gonghuoshang: data.supplierName, danwei: data.unitName,
                             candi: data.areaName, leixing: data.typeName, shuliang: value
                         }, function (res) {
