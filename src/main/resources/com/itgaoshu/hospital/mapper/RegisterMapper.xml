@@ -459,4 +459,42 @@
   <select id="selectPrice" parameterType="Integer" resultType="Double">
     select b.price from bed b where b.bedId=#{bedId}
   </select>
+  <select id="select10" parameterType="pharmacy" resultType="pharmacy">
+    select p.*,u.unitname from pharmacy p,unit u <where> p.unit=u.unitId
+    <if test="pharmacyid!=null">
+       and pharmacyId=#{pharmacyid}
+    </if>
+
+  </where>
+  </select>
+  <select id="select11" parameterType="register" resultType="hospitalprice">
+    select hospitalpriceid,registerId registerid,durgname,durgnum,repiceprice,repicetotal,htime,state
+     from hospitalprice  where registerId=#{registerid} and state=#{state}
+  </select>
+  <insert id="insertDrug" parameterType="hospitalprice">
+    insert into hospitalprice(registerId,durgname,durgnum,repiceprice,repicetotal,htime,state)
+         values(#{registerid},#{durgname},#{durgnum},#{repiceprice},#{repicetotal},NOW(),#{state});
+  </insert>
+  <update id="updatePrice" parameterType="register">
+    update register set price=#{price}+price where registerid=#{registerid}
+  </update>
+  <update id="updateDrug" parameterType="hospitalprice">
+    update pharmacy set drugstorenum=drugstorenum-#{durgnum}
+    where pharmacyName=#{durgname}
+  </update>
+  <update id="updateInout" parameterType="hospitalprice">
+    update inoutpatienttype set unit=unit-#{durgnum}
+    where projectName=#{durgname}
+  </update>
+  <select id="select12" parameterType="inoutpatienttype" resultType="inoutpatienttype">
+    select i.*,u.unitname,p.projectName projectnames from inoutpatienttype i,unit u,projecttype p<where>
+    i.unit=u.unitId and i.bigproJectId=p.projectId
+    <if test="inoutpatientid!=null">
+      and inoutpatientId=#{inoutpatientid}
+    </if>
+  </where>
+  </select>
+  <update id="updateState" parameterType="register">
+    update register set endDate=NOW(),state=1 where registerid=#{registerid}
+  </update>
 </mapper>

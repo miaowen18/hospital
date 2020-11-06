@@ -19,4 +19,12 @@ public interface ZhuYuanService {
     int insertPay(Register register);
     Double selectPrice(Integer bedNum);
     Register select8(String userName);
+    List<Pharmacy> select10(Pharmacy pharmacy);
+    List<Hospitalprice> select11(Register register);
+    int  insertDrug(Hospitalprice hospitalprice);
+    int updatePrice(Register register);
+    int updateDrug(Hospitalprice hospitalprice);
+    List<Inoutpatienttype> select12(Inoutpatienttype inoutpatienttype);
+    int updateInout(Hospitalprice hospitalprice);
+    int updateState(Register register);
 }

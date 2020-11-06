@@ -86,5 +86,45 @@ public class ZhuYuanServiceImpl implements ZhuYuanService {
         return registerMapper.select8(userName);
     }
 
+    @Override
+    public List<Pharmacy> select10(Pharmacy pharmacy) {
+        return registerMapper.select10(pharmacy);
+    }
+
+    @Override
+    public List<Hospitalprice> select11(Register register) {
+        return registerMapper.select11(register);
+    }
+
+    @Override
+    public int insertDrug(Hospitalprice hospitalprice) {
+        return registerMapper.insertDrug(hospitalprice);
+    }
+
+    @Override
+    public int updatePrice(Register register) {
+        return registerMapper.updatePrice(register);
+    }
+
+    @Override
+    public int updateDrug(Hospitalprice hospitalprice) {
+        return registerMapper.updateDrug(hospitalprice);
+    }
+
+    @Override
+    public List<Inoutpatienttype> select12(Inoutpatienttype inoutpatienttype) {
+        return registerMapper.select12(inoutpatienttype);
+    }
+
+    @Override
+    public int updateInout(Hospitalprice hospitalprice) {
+        return registerMapper.updateInout(hospitalprice);
+    }
+
+    @Override
+    public int updateState(Register register) {
+        return registerMapper.updateState(register);
+    }
+
 
 }

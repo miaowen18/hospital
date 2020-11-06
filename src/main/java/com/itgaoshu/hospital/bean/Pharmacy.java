@@ -30,6 +30,16 @@ public class Pharmacy {
 
     private String skullbatch;
 
+    private String unitname;
+
+    public String getUnitname() {
+        return unitname;
+    }
+
+    public void setUnitname(String unitname) {
+        this.unitname = unitname;
+    }
+
     public Integer getPharmacyid() {
         return pharmacyid;
     }

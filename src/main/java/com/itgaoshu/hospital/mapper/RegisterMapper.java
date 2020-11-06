@@ -49,4 +49,21 @@ public interface RegisterMapper {
     int insertPay(Register register);
 
     Double selectPrice(Integer bedNum);
+
+    List<Pharmacy> select10(Pharmacy pharmacy);
+
+    List<Hospitalprice> select11(Register register);
+
+    int  insertDrug(Hospitalprice hospitalprice);
+
+    int updatePrice(Register register);
+
+    int updateDrug(Hospitalprice hospitalprice);
+
+    int updateInout(Hospitalprice hospitalprice);
+
+    List<Inoutpatienttype> select12(Inoutpatienttype inoutpatienttype);
+
+    int updateState(Register register);
+
 }

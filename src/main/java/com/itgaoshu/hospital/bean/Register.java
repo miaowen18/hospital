@@ -49,6 +49,16 @@ public class Register {
 
     private Integer doctorId;
 
+    private Double prices;
+
+    public Double getPrices() {
+        return prices;
+    }
+
+    public void setPrices(Double prices) {
+        this.prices = prices;
+    }
+
     public Integer getRegisterid() {
         return registerid;
     }
