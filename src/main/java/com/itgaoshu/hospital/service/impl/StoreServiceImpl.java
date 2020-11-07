@@ -13,8 +13,6 @@ public class StoreServiceImpl implements StoreService {
     @Autowired
     private DrugstoreMapper drugstoreMapper;
     @Autowired
-    private CaigouMapper caigouMapper;
-    @Autowired
     private DrugdictionaryMapper drugdictionaryMapper;
     @Autowired
     private AreaMapper areaMapper;
@@ -93,5 +91,23 @@ public class StoreServiceImpl implements StoreService {
         return drugstoreMapper.deleteByPrimaryKey(rugstoreid);
     }
 
+    @Override
+    public int selbaoqueName(Pharmacy pharmacy) {
+        return drugstoreMapper.selbaoqueName(pharmacy);
+    }
 
+    @Override
+    public int seldrugnamenum(Drugstore drugstore) {
+        return drugstoreMapper.seldrugnamenum(drugstore);
+    }
+
+    @Override
+    public int updatedrugnumber(Drugstore drugstore) {
+        return drugstoreMapper.updatedrugnumber(drugstore);
+    }
+
+    @Override
+    public int deldrugnamenum(Drugstore drugstore) {
+        return drugstoreMapper.deldrugnamenum(drugstore);
+    }
 }

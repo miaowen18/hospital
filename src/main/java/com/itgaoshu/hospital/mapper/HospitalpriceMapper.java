@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface HospitalpriceMapper {
+    List<Hospitalprice> selDrugs(Hospitalprice hospitalprice);
+    int upd(Hospitalprice hospitalprice);
     int countByExample(HospitalpriceExample example);
 
     int deleteByExample(HospitalpriceExample example);

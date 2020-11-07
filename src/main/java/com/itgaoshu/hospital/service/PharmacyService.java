@@ -1,9 +1,6 @@
 package com.itgaoshu.hospital.service;
 
-import com.itgaoshu.hospital.bean.Baoque;
-import com.itgaoshu.hospital.bean.Huishou;
-import com.itgaoshu.hospital.bean.Pharmacy;
-import com.itgaoshu.hospital.bean.PharmacyVo;
+import com.itgaoshu.hospital.bean.*;
 
 import java.util.List;
 
@@ -20,4 +17,12 @@ public interface PharmacyService {
     int selbaoqueName(Baoque baoque);
     int addbaoque(Baoque baoque);
     int upbaoquenum(Baoque baoque);
+    int upbaoquenumber(Drugstore drugstore);
+    int selbaoquenamenum(Drugstore drugstore);
+    int delbaoquenamenum();
+    int uppharmacynumber(Drugstore drugstore);
+    int selpharymacyname(Pharmacy pharmacy);
+    int uppharymacy(Pharmacy pharmacy);
+    int upbaoquenumber1(Pharmacy pharmacy);
+    int addpharmacy(Pharmacy pharmacy);
 }

@@ -2,9 +2,10 @@ package com.itgaoshu.hospital.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.itgaoshu.hospital.bean.Pay;
-import com.itgaoshu.hospital.bean.Register;
+import com.itgaoshu.hospital.bean.*;
 import com.itgaoshu.hospital.service.ZhuYuanService;
+import com.itgaoshu.hospital.service.impl.PharmacyServiceImpl;
+import com.itgaoshu.hospital.service.impl.RecordServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ import java.util.Map;
 public class ZhuYuanController {
     @Autowired
     private ZhuYuanService zhuYuanService;
+    @Autowired
+    private RecordServiceImpl recordService;
 
     @RequestMapping("liao/admin")
     public String inadmin(){
@@ -201,5 +204,41 @@ public class ZhuYuanController {
         return zhuYuanService.selectPay();
     }
 
-
+    @RequestMapping("liao/selDrugs")
+    @ResponseBody
+    public Object selDrugs(Integer page, Integer limit, Hospitalprice hospitalprice){
+        hospitalprice.setState(0);
+        PageHelper.startPage(page,limit);
+        List<Hospitalprice> list=recordService.selDrugs(hospitalprice);
+        PageInfo pageInfo=new PageInfo(list);
+        Map<String,Object> map=new HashMap<>();
+        map.put("msg","");
+        map.put("code",0);
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
+        return map;
+    }
+    @RequestMapping("liao/selPhar")
+    @ResponseBody
+    public Object selPhar(Integer page,Integer limit,Hospitalprice hospitalprice){
+        hospitalprice.setState(2);
+        PageHelper.startPage(page,limit);
+        List<Hospitalprice> list=recordService.selDrugs(hospitalprice);
+        PageInfo pageInfo=new PageInfo(list);
+        Map<String,Object> map=new HashMap<>();
+        map.put("msg","");
+        map.put("code",0);
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
+        return map;
+    }
+    //改变患者的药品状态
+    @RequestMapping("liao/updDrug")
+    @ResponseBody
+    public Object updItem(Hospitalprice hospitalprice){
+        System.out.println(hospitalprice);
+        int upd = recordService.upd(hospitalprice);
+        //System.out.println(upd);
+        return "取药成功";
+    }
 }

@@ -19,4 +19,8 @@ public interface StoreService {
     List<Drugstore> queryList(Drugstore drugstore);
     List<Drugstore> queryQue();
     int delguoqidurg(Integer rugstoreid);
+    int selbaoqueName(Pharmacy pharmacy);
+    int seldrugnamenum(Drugstore drugstore);
+    int updatedrugnumber(Drugstore drugstore);
+    int deldrugnamenum(Drugstore drugstore);
 }

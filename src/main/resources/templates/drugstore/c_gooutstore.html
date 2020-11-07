@@ -122,7 +122,7 @@
                         layer.confirm('确定超出补给吗', function (index) {
                             var jbr= $("#jingbanren").val();
                             $.post("../chuku/updatedrugnumber", {
-                                rugstoreId: data.rugstoreId,
+                                rugstoreid: data.rugstoreid,
                                 drugstorenum: value,
                                 drugstorename: data.drugstorename,
                                 jiluname:data.drugstoreName,jilutype:"紧急补给药房",jilupeople:jbr,
@@ -149,10 +149,10 @@
                     else {
                         var jbr= $("#jingbanren").val();
                         $.post("../chuku/updatedrugnumber", {
-                            rugstoreId: data.rugstoreId,
+                            rugstoreid: data.rugstoreid,
                             drugstorenum: value,
-                            drugstoreName: data.drugstoreName,
-                            jiluname:data.drugstoreName,jilutype:"紧急补给药房",jilupeople:jbr,
+                            drugstorename: data.drugstorename,
+                            jiluname:data.drugstorename,jilutype:"紧急补给药房",jilupeople:jbr,
                             jilupihao:data.batch,jilunumber:value
                         }, function (res) {
                             if (res == 1) {
@@ -264,19 +264,19 @@
                             var jbr = $("#jingbanren").val();
                             //向服务端发送删除指令
                             $.post("../chuku/addpharmacy", {
-                                rugstoreId: data.rugstoreId,
-                                warehouseId: data.warehouseId,
+                                rugstoreid: data.rugstoreid,
+                                warehouseid: data.warehouseid,
                                 pharmacyname: data.drugstorename,
                                 drugstorenum: value,
-                                skullId: data.skullId,
+                                skullid: data.skullid,
                                 unit: data.unitId,
-                                sellingPrice: data.sellingPrice,
+                                sellingprice: data.sellingprice,
                                 area: data.areaId,
-                                produceDate: sheng,
-                                validDate: you,
+                                producedate: sheng,
+                                validdate: you,
                                 skullbatch: data.batch,
                                 type: data.typeId,
-                                jiluname: data.drugstoreName, jilutype: "正常出库", jilupeople: jbr,
+                                jiluname: data.drugstorename, jilutype: "正常出库", jilupeople: jbr,
                                 jilupihao: data.batch, jilunumber: value
                             }, function (res) {
                                 if (res == 1) {

@@ -73,6 +73,13 @@
     hospitalpriceid, registerId, durgname, durgnum, repiceprice, repicetotal, htime, 
     state
   </sql>
+  <update id="upd" parameterType="Hospitalprice">
+        update hospitalprice set state=2,htime=NOW() where state=0 and registerId=#{registerid}
+  </update>
+  <select id="selDrugs" parameterType="Hospitalprice" resultType="Hospitalprice">
+    select hospitalpriceid,registerId registerid,durgname,durgnum,repiceprice,repicetotal,htime,state
+        from hospitalprice where state=#{state} and registerId=#{registerid} order by htime asc
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.HospitalpriceExample" >
     select
     <if test="distinct" >

@@ -81,6 +81,12 @@ public class Drugstore {
 
     private Date producedate;
 
+    private Date validdate;
+
+    private Integer drugstorenum;
+
+    private String batch;
+
     @Override
     public String toString() {
         return "Drugstore{" +
@@ -106,12 +112,6 @@ public class Drugstore {
                 ", batch='" + batch + '\'' +
                 '}';
     }
-
-    private Date validdate;
-
-    private Integer drugstorenum;
-
-    private String batch;
 
     public Integer getRugstoreid() {
         return rugstoreid;

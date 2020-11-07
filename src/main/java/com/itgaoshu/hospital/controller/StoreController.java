@@ -7,11 +7,19 @@ import com.itgaoshu.hospital.service.impl.CaiGouServiceImpl;
 import com.itgaoshu.hospital.service.impl.RecordServiceImpl;
 import com.itgaoshu.hospital.service.impl.StoreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.WebRequest;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,31 +36,58 @@ public class StoreController {//查询药品仓库
     //入库单
     @RequestMapping("adddrugs")
     @ResponseBody
-    public Object adddrugs(Drugstore drugstore,Jilu jilu){
+    public Object adddrugs(lDrug lDrug,Jilu jilu) throws ParseException {
         Integer store=0;
         Integer upstore=0;
+        Drugstore drugstore=new Drugstore();
+      //  drugstoreName, supplierId,skullId, warehouseId, unit,tradePrice, sellingPrice, area,
+       // type, produceDate, validDate,drugstorenum, batch
+        drugstore.setDrugstorename(lDrug.getDrugstoreName());
+        drugstore.setSupplierid(lDrug.getSupplierId());
+        drugstore.setSkullid(lDrug.getSkullId());
+        drugstore.setWarehouseid(lDrug.getWarehouseId());
+        drugstore.setUnit(lDrug.getUnit());
+        drugstore.setTradeprice(lDrug.getTradePrice());
+        drugstore.setSellingprice(lDrug.getSellingPrice());
+        drugstore.setArea(lDrug.getArea());
+        drugstore.setType(lDrug.getType());
+        String produceDate=lDrug.getProduceDate();
+        String validDate=lDrug.getValidDate();
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+        Date produceDate1=format.parse(produceDate);
+        Date validDate1=format.parse(validDate);
+        drugstore.setProducedate(produceDate1);
+        drugstore.setValiddate(validDate1);
+        drugstore.setDrugstorenum(lDrug.getDrugstorenum());
+        drugstore.setBatch(lDrug.getBatch());
+        //查询是否已存在该药品
         int count=storeService.queryList1(drugstore);
-       /*if(count==1){
+       if(count==1){
             //修改 添加
             upstore=storeService.update(drugstore);
             System.out.println("up"+upstore);
             int cord=recordService.insert(jilu);
             System.out.println(cord);
-        }else{
+        }
+        if(count!=1){
             //添加记录
           int cord=recordService.insert(jilu);
             System.out.println(cord);
             //添加方法
             store=storeService.addStore(drugstore);
             System.out.println("st"+store);
-        }*/
+        }
         return store+upstore;
     }
+
     @RequestMapping("selectdgty")
     @ResponseBody//查询药品
     public Object selectdgty(Drugdictionary drugdictionary,Integer page,Integer limit){
         PageHelper.startPage(page,limit);
         List<Drugdictionary> list=storeService.selectdgty(drugdictionary);
+        for (Drugdictionary dg: list) {
+            System.out.println(dg);
+        }
         PageInfo pageInfo=new PageInfo(list);
         Map<String,Object> map=new HashMap<>();
         map.put("msg","");

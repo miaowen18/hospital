@@ -1,9 +1,6 @@
 package com.itgaoshu.hospital.service.impl;
 
-import com.itgaoshu.hospital.bean.Baoque;
-import com.itgaoshu.hospital.bean.Huishou;
-import com.itgaoshu.hospital.bean.Pharmacy;
-import com.itgaoshu.hospital.bean.PharmacyVo;
+import com.itgaoshu.hospital.bean.*;
 import com.itgaoshu.hospital.mapper.BaoqueMapper;
 import com.itgaoshu.hospital.mapper.HuishouMapper;
 import com.itgaoshu.hospital.mapper.PharmacyMapper;
@@ -62,5 +59,45 @@ public class PharmacyServiceImpl implements PharmacyService {
     @Override
     public int upbaoquenum(Baoque baoque) {
         return baoqueMapper.updateNum(baoque);
+    }
+
+    @Override
+    public int upbaoquenumber(Drugstore drugstore) {
+        return baoqueMapper.upbaoquenumber(drugstore);
+    }
+
+    @Override
+    public int selbaoquenamenum(Drugstore drugstore) {
+        return baoqueMapper.selbaoquenamenum(drugstore);
+    }
+
+    @Override
+    public int delbaoquenamenum() {
+        return baoqueMapper.delbaoquenamenum();
+    }
+
+    @Override
+    public int uppharmacynumber(Drugstore drugstore) {
+        return pharmacyMapper.uppharmacynumber(drugstore);
+    }
+
+    @Override
+    public int selpharymacyname(Pharmacy pharmacy) {
+        return pharmacyMapper.selpharymacyname(pharmacy);
+    }
+
+    @Override
+    public int uppharymacy(Pharmacy pharmacy) {
+        return pharmacyMapper.uppharymacy(pharmacy);
+    }
+
+    @Override
+    public int upbaoquenumber1(Pharmacy pharmacy) {
+        return baoqueMapper.upbaoquenumber1(pharmacy);
+    }
+
+    @Override
+    public int addpharmacy(Pharmacy pharmacy) {
+        return pharmacyMapper.insert(pharmacy);
     }
 }

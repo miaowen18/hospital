@@ -19,6 +19,20 @@ public class Hospitalprice {
 
     private Integer state;
 
+    @Override
+    public String toString() {
+        return "Hospitalprice{" +
+                "hospitalpriceid=" + hospitalpriceid +
+                ", registerid=" + registerid +
+                ", durgname='" + durgname + '\'' +
+                ", durgnum=" + durgnum +
+                ", repiceprice=" + repiceprice +
+                ", repicetotal=" + repicetotal +
+                ", htime=" + htime +
+                ", state=" + state +
+                '}';
+    }
+
     public Integer getHospitalpriceid() {
         return hospitalpriceid;
     }
