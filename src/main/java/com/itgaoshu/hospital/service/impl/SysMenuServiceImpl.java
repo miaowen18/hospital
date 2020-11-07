@@ -32,7 +32,7 @@ public class SysMenuServiceImpl implements SysMenuService {
     }
 
     @Override
-    public SysMenu selectMenuById(Integer id) {
+    public List<SysMenu> selectMenuById(Integer id) {
         return sysMenuMapper.selectMenuById(id);
     }
 
@@ -60,4 +60,5 @@ public class SysMenuServiceImpl implements SysMenuService {
     public List<SysMenu> selectChooseMenu(String title) {
         return sysMenuMapper.selectChooseMenu(title);
     }
+
 }

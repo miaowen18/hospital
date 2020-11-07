@@ -8,7 +8,7 @@ public interface SysMenuService {
     List<SysMenu> selectAllMenu();
     List<SysMenu> selectMenuByPid(Integer pid);
     List<SysMenu> selectByUserId(Integer userid);
-    SysMenu selectMenuById(Integer id);
+    List<SysMenu> selectMenuById(Integer id);
     int addMenu(SysMenu sysMenu);
     int updateMenu(SysMenu sysMenu);
     int deleteByPrimaryKey(Integer id);
