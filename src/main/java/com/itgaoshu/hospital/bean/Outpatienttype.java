@@ -6,12 +6,21 @@ public class Outpatienttype {
     private String projectname;
 
     private Integer unit;
+    private String unitname;
 
     private Integer bigprojectid;
 
     private Double price;
 
     private Integer ostate;
+
+    public String getUnitname() {
+        return unitname;
+    }
+
+    public void setUnitname(String unitname) {
+        this.unitname = unitname;
+    }
 
     public Integer getOutpatientid() {
         return outpatientid;

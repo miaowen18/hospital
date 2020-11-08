@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itgaoshu.hospital.mapper.XMJiaoFeiMapper">
+    <select id="selxiang" parameterType="Integer" resultType="Cashier">
+       select * from cashier where reportId=#{perid} and state=1 and mstate=0 ORDER BY cashier DESC
+   </select>
+
+    <select id="selshoux" parameterType="Integer" resultType="Integer">
+        select sum(repicetotal) from  cashier where  reportId=#{perid} and state =1 and mstate=0
+    </select>
+
+    <update id="updxiang" parameterType="Integer" >
+        UPDATE cashier SET mstate = 1 WHERE reportId=#{perid} and mstate = 0
+    </update>
+
+    <select id="selcha" parameterType="Integer" resultType="Cashier">
+        select  * from  cashier where reportId=#{perid} and state=1 and ostate=1 and mstate=1 ORDER BY cashier DESC
+    </select>
+
+    <update id="addjie" parameterType="Cashier">
+      UPDATE cashier SET jie = #{jie} WHERE reportId=#{reportid} and cashier = #{cashier}
+    </update>
+</mapper>

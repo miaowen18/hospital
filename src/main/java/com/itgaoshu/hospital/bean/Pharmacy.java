@@ -15,6 +15,7 @@ public class Pharmacy {
     private Integer warehouseid;
 
     private Integer unit;
+    private String unitname;
 
     private Double sellingprice;
 
@@ -29,6 +30,14 @@ public class Pharmacy {
     private Integer drugstorenum;
 
     private String skullbatch;
+
+    public String getUnitname() {
+        return unitname;
+    }
+
+    public void setUnitname(String unitname) {
+        this.unitname = unitname;
+    }
 
     public Integer getPharmacyid() {
         return pharmacyid;

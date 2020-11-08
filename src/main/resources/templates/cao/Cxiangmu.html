@@ -239,8 +239,8 @@
                         ,limits: [5, 10, 15]
                         ,limit: 5//默认采用3
                         ,cols: [[   //列表    数据
-                            {field:'projectName', title:'药品名称',align:'center',width:"25%"}
-                            ,{field:'unitName', title:'单位',align:'center',width:"25%"}
+                            {field:'projectname', title:'药品名称',align:'center',width:"25%"}
+                            ,{field:'unitname', title:'单位',align:'center',width:"25%"}
                             ,{field:'price', title:'单价',align:'center',width:"25%"}
                             ,{fixed: 'right', title:'操作', toolbar: '#userBar',align:'center',width:'25%'}
                         ]]
@@ -323,8 +323,8 @@
                             content: $("#drugnum"),
                             area: ['300px', '200px']
                         });
-                        $("#uni").text(data.unitName);//单位
-                        $("#mename").val(data.projectName);//药品名字
+                        $("#uni").text(data.unitname);//单位
+                        $("#mename").val(data.projectname);//药品名字
                         $("#sellingPrice").val(data.price);//药品单价
                         $("#ostate").val(data.ostate);//项目状态证明要不要检查
                     }
@@ -350,7 +350,7 @@
             }else if(reid==""){//判断是否选中用户如果没有选中用户着提示
                 layer.msg("请选择患者");
             }else{
-                $.post("../caoout/addchuo",{"reportId":reid,"durgname":mename,"durgnum":num,"repiceprice":sellingPrice,"repicetotal":price,"drugstorenum":num,"ostate":ostate},function(obj){
+                $.post("../caoout/addchuo",{"reportid":reid,"durgname":mename,"durgnum":num,"repiceprice":sellingPrice,"repicetotal":price,"drugstorenum":num,"ostate":ostate},function(obj){
                     layer.msg("添加成功");
                     layer.close(mainIndex);
                     hua.reload();

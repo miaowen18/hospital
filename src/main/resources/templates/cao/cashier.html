@@ -226,10 +226,10 @@
                         ,limits: [5, 10, 15]
                         ,limit: 5//默认采用3
                         ,cols: [[   //列表    数据
-                        {field:'pharmacyName', title:'药品名称',align:'center',width:"20%"}
+                        {field:'pharmacyname', title:'药品名称',align:'center',width:"20%"}
                         ,{field:'drugstorenum', title:'库存',align:'center',width:"20%"}
                         ,{field:'unitname', title:'单位',align:'center',width:"20%"}
-                        ,{field:'sellingPrice', title:'单价',align:'center',width:"20%"}
+                        ,{field:'sellingprice', title:'单价',align:'center',width:"20%"}
                         ,{fixed: 'right', title:'操作', toolbar: '#userBar',align:'center',width:'20%'}
                     ]]
                 })
@@ -316,8 +316,8 @@
             });
             $("#uni").text(data.unitname);//单位
             $("#kunum").val(data.drugstorenum);//库存
-            $("#mename").val(data.pharmacyName);//药品名字
-            $("#sellingPrice").val(data.sellingPrice);//药品单价
+            $("#mename").val(data.pharmacyname);//药品名字
+            $("#sellingPrice").val(data.sellingprice);//药品单价
             }
         }
         //点击添加药品数量的提交按钮
@@ -345,7 +345,7 @@
                 $.post("../caocc/selchu",{"reid":reid,"mename":mename},function(obj){
                     //如果为零表示没有这个药则添加
                     if(obj==0){
-                        $.post("../caocc/addchu",{"reportId":reid,"durgname":mename,"durgnum":num,"repiceprice":sellingPrice,"repicetotal":price,"drugstorenum":num},function(obj){
+                        $.post("../caocc/addchu",{"reportid":reid,"durgname":mename,"durgnum":num,"repiceprice":sellingPrice,"repicetotal":price,"drugstorenum":num},function(obj){
                             layer.msg("添加成功");
                             layer.close(mainIndex);
                             hua.reload();
@@ -353,7 +353,7 @@
                         })
                     }else{
                         //如果有则修改数量
-                        $.post("../caocc/updchu",{"reportId":reid,"durgname":mename,"durgnum":num,"repicetotal":price,"drugstorenum":num},function(obj){
+                        $.post("../caocc/updchu",{"reportid":reid,"durgname":mename,"durgnum":num,"repicetotal":price,"drugstorenum":num},function(obj){
                             layer.msg("添加成功");
                             layer.close(mainIndex);
                             //刷新处方表格

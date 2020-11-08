@@ -53,12 +53,9 @@ public class MenZhenController {
         List<Report> list = menZhenService.selectReportByState();
         PageInfo pageInfo = new PageInfo(list);
         Map<String, Object> map= new HashMap<String, Object>();
-        //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
         map.put("code", 0);
         map.put("msg", "");
-        //将全部数据的条数作为count传给前台（一共多少条）
         map.put("count", pageInfo.getTotal());
-        //将分页后的数据返回（每页要显示的数据）
         map.put("data", pageInfo.getList());
         return map;
     }
