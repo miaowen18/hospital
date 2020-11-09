@@ -497,4 +497,7 @@
   <update id="updateState" parameterType="register">
     update register set endDate=NOW(),state=1 where registerid=#{registerid}
   </update>
+  <delete id="deleteDrug" parameterType="hospitalprice">
+    delete from hospitalprice where hospitalpriceid=#{hospitalpriceid}
+  </delete>
 </mapper>
