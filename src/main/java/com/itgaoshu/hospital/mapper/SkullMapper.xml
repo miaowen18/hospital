@@ -66,9 +66,26 @@
   <sql id="Base_Column_List" >
     skullId, skullName
   </sql>
+  <select id="findAllSkull" parameterType="Skull" resultType="Skull">
+    select * from skull
+    <where>
+      <if test="skullid !=null">
+        skullid=#{skullid}
+      </if>
+      <if test="skullname !=null">
+        skullname=#{skullname}
+      </if>
+    </where>
+  </select>
   <select id="queryList" resultType="skull">
     select * from skull
   </select>
+  <insert id="addSkull" parameterType="Skull">
+    insert into skull values(#{skullid},#{skullname});
+  </insert>
+  <update id="editSkull" parameterType="Skull" >
+    update skull set skullname=#{skullname} where skullid=#{skullid}
+  </update>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.SkullExample" >
     select
     <if test="distinct" >

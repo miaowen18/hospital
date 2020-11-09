@@ -3,8 +3,10 @@ package com.itgaoshu.hospital.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.itgaoshu.hospital.bean.Area;
+import com.itgaoshu.hospital.bean.Skull;
 import com.itgaoshu.hospital.bean.Warehuose;
 import com.itgaoshu.hospital.service.impl.AreaServiceImpl;
+import com.itgaoshu.hospital.service.impl.SkullServiceImpl;
 import com.itgaoshu.hospital.service.impl.WareHuoseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ public class ShuJuController {
     private AreaServiceImpl areaService;
     @Autowired
     private WareHuoseServiceImpl wareHuoseService;
+    @Autowired
+    private SkullServiceImpl skullService;
     @RequestMapping("toArea")
     public String toArea(){
         return "view/center/area";
@@ -29,7 +33,11 @@ public class ShuJuController {
     public String toWarehuose(){
         return "view/center/warehuose";
     }
-
+    @RequestMapping("toSkull")
+    public String toSkull(){
+        return "view/center/skull";
+    }
+    //产地
     @RequestMapping("area/findAllArea")
     @ResponseBody
     public Object findAllArea(Integer page,Integer limit,Area area){
@@ -63,7 +71,7 @@ public class ShuJuController {
             return "添加成功";
         }
     }
-
+    //仓库
     @RequestMapping("warehouse/findAllWarehuose")
     @ResponseBody
     public Object findAllWarehuose(Integer page, Integer limit, Warehuose warehuose){
@@ -97,4 +105,48 @@ public class ShuJuController {
             return "添加成功";
         }
     }
+    @RequestMapping("skull/findAllSkull")
+    @ResponseBody
+    public Object findAllSkull(Integer page, Integer limit, Skull skull){
+        PageHelper.startPage(page,limit);
+        List<Skull> list=skullService.findAllSkull(skull);
+        PageInfo pageInfo=new PageInfo(list);
+        Map<String,Object> map=new HashMap();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
+        return map;
+    }
+    @RequestMapping("skull/deleteSkull")
+    @ResponseBody
+    public Object deleteSkull(Integer skullid){
+        int num=skullService.deleteSkull(skullid);
+        if(num==0){
+            return "删除失败";
+        }else{
+            return "删除成功";
+        }
+    }
+    @RequestMapping("skull/addSkull")
+    @ResponseBody
+    public Object addSkull(Skull skull){
+        int num=skullService.addSkull(skull);
+        if(num==0){
+            return "添加失败";
+        }else{
+            return "添加成功";
+        }
+    }
+    @RequestMapping("skull/editSkull")
+    @ResponseBody
+    public Object editSkull(Skull skull){
+        int num=skullService.editSkull(skull);
+        if(num==0){
+            return "修改失败";
+        }else{
+            return "修改成功";
+        }
+    }
+
 }
