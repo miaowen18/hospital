@@ -153,6 +153,9 @@ public class ZhuYuanController {
         register.setState(1);
         register.setUserName(userNames);
         List<Register> selreg=zhuYuanService.select(register);
+        for(Register r:selreg){
+            r.setPrices(r.getMoney()-r.getPrice());
+        }
         PageInfo pageInfo = new PageInfo(selreg);
         Map<String, Object> tableData = new HashMap<String, Object>();
         //这是layui要求返回的json数据格式
@@ -204,7 +207,7 @@ public class ZhuYuanController {
         return zhuYuanService.selectPay();
     }
 
-    @RequestMapping("liao/selDrugs")
+   /* @RequestMapping("liao/selDrugs")
     @ResponseBody
     public Object selDrugs(Integer page, Integer limit, Hospitalprice hospitalprice){
         hospitalprice.setState(0);
@@ -217,7 +220,7 @@ public class ZhuYuanController {
         map.put("count",pageInfo.getTotal());
         map.put("data",pageInfo.getList());
         return map;
-    }
+    }*/
     @RequestMapping("liao/selPhar")
     @ResponseBody
     public Object selPhar(Integer page,Integer limit,Hospitalprice hospitalprice){
@@ -240,5 +243,180 @@ public class ZhuYuanController {
         int upd = recordService.upd(hospitalprice);
         //System.out.println(upd);
         return "取药成功";
+    }
+    //查询药品selDrug
+    @RequestMapping("liao/selDrug")
+    @ResponseBody
+    public Object select10(Integer page,Integer limit){
+        //分页查询
+        PageHelper.startPage(page, limit);
+        Pharmacy pharmacy=new Pharmacy();
+        List<Pharmacy> selreg = zhuYuanService.select10(pharmacy);
+        PageInfo pageInfo = new PageInfo(selreg);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        //把数据返回到layui中
+        return tableData;
+    }
+    //查询药品库存数量
+    @RequestMapping("liao/selNum")
+    @ResponseBody
+    public Object selNum(Integer pharmacyid){
+        Pharmacy pharmacy=new Pharmacy();
+        pharmacy.setPharmacyid(pharmacyid);
+        List<Pharmacy> listAll =zhuYuanService.select10(pharmacy);
+        return listAll;
+    }
+    //查询用户使用的药品信息
+    @RequestMapping("liao/selDrugs")
+    @ResponseBody
+    public Object select11(Integer page,Integer limit,Register register){
+        //分页查询
+        PageHelper.startPage(page, limit);
+        register.setState(0);
+        List<Hospitalprice> selreg = zhuYuanService.select11(register);
+        PageInfo pageInfo = new PageInfo(selreg);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        //把数据返回到layui中
+        return tableData;
+    }
+    //增加用户使用的药品并修改已用金额
+    @RequestMapping("liao/addDrug")
+    @ResponseBody
+    public Object insertDrug(Hospitalprice hospitalprice){
+        Integer i=hospitalprice.getDurgnum();
+        Double d=hospitalprice.getRepiceprice();
+        Double total=i*d;
+        hospitalprice.setRepicetotal(total);
+        hospitalprice.setState(0);
+        int result=zhuYuanService.insertDrug(hospitalprice);
+        if(result>0){
+            //修改已用金额即总价
+            Register register=new Register();
+            register.setRegisterid(hospitalprice.getRegisterid());
+            register.setPrice(hospitalprice.getRepicetotal());
+            int r2=zhuYuanService.updatePrice(register);
+            //修改库存
+            int r=zhuYuanService.updateDrug(hospitalprice);
+            return "添加成功";
+        }else {
+            return "添加失败";
+        }
+    }
+    //查询项目
+    @RequestMapping("liao/selItems")
+    @ResponseBody
+    public Object select12(Integer page,Integer limit) {
+        Inoutpatienttype inoutpatienttype=new Inoutpatienttype();
+        //分页查询
+        PageHelper.startPage(page, limit);
+        Pharmacy pharmacy = new Pharmacy();
+        List<Inoutpatienttype> selreg = zhuYuanService.select12(inoutpatienttype);
+        PageInfo pageInfo = new PageInfo(selreg);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        //把数据返回到layui中
+        return tableData;
+    }
+    //查询用户使用的项目信息
+    @RequestMapping("liao/selItem")
+    @ResponseBody
+    public Object select13(Integer page,Integer limit,Register register){
+        //分页查询
+        PageHelper.startPage(page, limit);
+        register.setState(3);
+        List<Hospitalprice> selreg = zhuYuanService.select11(register);
+        PageInfo pageInfo = new PageInfo(selreg);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        //把数据返回到layui中
+        return tableData;
+    }
+    //增加用户使用的项目并修改已用金额
+    @RequestMapping("liao/addItem")
+    @ResponseBody
+    public Object insertInout(Hospitalprice hospitalprice){
+        hospitalprice.setDurgnum(1);
+        hospitalprice.setRepicetotal(hospitalprice.getRepiceprice());
+        hospitalprice.setState(3);
+        int result=zhuYuanService.insertDrug(hospitalprice);
+        if(result>0){
+            //修改已用金额即总价
+            Register register=new Register();
+            register.setRegisterid(hospitalprice.getRegisterid());
+            register.setPrice(hospitalprice.getRepicetotal());
+            int r3=zhuYuanService.updatePrice(register);
+            return "添加成功了";
+        }else {
+            return "添加失败";
+        }
+    }
+    //查询药品是否剩余
+    @RequestMapping("liao/selYaos")
+    @ResponseBody
+    public Object select13(Register register) {
+        register.setState(0);
+        List<Hospitalprice> selreg = zhuYuanService.select11(register);
+        return selreg;
+    }
+    //办理出院手续
+    @RequestMapping("liao/updLeave")
+    @ResponseBody
+    public Object update3(Register register) {
+        int result=zhuYuanService.updateState(register);
+        if(result>0){
+            return "成功出院";
+        }else{
+            return "出院失败";
+        }
+    }
+    //办理出院手续
+    @RequestMapping("liao/delDrug")
+    @ResponseBody
+    public Object delete3(Integer registerid,Double repicetotal,Integer hospitalpriceid,String durgname,Integer durgnum) {
+        Hospitalprice h=new Hospitalprice();
+        h.setHospitalpriceid(hospitalpriceid);
+        int i=zhuYuanService.deleteDrug(h);
+        if (i == 1) {
+            h.setDurgname(durgname);
+            h.setDurgnum(0-durgnum);
+            int j = zhuYuanService.updateDrug(h);
+            if (j == 1) {
+                Register register=new Register();
+                register.setRegisterid(registerid);
+                register.setPrice(0-repicetotal);
+                int z=zhuYuanService.updatePrice(register);
+                return "移除成功";
+            } else {
+                return "移除失败";
+            }
+        } else {
+            return "移除失败";
+        }
     }
 }
