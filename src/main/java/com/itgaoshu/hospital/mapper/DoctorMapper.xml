@@ -29,7 +29,7 @@
   </select>
 
   <update id="editDoctor" parameterType="doctor">
-        update doctor set departmentId=#{departmentId},registeredId=#{registeredId},dstate=#{dstate} where doctorId=#{doctorId}
+        update doctor set doctorName=#{doctorName},departmentId=#{departmentId},registeredId=#{registeredId},dstate=#{dstate} where doctorId=#{doctorId}
   </update>
 
   <select id="findAllDepartments" resultType="Departments">

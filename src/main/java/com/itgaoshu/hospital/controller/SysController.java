@@ -121,4 +121,19 @@ public class SysController {
     public String toUnit() {
         return "view/center/unit";
     }
+
+    @RequestMapping("toProjectTypeManage")
+    public String toProjectTypeManage() {
+        return "view/center/projectTypeManage";
+    }
+
+//    @RequestMapping("toPaiban")
+//    public String toPaiban() {
+//        return "view/center/paiban";
+//    }
+
+    @RequestMapping("toDrugdictionary")
+    public String toDrugdictionary() {
+        return "view/center/drugdictionary";
+    }
 }
