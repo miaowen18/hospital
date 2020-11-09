@@ -68,4 +68,18 @@ public interface RegisterMapper {
 
     int deleteDrug(Hospitalprice hospitalprice);
 
+    List<Registeredtype> selectRegisteredType();
+
+    int insertRegisteredType(Registeredtype registeredtype);
+
+    int updateRegisteredType(Registeredtype registeredtype);
+
+    List<Projecttype> select15();
+
+    int insertProjectType(String projectname);
+
+    List<Outpatienttype> select16();
+
+    List<Inoutpatienttype> select17();
+
 }

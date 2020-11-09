@@ -500,4 +500,32 @@
   <delete id="deleteDrug" parameterType="hospitalprice">
     delete from hospitalprice where hospitalpriceid=#{hospitalpriceid}
   </delete>
+  <select id="selectRegisteredType" resultType="Registeredtype">
+    select * from Registeredtype
+  </select>
+  <insert id="insertRegisteredType" parameterType="Registeredtype">
+    insert into Registeredtype values(null,#{type},#{price})
+  </insert>
+  <update id="updateRegisteredType" parameterType="Registeredtype">
+    update Registeredtype set type=#{type},price=#{price} where registeredId=#{registeredId}
+  </update>
+  <select id="select15" resultType="projecttype">
+    select p.projectId projectid,p.projectName projectname from projecttype p
+  </select>
+  <insert id="insertProjectType" parameterType="String">
+    insert into projecttype values(null,#{projectName})
+  </insert>
+  <select id="select16" resultType="Outpatienttype">
+    SELECT o.ostate, o.outpatientId,p.projectName pprojectname,o.projectName projectname,p.projectId projectid,u.unitName,u.unitId unitid ,o.price from outpatienttype o,unit u, projecttype p where o.unit=u.unitid and p.projectid=o.bigprojectid
+
+    <if test="projectName!=null and projectName!=''">
+      and  o.projectName like concat('%',concat(#{projectName},'%'))
+    </if> order by o.outpatientId desc
+  </select>
+  <select id="select17" resultType="Inoutpatienttype">
+    SELECT i.inoutpatientId,p.projectName pprojectname,i.projectName projectname,p.projectId projectid,u.unitName,u.unitId unitid ,i.price from inoutpatienttype i,unit u, projecttype p where i.unit=u.unitid and p.projectid=i.bigprojectid
+    <if test="projectName!=null and projectName!=''">
+      and  i.projectName like concat('%',concat(#{projectName},'%'))
+    </if> order by i.inoutpatientId desc
+  </select>
 </mapper>

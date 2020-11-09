@@ -28,7 +28,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">类别:</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="projectName"  autocomplete="off" class="layui-input" >
+                            <input type="text" name="projectname"  autocomplete="off" class="layui-input" >
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -55,8 +55,8 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">类别:</label>
                             <div class="layui-input-inline">
-                                <input type="hidden" name="projectId">
-                                <input type="text" name="projectName" lay-verify="required"   placeholder="请输入类别" autocomplete="off"
+                                <input type="hidden" name="projectid">
+                                <input type="text" name="projectname" lay-verify="required"   placeholder="请输入类别" autocomplete="off"
                                        class="layui-input">
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">收费项:</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="projectName"  autocomplete="off" class="layui-input" >
+                            <input type="text" name="projectname"  autocomplete="off" class="layui-input" >
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -106,7 +106,7 @@
                             <label class="layui-form-label">收费项:</label>
                             <div class="layui-input-inline">
                                 <input type="hidden" name="outpatientId">
-                                <input type="text" name="projectName" lay-verify="required"   placeholder="请输收费项" autocomplete="off"
+                                <input type="text" name="projectname" lay-verify="required"   placeholder="请输收费项" autocomplete="off"
                                        class="layui-input">
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">项目大类:</label>
                             <div class="layui-input-inline">
-                                <select name="projectId" id="Projecttype1" lay-verify="required" lay-filter="xmFilter">
+                                <select name="projectid" id="Projecttype1" lay-verify="required" lay-filter="xmFilter">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -135,7 +135,7 @@
                        <div class="layui-inline">
                             <label class="layui-form-label">单位:</label>
                             <div class="layui-input-inline">
-                                <select name="unitId" id="unit" lay-verify="required" lay-filter="xmFilter">
+                                <select name="unitid" id="unit" lay-verify="required" lay-filter="xmFilter">
                                    <option value=""></option>
                                 </select>
                             </div>
@@ -187,7 +187,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">收费项目:</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="projectName"  autocomplete="off" class="layui-input" >
+                            <input type="text" name="projectname"  autocomplete="off" class="layui-input" >
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -206,8 +206,8 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">收费项:</label>
                             <div class="layui-input-inline">
-                                <input type="hidden" name="inoutpatientId">
-                                <input type="text" name="projectName" lay-verify="required"   placeholder="请输入收费项" autocomplete="off"
+                                <input type="hidden" name="inoutpatientid">
+                                <input type="text" name="projectname" lay-verify="required"   placeholder="请输入收费项" autocomplete="off"
                                        class="layui-input">
                             </div>
                         </div>
@@ -226,7 +226,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">项目大类:</label>
                             <div class="layui-input-inline">
-                                <select name="projectId" id="Projecttype2" lay-verify="required" lay-filter="xmFilter">
+                                <select name="projectid" id="Projecttype2" lay-verify="required" lay-filter="xmFilter">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -236,7 +236,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">单位:</label>
                             <div class="layui-input-inline">
-                                <select name="unitId" id="unit1" lay-verify="required" lay-filter="xmFilter">
+                                <select name="unitid" id="unit1" lay-verify="required" lay-filter="xmFilter">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -318,7 +318,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">科室:</label>
                             <div class="layui-input-inline">
-                                <select name="departmentId" id="departmentId" lay-verify="required" lay-filter="xmFilter">
+                                <select name="departmentId" id="departmentid" lay-verify="required" lay-filter="xmFilter">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -382,7 +382,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">类型:</label>
                             <div class="layui-input-inline">
-                                <input type="hidden" name="moneyId">
+                                <input type="hidden" name="moneyid">
                                 <input type="text" name="moneytype" lay-verify="required"   placeholder="请输入报销类型" autocomplete="off"
                                        class="layui-input">
                             </div>
@@ -447,8 +447,8 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'projectId', title:'ID',align:'center',width:'30%'}
-                ,{field:'projectName', title:'项目大类',align:'center',width:"70%"}
+                {field:'projectid', title:'ID',align:'center',width:'30%'}
+                ,{field:'projectname', title:'项目大类',align:'center',width:"70%"}
             ]]
         })
         //模糊查询
@@ -472,9 +472,9 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.projectName+'】这个类别吗', function(index){
+                layer.confirm('真的删除【'+data.projectname+'】这个类别吗', function(index){
                     //向服务端发送删除指令
-                    $.post("prjectType/deleteProjecttype",{projectId:data.projectId},function(res){
+                    $.post("prjectType/deleteProjecttype",{projectid:data.projectid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns.reload();
@@ -653,7 +653,7 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'moneyId', title:'ID',align:'center',width:'20%'}
+                {field:'moneyid', title:'ID',align:'center',width:'20%'}
                 ,{field:'moneytype', title:'类型',align:'center',width:"30%"}
                 ,{field:'percent', title:'报销百分比',align:'center',width:"30%"}
                 ,{fixed: 'right', title:'操作', toolbar: '#moneytype',align:'center',width:'20%'}
@@ -760,11 +760,11 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'outpatientId', title:'ID',align:'center',width:'10%'}
-                ,{field:'projectName', title:'收费项',align:'center',width:"20%"}
-                ,{field:'pprojectName', title:'项目大类',align:'center',width:"20%"}
+                {field:'outpatientid', title:'ID',align:'center',width:'10%'}
+                ,{field:'projectname', title:'收费项',align:'center',width:"20%"}
+                ,{field:'pprojectname', title:'项目大类',align:'center',width:"20%"}
                 ,{field:'price', title:'价格',align:'center',width:"10%"}
-                ,{field:'unitName', title:'单位',align:'center',width:"10%"}
+                ,{field:'unitname', title:'单位',align:'center',width:"10%"}
                 ,{field:'ostate', title:'是否检查',align:'center',width:"10%",templet:function(d){
                         return d.ostate=='1'?'<font color=blue>检查项</font>':'<font color=red>无</font>';
                     }}
@@ -792,7 +792,7 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.projectName+'】这个收费项吗', function(index){
+                layer.confirm('真的删除【'+data.projectname+'】这个收费项吗', function(index){
                     //向服务端发送删除指令
                     $.post("prjectType/deleteOutpatienttype",{outpatientId:data.outpatientId},function(res){
                         layer.msg(res);
@@ -854,7 +854,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#Projecttype1').append(new Option(item.projectName, item.projectId));// 下拉菜单里添加元素
+                    $('#Projecttype1').append(new Option(item.projectname, item.projectid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -892,11 +892,11 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'inoutpatientId', title:'ID',align:'center',width:'10%'}
-                ,{field:'projectName', title:'收费项',align:'center',width:"20%"}
-                ,{field:'pprojectName', title:'项目大类',align:'center',width:"20%"}
+                {field:'inoutpatientid', title:'ID',align:'center',width:'10%'}
+                ,{field:'projectname', title:'收费项',align:'center',width:"20%"}
+                ,{field:'pprojectname', title:'项目大类',align:'center',width:"20%"}
                 ,{field:'price', title:'价格',align:'center',width:"10%"}
-                ,{field:'unitName', title:'单位',align:'center',width:"19%"}
+                ,{field:'unitname', title:'单位',align:'center',width:"19%"}
                 ,{fixed: 'right', title:'操作', toolbar: '#inoutpatienttype',align:'center',width:'20%'}
             ]]
         })
@@ -921,7 +921,7 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.projectName+'】这个收费项吗', function(index){
+                layer.confirm('真的删除【'+data.projectname+'】这个收费项吗', function(index){
                     //向服务端发送删除指令
                     $.post("prjectType/deleteInoutpatienttype",{inoutpatientId:data.inoutpatientId},function(res){
                         layer.msg(res);
@@ -986,7 +986,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#Projecttype2').append(new Option(item.projectName, item.projectId));// 下拉菜单里添加元素
+                    $('#Projecttype2').append(new Option(item.projectname, item.projectid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }

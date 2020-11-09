@@ -2,6 +2,7 @@ package com.itgaoshu.hospital.service.impl;
 
 
 import com.itgaoshu.hospital.bean.*;
+import com.itgaoshu.hospital.mapper.ProjecttypeMapper;
 import com.itgaoshu.hospital.mapper.RegisterMapper;
 import com.itgaoshu.hospital.service.ZhuYuanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,6 +130,41 @@ public class ZhuYuanServiceImpl implements ZhuYuanService {
     @Override
     public int deleteDrug(Hospitalprice hospitalprice) {
         return registerMapper.deleteDrug(hospitalprice);
+    }
+
+    @Override
+    public List<Registeredtype> selectRegisteredType() {
+        return registerMapper.selectRegisteredType();
+    }
+
+    @Override
+    public int insertRegisteredType(Registeredtype registeredtype) {
+        return registerMapper.insertRegisteredType(registeredtype);
+    }
+
+    @Override
+    public int updateRegisteredType(Registeredtype registeredtype) {
+        return registerMapper.updateRegisteredType(registeredtype);
+    }
+
+    @Override
+    public List<Projecttype> select15() {
+        return registerMapper.select15();
+    }
+
+    @Override
+    public int insertProjectType(String projectname) {
+        return registerMapper.insertProjectType(projectname);
+    }
+
+    @Override
+    public List<Outpatienttype> select16() {
+        return registerMapper.select16();
+    }
+
+    @Override
+    public List<Inoutpatienttype> select17() {
+        return registerMapper.select17();
     }
 
 

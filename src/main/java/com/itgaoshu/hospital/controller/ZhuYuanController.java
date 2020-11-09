@@ -3,6 +3,7 @@ package com.itgaoshu.hospital.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.itgaoshu.hospital.bean.*;
+import com.itgaoshu.hospital.mapper.ProjecttypeMapper;
 import com.itgaoshu.hospital.service.ZhuYuanService;
 import com.itgaoshu.hospital.service.impl.PharmacyServiceImpl;
 import com.itgaoshu.hospital.service.impl.RecordServiceImpl;
@@ -48,6 +49,15 @@ public class ZhuYuanController {
     public String pharmacy(){
         return "liao/pharmacy";
     }
+    @RequestMapping("toRegisteredType")
+    public String registeredType(){
+        return "view/center/registeredType";
+    }
+    @RequestMapping("toProjectTypeManage")
+    public String projectTypeManage(){
+        return "view/center/projectTypeManage";
+    }
+
 
     //查询患者信息
     @RequestMapping("liao/selRegister")
@@ -419,4 +429,113 @@ public class ZhuYuanController {
             return "移除失败";
         }
     }
+    //查询挂号类型
+    @RequestMapping("registeredType/registeredTypeList")
+    @ResponseBody
+    public Object select14(Integer page,Integer limit) {
+        //分页查询
+        PageHelper.startPage(page, limit);
+        List<Registeredtype> selreg =zhuYuanService.selectRegisteredType();
+        PageInfo pageInfo = new PageInfo(selreg);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        //把数据返回到layui中
+        return tableData;
+    }
+    //增加挂号类型
+    @RequestMapping("registeredType/addRegisteredType")
+    @ResponseBody
+    public Object insert14(Registeredtype registeredtype) {
+        int r=zhuYuanService.insertRegisteredType(registeredtype);
+        if(r>0){
+            return "增加成功";
+        }else{
+            return "增加失败";
+        }
+    }
+    //修改挂号类型
+    @RequestMapping("registeredType/editRegisteredType")
+    @ResponseBody
+    public Object update14(Registeredtype registeredtype) {
+        int r=zhuYuanService.updateRegisteredType(registeredtype);
+        if(r>0){
+            return "修改成功";
+        }else{
+            return "修改失败";
+        }
+    }
+
+    //查询项目大类
+    @RequestMapping("prjectType/findAllProjecttype")
+    @ResponseBody
+    public Object select15(Integer page,Integer limit) {
+        //分页查询
+        PageHelper.startPage(page, limit);
+        List<Projecttype> selreg =zhuYuanService.select15();
+        PageInfo pageInfo = new PageInfo(selreg);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        //把数据返回到layui中
+        return tableData;
+    }
+    //增加项目大类
+    @RequestMapping("prjectType/addProjecttype")
+    @ResponseBody
+    public Object insert15(Projecttype projecttype) {
+        String projectName=projecttype.getProjectname();
+        int r=zhuYuanService.insertProjectType(projectName);
+        if(r>0){
+            return "增加成功";
+        }else{
+            return "增加失败";
+        }
+    }
+    //查询门诊收费项目
+    @RequestMapping("prjectType/findAllOutpatienttype")
+    @ResponseBody
+    public Object select16(Integer page, Integer limit){
+        PageHelper.startPage(page, limit);
+        List<Outpatienttype> listAll = zhuYuanService.select16();
+        PageInfo pageInfo = new PageInfo(listAll);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+
+        return tableData;
+    }
+    //查询住院收费项目
+    @RequestMapping("prjectType/findAllInoutpatienttype")
+    @ResponseBody
+    public Object select17(Integer page, Integer limit){
+        PageHelper.startPage(page, limit);
+        List<Inoutpatienttype> listAll = zhuYuanService.select17();
+        PageInfo pageInfo = new PageInfo(listAll);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        return tableData;
+    }
+
 }

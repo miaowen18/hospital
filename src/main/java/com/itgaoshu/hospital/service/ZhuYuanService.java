@@ -1,6 +1,7 @@
 package com.itgaoshu.hospital.service;
 
 import com.itgaoshu.hospital.bean.*;
+import com.itgaoshu.hospital.mapper.ProjecttypeMapper;
 
 import java.util.List;
 
@@ -28,4 +29,11 @@ public interface ZhuYuanService {
     int updateInout(Hospitalprice hospitalprice);
     int updateState(Register register);
     int deleteDrug(Hospitalprice hospitalprice);
+    List<Registeredtype> selectRegisteredType();
+    int insertRegisteredType(Registeredtype registeredtype);
+    int updateRegisteredType(Registeredtype registeredtype);
+    List<Projecttype> select15();
+    int insertProjectType(String projectname);
+    List<Outpatienttype> select16();
+    List<Inoutpatienttype> select17();
 }
