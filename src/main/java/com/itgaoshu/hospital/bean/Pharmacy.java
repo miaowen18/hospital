@@ -30,14 +30,23 @@ public class Pharmacy {
 
     private String skullbatch;
 
-    private String unitname;
-
-    public String getUnitname() {
-        return unitname;
-    }
-
-    public void setUnitname(String unitname) {
-        this.unitname = unitname;
+    @Override
+    public String toString() {
+        return "Pharmacy{" +
+                "pharmacyid=" + pharmacyid +
+                ", pharmacyname='" + pharmacyname + '\'' +
+                ", drugstoreid=" + drugstoreid +
+                ", skullid=" + skullid +
+                ", warehouseid=" + warehouseid +
+                ", unit=" + unit +
+                ", sellingprice=" + sellingprice +
+                ", area=" + area +
+                ", type=" + type +
+                ", producedate=" + producedate +
+                ", validdate=" + validdate +
+                ", drugstorenum=" + drugstorenum +
+                ", skullbatch='" + skullbatch + '\'' +
+                '}';
     }
 
     public Integer getPharmacyid() {

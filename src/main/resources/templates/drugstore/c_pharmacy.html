@@ -96,8 +96,8 @@
                         maxlength: 140, //可输入文本的最大长度，默认500
                     }, function (value, index, elem) {
                         $.post("../pharmacy/addbaoque", {
-                            baoqueName: data.pharmacyName,
-                            baoqueNum: value
+                            baoquename: data.pharmacyName,
+                            baoquenum: value
                         }, function (res) {
                             if (res == 1) {
                               layer.msg("已成功报缺" + data.pharmacyName + "数量为" + value);

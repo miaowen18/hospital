@@ -13,8 +13,6 @@ public class StoreServiceImpl implements StoreService {
     @Autowired
     private DrugstoreMapper drugstoreMapper;
     @Autowired
-    private CaigouMapper caigouMapper;
-    @Autowired
     private DrugdictionaryMapper drugdictionaryMapper;
     @Autowired
     private AreaMapper areaMapper;
@@ -54,7 +52,7 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public int update(Drugstore drugstore) {
-        return drugstoreMapper.update(drugstore);
+        return drugstoreMapper.updateByPrimaryKeySelective(drugstore);
     }
 
     @Override
@@ -64,7 +62,6 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public int addStore(Drugstore drugstore) {
-
         return drugstoreMapper.insert(drugstore);
     }
 
@@ -81,20 +78,8 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public List<Drugstore> queryList(Drugstore drugstore) {
-        List<Drugstore> list=drugstoreMapper.queryList1(drugstore);
-        for (Drugstore drugstore1 : list) {
-            System.out.println(drugstore1);
-        }
-        return list;
+        return drugstoreMapper.queryList1(drugstore);
     }
-    /*@Override
-    public List<DrugstoreVo> queryList(DrugstoreVo drugstoreVo) {
-        List<DrugstoreVo> list1=drugstoreMapper.queryList(drugstoreVo);
-        for (DrugstoreVo drugstore1 : list1) {
-            System.out.println(drugstore1);
-        }
-        return list1;
-    }*/
 
     @Override
     public List<Drugstore> queryQue() {
@@ -102,7 +87,27 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public List<Caigou> queryList() {
-        return caigouMapper.queryList();
+    public int delguoqidurg(Integer rugstoreid) {
+        return drugstoreMapper.deleteByPrimaryKey(rugstoreid);
+    }
+
+    @Override
+    public int selbaoqueName(Pharmacy pharmacy) {
+        return drugstoreMapper.selbaoqueName(pharmacy);
+    }
+
+    @Override
+    public int seldrugnamenum(Drugstore drugstore) {
+        return drugstoreMapper.seldrugnamenum(drugstore);
+    }
+
+    @Override
+    public int updatedrugnumber(Drugstore drugstore) {
+        return drugstoreMapper.updatedrugnumber(drugstore);
+    }
+
+    @Override
+    public int deldrugnamenum(Drugstore drugstore) {
+        return drugstoreMapper.deldrugnamenum(drugstore);
     }
 }

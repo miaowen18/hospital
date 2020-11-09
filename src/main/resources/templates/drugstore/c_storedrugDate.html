@@ -66,10 +66,10 @@
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
                var jbr= $("#jingbanren").val();
-                layer.confirm('真的删除【'+data.drugstoreName+'】这个药品吗', function(index){
+                layer.confirm('真的删除【'+data.drugstorename+'】这个药品吗', function(index){
                     //向服务端发送删除指令
-                    $.post("../seldrugstore/delguoqidurg",{rugstoreId:data.rugstoreId,
-                        jiluname:data.drugstoreName,jilutype:"销毁过期药品",jilupeople:jbr,
+                    $.post("../seldrugstore/delguoqidurg",{rugstoreid:data.rugstoreid,
+                        jiluname:data.drugstorename,jilutype:"销毁过期药品",jilupeople:jbr,
                         jilupihao:data.batch,jilunumber:data.drugstorenum
                     },function(res){
                    if(res==1){

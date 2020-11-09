@@ -71,10 +71,10 @@
     drugId, drugName, unitId, sellingPrice, areaId, typeId
   </sql>
   <select id="queryList" parameterType="Drugdictionary" resultType="Drugdictionary">
-    SELECT dr.drugId,dr.drugname,un.unitId,un.unitName,dr.sellingPrice,ar.areaId,ar.areaName,ty.typeId,ty.typeName from drugdictionary dr,unit un,type ty,area ar where
-        dr.unitId=un.unitId and dr.areaId=ar.areaId and dr.typeId=ty.typeId
+    SELECT dr.drugId,dr.drugName,un.unitId,un.unitName,dr.sellingPrice,ar.areaId,ar.areaName,ty.typeId,ty.typeName from drugdictionary dr,unit un,type ty,area ar where
+    dr.unitId=un.unitId and dr.areaId=ar.areaId and dr.typeId=ty.typeId
     <if test="drugname!=null and drugname!=''">
-      and dr.drugname like concat('%' ,concat(#{drugname},'%'))
+      and dr.drugName like concat('%' ,concat(#{drugname},'%'))
     </if>
     ORDER BY dr.drugId asc
   </select>

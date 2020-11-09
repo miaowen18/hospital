@@ -67,6 +67,22 @@
   <sql id="Base_Column_List" >
     baoqueid, baoqueName, baoqueNum
   </sql>
+  <select id="selbaoquenamenum" resultType="Integer">
+    SELECT count(*) from baoque where baoqueNum &lt; 1 ;
+  </select>
+  <update id="upbaoquenumber">
+    update baoque set baoqueNum=(baoqueNum-#{drugstorenum}) where baoqueName=#{drugstorename}
+  </update>
+  <update id="upbaoquenumber1">
+    update baoque set baoqueNum=(baoqueNum-#{drugstorenum}) where baoqueName=#{pharmacyname}
+  </update>
+  <delete id="delbaoquenamenum">
+    delete  from baoque where  baoqueNum &lt; 1
+  </delete>
+
+
+
+
   <select id="selectCount" parameterType="Baoque" resultType="int">
         select count(*)from  baoque where baoquename=#{baoquename}
   </select>

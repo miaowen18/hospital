@@ -2,12 +2,10 @@ package com.itgaoshu.hospital.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.itgaoshu.hospital.bean.Baoque;
-import com.itgaoshu.hospital.bean.Huishou;
-import com.itgaoshu.hospital.bean.Pharmacy;
-import com.itgaoshu.hospital.bean.PharmacyVo;
+import com.itgaoshu.hospital.bean.*;
 import com.itgaoshu.hospital.mapper.PharmacyMapper;
 import com.itgaoshu.hospital.service.impl.PharmacyServiceImpl;
+import com.itgaoshu.hospital.service.impl.RecordServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +20,8 @@ import java.util.Map;
 public class PharmacyController {
     @Autowired
     private PharmacyServiceImpl pharmacyService;
+    @Autowired
+    private RecordServiceImpl recordService;
     //查询库房药品表
     //模糊查询selectpharmacy
     @RequestMapping("selectpharmacy")
@@ -59,8 +59,14 @@ public class PharmacyController {
     }
     //删除药,回收到仓库
     @RequestMapping("delhuishou")
-    public int delhuishou(Huishou huishou){
-        return 0;
+    @ResponseBody
+    public int delhuishou(Integer huishouid, Jilu jilu){
+        System.out.println(huishouid+"  "+jilu);
+       int num=pharmacyService.delhuishou(huishouid);
+       if(num==1){
+           recordService.insert(jilu);
+       }
+        return num;
     }
 
     //查询药品仓库

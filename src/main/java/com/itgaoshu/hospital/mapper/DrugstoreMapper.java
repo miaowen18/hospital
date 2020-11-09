@@ -3,6 +3,7 @@ package com.itgaoshu.hospital.mapper;
 import com.itgaoshu.hospital.bean.Drugstore;
 import com.itgaoshu.hospital.bean.DrugstoreExample;
 import com.itgaoshu.hospital.bean.DrugstoreVo;
+import com.itgaoshu.hospital.bean.Pharmacy;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -34,4 +35,8 @@ public interface DrugstoreMapper {
     int updateByPrimaryKeySelective(Drugstore record);
 
     int updateByPrimaryKey(Drugstore record);
+    int seldrugnamenum(Drugstore drugstore);
+    int updatedrugnumber(Drugstore drugstore);
+    int deldrugnamenum(Drugstore drugstore);
+    int selbaoqueName(Pharmacy pharmacy);
 }

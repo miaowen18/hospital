@@ -7,6 +7,15 @@ public class Baoque {
 
     private Integer baoquenum;
 
+    @Override
+    public String toString() {
+        return "Baoque{" +
+                "baoqueid=" + baoqueid +
+                ", baoquename='" + baoquename + '\'' +
+                ", baoquenum=" + baoquenum +
+                '}';
+    }
+
     public Integer getBaoqueid() {
         return baoqueid;
     }

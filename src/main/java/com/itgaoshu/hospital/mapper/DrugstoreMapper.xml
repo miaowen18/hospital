@@ -136,6 +136,15 @@
   <select id="selnumer" parameterType="Drugstore" resultType="java.lang.Integer">
     SELECT sum(drugstorenum) FROM drugstore WHERE drugstoreName=#{drugstorename} and batch=#{batch}
   </select>
+  <select id="seldrugnamenum" resultType="Integer">
+        SELECT count(*) from drugstore where rugstoreid=#{rugstoreid}  and drugstorenum=#{drugstorenum}
+  </select>
+  <update id="updatedrugnumber" parameterType="Drugstore">
+    UPDATE drugstore set drugstorenum =(drugstorenum-#{drugstorenum}) where rugstoreid=#{rugstoreid}
+  </update>
+  <delete id="deldrugnamenum" parameterType="Drugstore">
+    delete  from drugstore where rugstoreid=#{rugstoreid}
+  </delete>
   <select id="queryList2" parameterType="Drugstore" resultType="java.lang.Integer">
     SELECT count(*) FROM drugstore WHERE drugstoreName=#{drugstorename} and batch=#{batch}
   </select>
@@ -158,6 +167,9 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  <select id="selbaoqueName" parameterType="Pharmacy" resultType="Integer">
+    SELECT count(* )from baoque where baoqueName=#{pharmacyname}
+  </select>
   <insert id="insert" parameterType="com.itgaoshu.hospital.bean.Drugstore" >
     insert into drugstore (rugstoreId, drugstoreName, supplierId, 
       skullId, warehouseId, unit, 
