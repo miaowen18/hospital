@@ -49,15 +49,15 @@ public class ZhuYuanController {
     public String pharmacy(){
         return "liao/pharmacy";
     }
-    @RequestMapping("toRegisteredType")
+   /* @RequestMapping("toRegisteredType")
     public String registeredType(){
         return "view/center/registeredType";
-    }
-    @RequestMapping("toProjectTypeManage")
+    }*/
+   /* @RequestMapping("toProjectTypeManage")
     public String projectTypeManage(){
         return "view/center/projectTypeManage";
     }
-
+*/
 
     //查询患者信息
     @RequestMapping("liao/selRegister")
