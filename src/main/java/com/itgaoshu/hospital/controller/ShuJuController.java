@@ -25,18 +25,6 @@ public class ShuJuController {
     private WareHuoseServiceImpl wareHuoseService;
     @Autowired
     private SkullServiceImpl skullService;
-    @RequestMapping("toArea")
-    public String toArea(){
-        return "view/center/area";
-    }
-    @RequestMapping("toWarehuose")
-    public String toWarehuose(){
-        return "view/center/warehuose";
-    }
-    @RequestMapping("toSkull")
-    public String toSkull(){
-        return "view/center/skull";
-    }
     //产地
     @RequestMapping("area/findAllArea")
     @ResponseBody
