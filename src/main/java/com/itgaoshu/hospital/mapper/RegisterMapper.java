@@ -66,4 +66,6 @@ public interface RegisterMapper {
 
     int updateState(Register register);
 
+    int deleteDrug(Hospitalprice hospitalprice);
+
 }

@@ -336,12 +336,14 @@
             var hospitalpriceid=data.hospitalpriceid;
             var durgname=data.durgname;
             var durgnum=data.durgnum;
+            var repicetotal=data.repicetotal;
+            var registerid=$("#show").val();
             if(obj.event=="del"){
                 layer.confirm('确认要删除吗？', {
                     btn : [ '确定', '取消' ]//按钮
                 }, function(index) {
                     layer.close(index);
-                    $.post("delDrug",{hospitalpriceid:hospitalpriceid,durgname:durgname,durgnum:durgnum},function(inp){
+                    $.post("delDrug",{repicetotal:repicetotal,registerid:registerid,hospitalpriceid:hospitalpriceid,durgname:durgname,durgnum:durgnum},function(inp){
                         layer.msg(inp);
                         //查询余额
                         sels();

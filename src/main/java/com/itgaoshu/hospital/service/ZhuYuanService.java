@@ -27,4 +27,5 @@ public interface ZhuYuanService {
     List<Inoutpatienttype> select12(Inoutpatienttype inoutpatienttype);
     int updateInout(Hospitalprice hospitalprice);
     int updateState(Register register);
+    int deleteDrug(Hospitalprice hospitalprice);
 }

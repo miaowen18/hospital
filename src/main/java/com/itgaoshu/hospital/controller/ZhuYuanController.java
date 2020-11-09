@@ -395,4 +395,28 @@ public class ZhuYuanController {
             return "出院失败";
         }
     }
+    //办理出院手续
+    @RequestMapping("liao/delDrug")
+    @ResponseBody
+    public Object delete3(Integer registerid,Double repicetotal,Integer hospitalpriceid,String durgname,Integer durgnum) {
+        Hospitalprice h=new Hospitalprice();
+        h.setHospitalpriceid(hospitalpriceid);
+        int i=zhuYuanService.deleteDrug(h);
+        if (i == 1) {
+            h.setDurgname(durgname);
+            h.setDurgnum(0-durgnum);
+            int j = zhuYuanService.updateDrug(h);
+            if (j == 1) {
+                Register register=new Register();
+                register.setRegisterid(registerid);
+                register.setPrice(0-repicetotal);
+                int z=zhuYuanService.updatePrice(register);
+                return "移除成功";
+            } else {
+                return "移除失败";
+            }
+        } else {
+            return "移除失败";
+        }
+    }
 }

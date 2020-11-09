@@ -126,5 +126,10 @@ public class ZhuYuanServiceImpl implements ZhuYuanService {
         return registerMapper.updateState(register);
     }
 
+    @Override
+    public int deleteDrug(Hospitalprice hospitalprice) {
+        return registerMapper.deleteDrug(hospitalprice);
+    }
+
 
 }
