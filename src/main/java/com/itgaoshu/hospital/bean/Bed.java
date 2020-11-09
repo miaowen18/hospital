@@ -11,6 +11,16 @@ public class Bed {
 
     private Double Price;
 
+    private String department;
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
     public Integer getBedId() {
         return bedId;
     }

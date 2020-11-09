@@ -528,4 +528,18 @@
       and  i.projectName like concat('%',concat(#{projectName},'%'))
     </if> order by i.inoutpatientId desc
   </select>
+  <select id="select18" resultType="Bed">
+    select*from bed b,departments d where b.departmentId=d.departmentId
+    <if test="bedname!=null and bedname!=''">
+      and bedname like concat('%',concat(#{bedname},'%'))
+    </if> order by b.bedId desc
+  </select>
+  <select id="select19" resultType="Moneytype">
+    select *from Moneytype
+    <where>
+      <if test="moneytype!=null and moneytype!=''">
+        moneytype like concat('%',concat(#{moneytype},'%'))
+      </if>
+    </where> order by moneyId desc
+  </select>
 </mapper>

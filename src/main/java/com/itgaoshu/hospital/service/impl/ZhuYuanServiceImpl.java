@@ -167,5 +167,15 @@ public class ZhuYuanServiceImpl implements ZhuYuanService {
         return registerMapper.select17();
     }
 
+    @Override
+    public List<Bed> select18() {
+        return registerMapper.select18();
+    }
+
+    @Override
+    public List<Moneytype> select19() {
+        return registerMapper.select19();
+    }
+
 
 }

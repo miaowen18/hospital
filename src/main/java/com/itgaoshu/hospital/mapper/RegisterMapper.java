@@ -82,4 +82,8 @@ public interface RegisterMapper {
 
     List<Inoutpatienttype> select17();
 
+    List<Bed> select18();
+
+    List<Moneytype> select19();
+
 }

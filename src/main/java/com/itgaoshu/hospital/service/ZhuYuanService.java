@@ -36,4 +36,6 @@ public interface ZhuYuanService {
     int insertProjectType(String projectname);
     List<Outpatienttype> select16();
     List<Inoutpatienttype> select17();
+    List<Bed> select18();
+    List<Moneytype> select19();
 }

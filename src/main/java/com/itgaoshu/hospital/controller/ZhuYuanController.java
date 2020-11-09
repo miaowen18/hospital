@@ -57,7 +57,7 @@ public class ZhuYuanController {
     public String projectTypeManage(){
         return "view/center/projectTypeManage";
     }
-*/
+    */
 
     //查询患者信息
     @RequestMapping("liao/selRegister")
@@ -535,6 +535,42 @@ public class ZhuYuanController {
         tableData.put("count", pageInfo.getTotal());
         //将分页后的数据返回（每页要显示的数据）
         tableData.put("data", pageInfo.getList());
+        return tableData;
+    }
+    //查询床位
+    @RequestMapping("prjectType/findAllBed")
+    @ResponseBody
+    public Object select18(Integer page, Integer limit){
+        PageHelper.startPage(page, limit);
+        List<Bed> listAll = zhuYuanService.select18();
+        PageInfo pageInfo = new PageInfo(listAll);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+
+        return tableData;
+    }
+    //查询收费类型
+    @RequestMapping("prjectType/findAllMoneytype")
+    @ResponseBody
+    public Object select19(Integer page, Integer limit){
+        PageHelper.startPage(page, limit);
+        List<Moneytype> listAll = zhuYuanService.select19();
+        PageInfo pageInfo = new PageInfo(listAll);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+
         return tableData;
     }
 

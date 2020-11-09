@@ -14,6 +14,17 @@ public class Outpatienttype {
 
     private Integer ostate;
 
+    private String pprojectname;
+
+
+    public String getPprojectname() {
+        return pprojectname;
+    }
+
+    public void setPprojectname(String pprojectname) {
+        this.pprojectname = pprojectname;
+    }
+
     public String getUnitname() {
         return unitname;
     }
