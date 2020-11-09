@@ -15,6 +15,19 @@ public class Caigou {
 
     private Integer shuliang;
 
+    @Override
+    public String toString() {
+        return "Caigou{" +
+                "caigouid=" + caigouid +
+                ", caigouname='" + caigouname + '\'' +
+                ", gonghuoshang='" + gonghuoshang + '\'' +
+                ", danwei='" + danwei + '\'' +
+                ", candi='" + candi + '\'' +
+                ", leixing='" + leixing + '\'' +
+                ", shuliang=" + shuliang +
+                '}';
+    }
+
     public Integer getCaigouid() {
         return caigouid;
     }

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface CashierMapper {
+    List<Cashier>  queryList(Integer reportid);
     int countByExample(CashierExample example);
 
     int deleteByExample(CashierExample example);

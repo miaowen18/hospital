@@ -9,7 +9,9 @@ public class Pay {
 
     private Double money;
 
-    private Date paydate;
+    private Date payDate;
+
+    private String userName;
 
     public Integer getPayid() {
         return payid;
@@ -35,11 +37,19 @@ public class Pay {
         this.money = money;
     }
 
-    public Date getPaydate() {
-        return paydate;
+    public Date getPayDate() {
+        return payDate;
     }
 
-    public void setPaydate(Date paydate) {
-        this.paydate = paydate;
+    public void setPayDate(Date payDate) {
+        this.payDate = payDate;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

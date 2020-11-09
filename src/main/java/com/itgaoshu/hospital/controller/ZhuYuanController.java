@@ -2,13 +2,17 @@ package com.itgaoshu.hospital.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.itgaoshu.hospital.bean.Register;
+import com.itgaoshu.hospital.bean.*;
 import com.itgaoshu.hospital.service.ZhuYuanService;
+import com.itgaoshu.hospital.service.impl.PharmacyServiceImpl;
+import com.itgaoshu.hospital.service.impl.RecordServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +21,8 @@ import java.util.Map;
 public class ZhuYuanController {
     @Autowired
     private ZhuYuanService zhuYuanService;
+    @Autowired
+    private RecordServiceImpl recordService;
 
     @RequestMapping("liao/admin")
     public String inadmin(){
@@ -89,15 +95,18 @@ public class ZhuYuanController {
     //增加患者
     @RequestMapping("liao/addRegister")
     @ResponseBody
-    public Object insert(Register register){
+    public Object insert(Register register, HttpServletRequest request){
+        //获取床位价格
+        Double price=zhuYuanService.selectPrice(register.getBedId());
+        register.setPrice(price);
+        //获取管理人员姓名
+        String yonghu = (String)request.getSession().getAttribute("yonghu");
+        register.setOperator(yonghu);
         System.out.println(register);
-        if(zhuYuanService.select(register)!=null){
-            return "患者已存在";
-        }
         int result=zhuYuanService.insert(register);
         if(result>0){
             //把入院的患者从门诊库中删除
-            int r=zhuYuanService.deleteByPrimaryKey(register.getRegisterid());
+            int r=zhuYuanService.deleteByPrimaryKey(register.getPhone());
             return "添加成功";
         }else{
             return "添加失败";
@@ -159,14 +168,77 @@ public class ZhuYuanController {
     //查询要结算的患者信息
     @RequestMapping("liao/selPay")
     @ResponseBody
-    public Object select8(Integer registerid){
-
-        Register register=new Register();
-        register.setRegisterid(registerid);
+    public Object select8(Register register,Double moneys){
+        if(moneys!=0){
+            register.setMoney(moneys);
+            int r=zhuYuanService.updatePay(register);
+            int r2=zhuYuanService.insertPay(register);
+        }
         register.setState(0);
-
-        return zhuYuanService.select(register);
+        List<Register> lists=zhuYuanService.select(register);
+        return lists;
+    }
+    //查询交款信息
+    @RequestMapping("liao/selPays")
+    @ResponseBody
+    public Object select9(Integer page,Integer limit){
+        //分页查询
+        PageHelper.startPage(page, limit);
+        List<Pay> selreg = zhuYuanService.selectPay();
+        PageInfo pageInfo = new PageInfo(selreg);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        //把数据返回到layui中
+        return tableData;
+    }
+    //查询已用金额
+    @RequestMapping("liao/selSurplus")
+    @ResponseBody
+    public Object select9(Register register,Double pay){
+        return zhuYuanService.selectPay();
     }
 
-
+    @RequestMapping("liao/selDrugs")
+    @ResponseBody
+    public Object selDrugs(Integer page, Integer limit, Hospitalprice hospitalprice){
+        hospitalprice.setState(0);
+        PageHelper.startPage(page,limit);
+        List<Hospitalprice> list=recordService.selDrugs(hospitalprice);
+        PageInfo pageInfo=new PageInfo(list);
+        Map<String,Object> map=new HashMap<>();
+        map.put("msg","");
+        map.put("code",0);
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
+        return map;
+    }
+    @RequestMapping("liao/selPhar")
+    @ResponseBody
+    public Object selPhar(Integer page,Integer limit,Hospitalprice hospitalprice){
+        hospitalprice.setState(2);
+        PageHelper.startPage(page,limit);
+        List<Hospitalprice> list=recordService.selDrugs(hospitalprice);
+        PageInfo pageInfo=new PageInfo(list);
+        Map<String,Object> map=new HashMap<>();
+        map.put("msg","");
+        map.put("code",0);
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
+        return map;
+    }
+    //改变患者的药品状态
+    @RequestMapping("liao/updDrug")
+    @ResponseBody
+    public Object updItem(Hospitalprice hospitalprice){
+        System.out.println(hospitalprice);
+        int upd = recordService.upd(hospitalprice);
+        //System.out.println(upd);
+        return "取药成功";
+    }
 }

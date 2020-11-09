@@ -10,7 +10,7 @@ public interface RegisterMapper {
 
     int deleteByExample(RegisterExample example);
 
-    int deleteByPrimaryKey(Integer registerid);
+    int deleteByPrimaryKey(String phone);
 
     int insert(Register register);
 
@@ -32,6 +32,8 @@ public interface RegisterMapper {
 
     List<Moneytype> select6();
 
+    Register select8(String userName);
+
     int updateByExampleSelective(@Param("record") Register record, @Param("example") RegisterExample example);
 
     int updateByExample(@Param("record") Register record, @Param("example") RegisterExample example);
@@ -39,4 +41,29 @@ public interface RegisterMapper {
     int updateByPrimaryKeySelective(Register record);
 
     int updateByPrimaryKey(Register record);
+
+    List<Pay> selectPay();
+
+    int updatePay(Register register);
+
+    int insertPay(Register register);
+
+    Double selectPrice(Integer bedNum);
+
+    List<Pharmacy> select10(Pharmacy pharmacy);
+
+    List<Hospitalprice> select11(Register register);
+
+    int  insertDrug(Hospitalprice hospitalprice);
+
+    int updatePrice(Register register);
+
+    int updateDrug(Hospitalprice hospitalprice);
+
+    int updateInout(Hospitalprice hospitalprice);
+
+    List<Inoutpatienttype> select12(Inoutpatienttype inoutpatienttype);
+
+    int updateState(Register register);
+
 }

@@ -1,22 +1,22 @@
 package com.itgaoshu.hospital.bean;
 
 public class Bed {
-    private Integer bedid;
+    private Integer bedId;
 
     private String bedname;
 
-    private Integer departmentid;
+    private Integer departmentId;
 
     private Integer state;
 
-    private Double price;
+    private Double Price;
 
-    public Integer getBedid() {
-        return bedid;
+    public Integer getBedId() {
+        return bedId;
     }
 
-    public void setBedid(Integer bedid) {
-        this.bedid = bedid;
+    public void setBedId(Integer bedId) {
+        this.bedId = bedId;
     }
 
     public String getBedname() {
@@ -24,15 +24,15 @@ public class Bed {
     }
 
     public void setBedname(String bedname) {
-        this.bedname = bedname == null ? null : bedname.trim();
+        this.bedname = bedname;
     }
 
-    public Integer getDepartmentid() {
-        return departmentid;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartmentid(Integer departmentid) {
-        this.departmentid = departmentid;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
     public Integer getState() {
@@ -44,21 +44,21 @@ public class Bed {
     }
 
     public Double getPrice() {
-        return price;
+        return Price;
     }
 
     public void setPrice(Double price) {
-        this.price = price;
+        Price = price;
     }
 
     @Override
     public String toString() {
         return "Bed{" +
-                "bedid=" + bedid +
+                "bedId=" + bedId +
                 ", bedname='" + bedname + '\'' +
-                ", departmentid=" + departmentid +
+                ", departmentId=" + departmentId +
                 ", state=" + state +
-                ", price=" + price +
+                ", Price=" + Price +
                 '}';
     }
 }

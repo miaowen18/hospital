@@ -11,6 +11,26 @@ public class Inoutpatienttype {
 
     private Double price;
 
+    private String unitname;
+
+    private String projectnames;
+
+    public String getUnitname() {
+        return unitname;
+    }
+
+    public void setUnitname(String unitname) {
+        this.unitname = unitname;
+    }
+
+    public String getProjectnames() {
+        return projectnames;
+    }
+
+    public void setProjectnames(String projectnames) {
+        this.projectnames = projectnames;
+    }
+
     public Integer getInoutpatientid() {
         return inoutpatientid;
     }

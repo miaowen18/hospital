@@ -78,6 +78,15 @@
     pharmacyId, pharmacyName, drugstoreId, skullId, warehouseId, unit, sellingPrice, 
     area, type, produceDate, validDate, drugstorenum, skullbatch
   </sql>
+  <update id="uppharmacynumber" parameterType="Drugstore">
+    update pharmacy set drugstorenum=(drugstorenum+#{drugstorenum}) where pharmacyName=#{drugstorename}
+  </update>
+  <select id="selpharymacyname" parameterType="Pharmacy" resultType="Integer">
+        SELECT count(*)from pharmacy where pharmacyName=#{pharmacyname}
+  </select>
+  <update id="uppharymacy">
+    UPDATE pharmacy set drugstorenum=(drugstorenum+#{drugstorenum}) where pharmacyName=#{pharmacyname}
+  </update>
   <select id="queryList" parameterType="PharmacyVo" resultType="PharmacyVo">
     select distinct p.pharmacyId,p.pharmacyname,sk.skullName,un.unitName,p.sellingPrice,
     ar.areaName,t.typeName,p.produceDate,p.validDate,p.skullbatch,p.drugstorenum from pharmacy p,drugstore dr,skull sk,warehuose wh,unit un,area ar,type t

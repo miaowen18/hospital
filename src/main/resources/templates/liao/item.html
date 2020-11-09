@@ -83,13 +83,13 @@
             <td class="dataFrm_td">医生：</td>
             <td><input type="text" class="dataFrm_input" name="doctorName" readonly></td>
             <td class="dataFrm_td">已用：</td>
-            <td><input type="text" class="dataFrm_input" id="yong" readonly></td>
+            <td><input type="text" class="dataFrm_input" id="yong" name="price" readonly></td>
         </tr>
         <tr>
             <td class="dataFrm_td">年龄：</td>
             <td><input type="text" class="dataFrm_input" name="age" readonly></td>
             <td class="dataFrm_td">床位：</td>
-            <td><input type="text" class="dataFrm_input" name="bedName" readonly></td>
+            <td><input type="text" class="dataFrm_input" name="bedname" readonly></td>
             <td class="dataFrm_td">余款：</td>
             <td><input type="text" class="dataFrm_input" id="yu" readonly></td>
         </tr>
@@ -142,10 +142,10 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'projectName', title:'项目名称',align:'center',width:'23%'}
-                ,{field:'unitName', title:'计量单位',align:'center',width:'17%'}
+                {field:'projectname', title:'项目名称',align:'center',width:'23%'}
+                ,{field:'unitname', title:'计量单位',align:'center',width:'17%'}
                 ,{field:'price', title:'售价',align:'center',width:'15%'}
-                ,{field:'projectNames', title:'分类',align:'center',width:'29%'}
+                ,{field:'projectnames', title:'分类',align:'center',width:'29%'}
                 ,{fixed: '', title:'操作', toolbar: '#userBar',align:'center',width:'15%'}
             ]]
         })
@@ -240,7 +240,7 @@
                 if($("#yu").val()<-5000){
                     layer.msg("您的余额已欠费太多，请先去缴费");
                 }else{
-                    var durgname=data.projectName;
+                    var durgname=data.projectname;
                     var repiceprice=data.price;
                     var registerid=$("#show").val();
                     layer.confirm('确认要添加该收费项目吗？', {
@@ -282,7 +282,7 @@
             var params=$("#dataFrm").serialize();
             //查询余额
             $.post("selSurplus",params,function(inp) {
-                if(inp==""){
+                /*if(inp==""){
                     $("#yong").val(0);
                 }else{
                     $.each(inp, function (index, item) {
@@ -292,7 +292,7 @@
                             }
                         }
                     });
-                }
+                }*/
                 $("#yu").val($("input[name='money']").val()-$("#yong").val());
             })
         }

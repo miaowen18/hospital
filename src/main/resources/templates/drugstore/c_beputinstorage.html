@@ -23,9 +23,9 @@
     <form id="form_drug">
 
     <!--<input type="hidden"   >  -->
-<input type="hidden"  id="supplierId"  name ="supplierid"    ><!--供货商supplierId-->
-<input type="hidden"  id="skullId"  name ="skullid"   ><!--经办人skullId-->
-<input type="hidden"  id="warehouseId"  name ="warehouseid"   ><!--仓库warehouseId-->
+<input type="hidden"  id="supplierId"  name ="supplierId"    ><!--供货商supplierId-->
+<input type="hidden"  id="skullId"  name ="skullId"   ><!--经办人skullId-->
+<input type="hidden"  id="warehouseId"  name ="warehouseId"   ><!--仓库warehouseId-->
     <input type="hidden"  id="unit"  name ="unit"   ><!--计量单位unit-->
     <input type="hidden"  id="area"  name ="area"   ><!--产地area-->
     <input type="hidden"  id="type"  name ="type"   ><!--药品类型area-->
@@ -55,7 +55,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label"  style="width:100px; ">药品名称:</label>
                 <div class="layui-input-inline">
-                    <input type="text" id="drugstoreName" name="drugstorename"  class="layui-input">
+                    <input type="text" id="drugstoreName" name="drugstoreName"  class="layui-input">
                     <button type="button"  id="seldrugdty" class="layui-btn layui-btn-sm" style="margin-left: 150px;margin-top: -65px;">
                         <i class="layui-icon">&#xe655;</i></button>
                 </div>
@@ -78,13 +78,13 @@
             <div class="layui-inline">
                 <label class="layui-form-label"  style="width:100px; ">批发价:</label>
                 <div class="layui-input-inline">
-                    <input type="number" id="tradePrice" name="tradeprice"  class="layui-input" autocomplete="off">
+                    <input type="number" id="tradePrice" name="tradePrice"  class="layui-input" autocomplete="off">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label"  style="width:100px; ">销售价:</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="sellingprice"  id="sellingPrice"  class="layui-input" autocomplete="off" readonly>
+                    <input type="text" name="sellingPrice"  id="sellingPrice"  class="layui-input" autocomplete="off" readonly>
                 </div>
             </div>
             <div class="layui-inline">
@@ -230,8 +230,8 @@
                     var produceDate=new Date(dateAStr);//获取时间 Date 对象用于处理日期和时间
                     var dateAT=produceDate.getTime();//时间戳转化为日期类型
                     var dateBStr=$("input[name=validDate]").val();//获取有效日期文本框内容
-                    var validdate=new Date(dateBStr);
-                    var dateBT=validdate.getTime();
+                    var validDate=new Date(dateBStr);
+                    var dateBT=validDate.getTime();
 
 
                     //var shuliang=$("#drugstorenum").val();
@@ -355,11 +355,11 @@
                         var drugstoreName = data.drugname;//获取药品名称
                         $("#drugstoreName").val(drugstoreName);//放入添加入库表的药品名中drugstoreName
                         var dName = data.unitName;//获取药品单位
-                        var dNunitId = data.unit;//获取药品单位
+                        var dNunitId = data.unitid;//获取药品单位
                         $("#unit").val(dNunitId);
-                        var dNareaId = data.area;//获取药品产地
+                        var dNareaId = data.areaid;//获取药品产地
                         $("#area").val(dNareaId);
-                        var dNtypeId = data.type//获取药品类型
+                        var dNtypeId = data.typeid;//获取药品类型
                         $("#type").val(dNtypeId);
                         var dNtsellingPrice = data.sellingprice//获取药品清单 价格
                         $("#sellingPrice").val(dNtsellingPrice);

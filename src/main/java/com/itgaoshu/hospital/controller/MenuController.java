@@ -116,13 +116,15 @@ public class MenuController {
 
     @RequestMapping("selectMenuById")
     @ResponseBody
-    public Map<String,Object> selectMenuById(Integer id){
-        SysMenu menu = sysMenuService.selectMenuById(id);
+    public Map<String,Object> selectMenuById(Integer page,Integer limit,Integer id){
+        PageHelper.startPage(page,limit);
+        List<SysMenu> sysMenus = sysMenuService.selectMenuById(id);
+        PageInfo pageInfo = new PageInfo(sysMenus);
         Map<String,Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg","");
-        map.put("count",null);
-        map.put("data",menu);
+        map.put("count",pageInfo.getTotal());
+        map.put("data",pageInfo.getList());
         return map;
     }
 

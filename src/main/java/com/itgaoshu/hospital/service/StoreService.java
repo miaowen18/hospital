@@ -17,7 +17,10 @@ public interface StoreService {
     List<Drugdictionary> selectdgty(Drugdictionary drugdictionary);
     List<Drugstore> seldrugDateguoqi();
     List<Drugstore> queryList(Drugstore drugstore);
-    //List<DrugstoreVo> queryList(DrugstoreVo drugstoreVo);
     List<Drugstore> queryQue();
-    List<Caigou> queryList();
+    int delguoqidurg(Integer rugstoreid);
+    int selbaoqueName(Pharmacy pharmacy);
+    int seldrugnamenum(Drugstore drugstore);
+    int updatedrugnumber(Drugstore drugstore);
+    int deldrugnamenum(Drugstore drugstore);
 }

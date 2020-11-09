@@ -2,6 +2,8 @@ package com.itgaoshu.hospital.mapper;
 
 import com.itgaoshu.hospital.bean.Baoque;
 import com.itgaoshu.hospital.bean.BaoqueExample;
+import com.itgaoshu.hospital.bean.Drugstore;
+import com.itgaoshu.hospital.bean.Pharmacy;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -30,4 +32,10 @@ public interface BaoqueMapper {
     int updateByPrimaryKeySelective(Baoque record);
 
     int updateByPrimaryKey(Baoque record);
+
+    int delbaoquenamenum();
+    int selbaoquenamenum(Drugstore drugstore);
+    int upbaoquenumber(Drugstore drugstore);
+    int upbaoquenumber1(Pharmacy pharmacy);
+
 }

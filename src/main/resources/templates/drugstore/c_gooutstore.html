@@ -75,14 +75,14 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'add'){ //
-                layer.confirm('开始补给【'+data.baoqueName+'】', function(index){
-                    var drugstoreName=data.baoqueName;
-                    $("#bqnum").val(data.baoqueNum);
+                layer.confirm('开始补给【'+data.baoquename+'】', function(index){
+                    var drugstoreName=data.baoquename;
+                    $("#bqnum").val(data.baoquenum);
                     openUpdate(data);
                     layer.closeAll('dialog');
                     tableIns1=table.render({
                         elem: '#userTable2'   //渲染的目标对象
-                        ,url:'../chuku/selbaoquedrugname?drugstoreName='+drugstoreName
+                        ,url:'../chuku/selbaoquedrugname?drugstorename='+drugstoreName
                         ,title: '库房药品表'//数据导出来的标题
                         ,toolbar:"#userToolBar2"   //表格的工具条
                         ,cellMinWidth:150 //设置列的最小默认宽度
@@ -90,8 +90,8 @@
                         ,limits: [10, 20, 30]
                         ,limit: 10//默认采用3
                         ,cols: [[   //列表数据
-                            {field:'rugstoreId', title:'ID',align:'center',width:"100"}
-                            ,{field:'drugstoreName', title:'名称',align:'center',width:"100"}
+                            {field:'rugstoreid', title:'ID',align:'center',width:"100"}
+                            ,{field:'drugstorename', title:'名称',align:'center',width:"100"}
                             ,{field:'drugstorenum', title:'仓库数量',align:'center',width:"100"}
                             ,{field:'batch', title:'批号',align:'center',width:"100"}
                             ,{fixed: 'right', title:'操作', toolbar: '#userBar2',align:'center',width:'120'}
@@ -122,9 +122,9 @@
                         layer.confirm('确定超出补给吗', function (index) {
                             var jbr= $("#jingbanren").val();
                             $.post("../chuku/updatedrugnumber", {
-                                rugstoreId: data.rugstoreId,
+                                rugstoreid: data.rugstoreid,
                                 drugstorenum: value,
-                                drugstoreName: data.drugstoreName,
+                                drugstorename: data.drugstorename,
                                 jiluname:data.drugstoreName,jilutype:"紧急补给药房",jilupeople:jbr,
                                 jilupihao:data.batch,jilunumber:value
                             }, function (res) {
@@ -149,10 +149,10 @@
                     else {
                         var jbr= $("#jingbanren").val();
                         $.post("../chuku/updatedrugnumber", {
-                            rugstoreId: data.rugstoreId,
+                            rugstoreid: data.rugstoreid,
                             drugstorenum: value,
-                            drugstoreName: data.drugstoreName,
-                            jiluname:data.drugstoreName,jilutype:"紧急补给药房",jilupeople:jbr,
+                            drugstorename: data.drugstorename,
+                            jiluname:data.drugstorename,jilutype:"紧急补给药房",jilupeople:jbr,
                             jilupihao:data.batch,jilunumber:value
                         }, function (res) {
                             if (res == 1) {
@@ -193,8 +193,8 @@
             ,limit: 10//默认采用3
             ,cols: [[   //列表数据
                 {field:'baoqueid', title:'ID',align:'center',width:"23%"}
-                ,{field:'baoqueName', title:'报缺药品',align:'center',width:"24%"}
-                ,{field:'baoqueNum', title:'需求数量',align:'center',width:"23%"}
+                ,{field:'baoquename', title:'报缺药品',align:'center',width:"24%"}
+                ,{field:'baoquenum', title:'需求数量',align:'center',width:"23%"}
                 ,{fixed: 'right', title:'操作', toolbar: '#userBar',align:'center',width:'30%'}
             ]]
 
@@ -251,7 +251,7 @@
              var you=data.validDate;
                 var date = new Date();
                 var durnum=data.drugstorenum;
-                layer.confirm('确定添加【' + data.drugstoreName + '】这个药品吗', function (index) {
+                layer.confirm('确定添加【' + data.drugstorename + '】这个药品吗', function (index) {
                     layer.prompt({
                         title: '请输入数量',
                         formType: 0, //输入框类型，支持0（文本）默认1（密码）2（多行文本）
@@ -264,19 +264,19 @@
                             var jbr = $("#jingbanren").val();
                             //向服务端发送删除指令
                             $.post("../chuku/addpharmacy", {
-                                rugstoreId: data.rugstoreId,
-                                warehouseId: data.warehouseId,
+                                rugstoreid: data.rugstoreid,
+                                warehouseid: data.warehouseid,
                                 pharmacyname: data.drugstorename,
                                 drugstorenum: value,
-                                skullId: data.skullId,
+                                skullid: data.skullid,
                                 unit: data.unitId,
-                                sellingPrice: data.sellingPrice,
+                                sellingprice: data.sellingprice,
                                 area: data.areaId,
-                                produceDate: sheng,
-                                validDate: you,
+                                producedate: sheng,
+                                validdate: you,
                                 skullbatch: data.batch,
                                 type: data.typeId,
-                                jiluname: data.drugstoreName, jilutype: "正常出库", jilupeople: jbr,
+                                jiluname: data.drugstorename, jilutype: "正常出库", jilupeople: jbr,
                                 jilupihao: data.batch, jilunumber: value
                             }, function (res) {
                                 if (res == 1) {
