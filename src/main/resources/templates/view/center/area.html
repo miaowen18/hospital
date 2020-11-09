@@ -17,7 +17,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">产地:</label>
             <div class="layui-input-inline">
-                <input type="text" name="areaName"  autocomplete="off" class="layui-input" >
+                <input type="text" name="areaname"  autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-inline">
@@ -37,7 +37,7 @@
                 <label class="layui-form-label">产地:</label>
                 <div class="layui-input-inline">
                     <input type="hidden" name="areaId">
-                    <input type="text" name="areaName"  lay-verify="required"   placeholder="请输入产地" autocomplete="off"
+                    <input type="text" name="areaname"  lay-verify="required"   placeholder="请输入产地" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -86,8 +86,8 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'areaId', title:'ID',align:'center',width:'30%'}
-                ,{field:'areaName', title:'药品产地',align:'center',width:"70%"}
+                {field:'areaid', title:'ID',align:'center',width:'30%'}
+                ,{field:'areaname', title:'药品产地',align:'center',width:"70%"}
             ]]
         })
         //模糊查询

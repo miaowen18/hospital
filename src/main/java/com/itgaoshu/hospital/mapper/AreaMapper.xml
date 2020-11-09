@@ -69,6 +69,18 @@
   <select id="queryList" resultType="Area">
     select * from area
   </select>
+  <select id="findAllArea" parameterType="Area" resultType="Area">
+    select * from area
+    <where>
+      <if test="areaid!=null">
+       and areaid=#{areaid}
+      </if>
+      <if test="areaname!=null">
+       and  areaname=#{areaname}
+      </if>
+    </where>
+
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.hospital.bean.AreaExample" >
     select
     <if test="distinct" >
@@ -93,6 +105,9 @@
     delete from area
     where areaId = #{areaid,jdbcType=INTEGER}
   </delete>
+  <insert id="addArea" parameterType="Area">
+    insert into area values(#{areaid},#{areaname});
+  </insert>
   <delete id="deleteByExample" parameterType="com.itgaoshu.hospital.bean.AreaExample" >
     delete from area
     <if test="_parameter != null" >
